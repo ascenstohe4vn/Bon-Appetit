@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cinnamon_sticks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bonappetit:cinnamon_sticks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:cinnamon_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cinnamon_sticks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:cinnamon_dust"
+    ]
+  }
+}

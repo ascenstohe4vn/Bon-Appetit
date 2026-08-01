@@ -11,7 +11,7 @@
       "name": "BONAPPETIT_COOKING_SEARCH",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "net/bi83/bonappetit/core/common/EnumParameters",
+        "class": "net/ashstarcrash/bonappetit/core/common/EnumParameters",
         "field": "PROXY_COOKING_SEARCH"
       }
     },
@@ -20,7 +20,7 @@
       "name": "BONAPPETIT_COOKING_MEALS",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "net/bi83/bonappetit/core/common/EnumParameters",
+        "class": "net/ashstarcrash/bonappetit/core/common/EnumParameters",
         "field": "PROXY_COOKING_MEALS"
       }
     },
@@ -29,7 +29,7 @@
       "name": "BONAPPETIT_COOKING_DRINKS",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "net/bi83/bonappetit/core/common/EnumParameters",
+        "class": "net/ashstarcrash/bonappetit/core/common/EnumParameters",
         "field": "PROXY_COOKING_DRINKS"
       }
     },
@@ -38,7 +38,7 @@
       "name": "BONAPPETIT_COOKING_MISC",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {
-        "class": "net/bi83/bonappetit/core/common/EnumParameters",
+        "class": "net/ashstarcrash/bonappetit/core/common/EnumParameters",
         "field": "PROXY_COOKING_MISC"
       }
     }

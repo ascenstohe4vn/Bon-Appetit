@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-21T20:39:28.043318604	Recipes
+// 1.21.1	2026-02-28T21:45:41.923334457	Recipes
 48e1e5b98507f7062bb0b6fdce6a50c70445a462 data/bonappetit/advancement/recipes/cooking/beetroot_soup_from_cooking.json
 94e3a741bfc6d7eeb0e5d7fef9d01243e3ca6ae4 data/bonappetit/advancement/recipes/cooking/blueberry_limeade_from_cooking.json
 f5e7b3e6243eab87954570c5163847b47a83c67b data/bonappetit/advancement/recipes/cooking/caramel_from_cooking.json
@@ -26,6 +26,7 @@ acde8824bcf5c77a244b3bd960d2106995367bc3 data/bonappetit/advancement/recipes/foo
 9af280a06d7f659a317a5c2d9ee2f334c3338e71 data/bonappetit/advancement/recipes/food/cherry_pie.json
 7e5c3979664fb00d78a69d43afc4c508e4997f7c data/bonappetit/advancement/recipes/food/cherry_pie_from_cherry_pie_slices.json
 e9628ba08881aa484b314c81f02cc5202c066baf data/bonappetit/advancement/recipes/food/cherry_pie_slice.json
+98699a921a43fda61f6725db06730fe014c8af48 data/bonappetit/advancement/recipes/food/cinnamon_dust.json
 ea2d1ecd62592ca300eda523f341503dc1215ad4 data/bonappetit/advancement/recipes/food/coconut_slice.json
 d01f944761ad05bd8a95399a40a33696eaa178d7 data/bonappetit/advancement/recipes/food/corn_kernels.json
 7fa9c69adac6fd8faab8fc059d4dfc13a061ece9 data/bonappetit/advancement/recipes/food/corn_on_a_cob.json
@@ -93,6 +94,7 @@ e219f1499ee22b66bbe914c5c400e1fb43f2b1ef data/bonappetit/recipe/caramel_apple.js
 c407c78bdb33164b8e28a94d2e3d88a27da35d50 data/bonappetit/recipe/cherry_pie.json
 166c246871b6fff4d74b637e3c8f258895bd89b5 data/bonappetit/recipe/cherry_pie_from_cherry_pie_slices.json
 1ef04eaf2d2aafc9f0e59434d9e263ed33fb77c7 data/bonappetit/recipe/cherry_pie_slice.json
+affb625e622cf9ba12275894fcb0b539db01f576 data/bonappetit/recipe/cinnamon_dust.json
 3096db180b0212c366b9762306616e7643b3d589 data/bonappetit/recipe/coconut_slice.json
 b379fcdcd926ed6738fdd0fe3deb496bef387876 data/bonappetit/recipe/cooking/beetroot_soup_from_cooking.json
 9b9d7c6ba75112d5d44880d9c40a394f7ceb39b2 data/bonappetit/recipe/cooking/blueberry_limeade_from_cooking.json
