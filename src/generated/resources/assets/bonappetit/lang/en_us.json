@@ -120,6 +120,7 @@
   "item.bonappetit.blueberry_limeade": "Blueberry Limeade",
   "item.bonappetit.brownie": "Brownie",
   "item.bonappetit.cake_slice": "Cake Slice",
+  "item.bonappetit.candied_lime_slice": "Candied Lime Slice",
   "item.bonappetit.candied_orange_peels": "Candied Orange Peels",
   "item.bonappetit.candy_apple": "Candy Apple",
   "item.bonappetit.caramel": "Caramel",
@@ -233,6 +234,6 @@
   "item.bonappetit.winged_strawberry": "Winged Strawberry",
   "item.bonappetit.yellow_tea_leaves": "Yellow Tea Leaves",
   "tab.bonappetit": "Bon Appétit",
-  "tag.item.bonappetit.citrus_fruits": "Citrus Fruits",
-  "tag.item.bonappetit.serving_containers": "Serving Containers"
+  "tag.item.bonappetit.serving_containers": "Serving Containers",
+  "tag.item.c.citrus_foods": "Citrus Foods"
 }

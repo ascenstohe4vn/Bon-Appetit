@@ -8,8 +8,6 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
@@ -17,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
+@EventBusSubscriber(modid = BonAppetit.ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -25,15 +23,19 @@ public class DataGenerators {
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        BlockTagsProvider blockTagsProvider = new BABlockTagProvider(packOutput, lookupProvider, existingFileHelper);
+        BATagProvider.BABlockTagProvider blockTagProvider = new BATagProvider.BABlockTagProvider(packOutput, lookupProvider, existingFileHelper);
 
-        generator.addProvider(event.includeServer(), blockTagsProvider); //BABlockTagProvider
-        generator.addProvider(event.includeServer(), new BAItemTagProvider(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper));
-
+        // client
         generator.addProvider(event.includeClient(), new BABlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new BAItemModelProvider(packOutput, existingFileHelper));
 
-        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(BABlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+        // server
+        generator.addProvider(event.includeServer(), blockTagProvider); //BABlockTagProvider
+        generator.addProvider(event.includeServer(),
+                new BATagProvider.BAItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
+
+        generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(
+                BABlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
         generator.addProvider(event.includeServer(), new BARecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new BAEnglishLanguageProvider(packOutput));
     }

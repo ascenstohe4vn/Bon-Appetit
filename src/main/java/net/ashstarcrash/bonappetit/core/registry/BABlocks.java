@@ -30,9 +30,9 @@ public class BABlocks {
             () -> new CopperTankBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WAXED_COPPER_BLOCK).sound(SoundType.COPPER).noOcclusion()));
 
     public static final DeferredBlock<BAFlavorCakeBlock> LEMON_CAKE = BLOCKS.register("lemon_cake",
-            () -> new BAFlavorCakeBlock(BANutrition.LEMON_CAKE, BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
+            () -> new BAFlavorCakeBlock(BAFoodProperties.LEMON_CAKE, BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
     public static final DeferredBlock<BAFlavorCakeBlock> LIME_CAKE = BLOCKS.register("lime_cake",
-            () -> new BAFlavorCakeBlock(BANutrition.LIME_CAKE, BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
+            () -> new BAFlavorCakeBlock(BAFoodProperties.LIME_CAKE, BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
 
     public static final DeferredBlock<Block> GRAPEFRUIT_VINE = registerBlockNoItem("grapefruit_vine", () -> new GrapefruitVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
     public static final DeferredBlock<Block> CORN_BASE = registerBlockNoItem("corn_base", () -> new CornCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).randomTicks().offsetType(BlockBehaviour.OffsetType.NONE).instabreak().sound(SoundType.CROP)));

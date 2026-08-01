@@ -1,6 +1,7 @@
 package net.ashstarcrash.bonappetit.core.common.event;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.registry.BAEffects;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,7 +18,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 @Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
 public class VigorEvent {
-    private static final ResourceLocation VIGOR_SPEED_ID = ResourceLocation.fromNamespaceAndPath(BonAppetit.ID, "vigor_speed");
+    private static final ResourceLocation VIGOR_SPEED_ID = ModUtil.BA.asResource("vigor_speed");
 
     @SubscribeEvent
     public static void onEntityTick(EntityTickEvent.Post event) {

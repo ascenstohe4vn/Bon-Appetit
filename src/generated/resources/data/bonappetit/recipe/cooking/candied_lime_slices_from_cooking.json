@@ -1,0 +1,24 @@
+{
+  "type": "bonappetit:cooking",
+  "cookingtime": 100,
+  "experience": 0.5,
+  "ingredients": [
+    {
+      "item": "minecraft:honey_bottle"
+    },
+    {
+      "item": "bonappetit:lime_slice"
+    },
+    {
+      "item": "bonappetit:lime_slice"
+    },
+    {
+      "item": "bonappetit:lime_slice"
+    }
+  ],
+  "recipe_book_tab": "sweets",
+  "result": {
+    "count": 3,
+    "id": "bonappetit:candied_lime_slice"
+  }
+}

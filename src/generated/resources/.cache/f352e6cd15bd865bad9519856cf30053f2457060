@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-21T20:39:28.040328953	Item Models: bonappetit
+// 1.21.1	2026-08-01T19:16:48.368105722	Item Models: bonappetit
 ec3c3ea6a4c300bc3d777f48d375957a22f30006 assets/bonappetit/models/item/acorn.json
 5953bac818e0925ab2b3cb45857599a494346edf assets/bonappetit/models/item/ambrosia_salad.json
 7d6c0786636808d4c79d6c4d4fce64126b309b14 assets/bonappetit/models/item/apple_cake_slice.json
@@ -19,6 +19,7 @@ c2dcab64d245688529698264c3369795f90fdf70 assets/bonappetit/models/item/black_tea
 586681e52060a3c214b9ac40eaaaf3ca70439b45 assets/bonappetit/models/item/blueberry_limeade.json
 6c1fcc41fdae49b0ec5691f1208edac100886944 assets/bonappetit/models/item/brownie.json
 ac6f27ded8ded2f097949c8005e5211b0b380f3e assets/bonappetit/models/item/cake_slice.json
+4884c857732739b23a3469f85c3e7d428e9c7b1a assets/bonappetit/models/item/candied_lime_slice.json
 d4889c0329d0e24d6e8613fa3f762fe5c37c8e44 assets/bonappetit/models/item/candied_orange_peels.json
 3d05da8b7ba1cef0df702baabc4bc34d67b76cb3 assets/bonappetit/models/item/candy_apple.json
 70d62dea52d86f53bf0bdc26ea02093d65e76a24 assets/bonappetit/models/item/caramel.json

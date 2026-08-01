@@ -4,7 +4,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
-public class BANutrition {
+public class BAFoodProperties {
     public static final FoodProperties CORN = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.2F).build();
     public static final FoodProperties CHERRIES = (new FoodProperties.Builder())
@@ -12,6 +12,14 @@ public class BANutrition {
     public static final FoodProperties GOLDEN_CHERRIES = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.85F)
             .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 1200, 1), 1F).build();
+    public static final FoodProperties LEMON = (new FoodProperties.Builder())
+            .nutrition(4).saturationModifier(0.3F).build();
+    public static final FoodProperties LEMON_SLICE = (new FoodProperties.Builder())
+            .nutrition(2).saturationModifier(0.175f).build();
+    public static final FoodProperties LIME = (new FoodProperties.Builder())
+            .nutrition(4).saturationModifier(0.3F).build();
+    public static final FoodProperties LIME_SLICE = (new FoodProperties.Builder())
+            .nutrition(2).saturationModifier(0.175f).build();
     public static final FoodProperties DRAGON_FRUIT = (new FoodProperties.Builder())
             .nutrition(4).saturationModifier(0.3F).build();
     public static final FoodProperties DRAGON_FRUIT_SLICE = (new FoodProperties.Builder())
@@ -31,9 +39,10 @@ public class BANutrition {
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 100, 0), 0.5f).build();
     public static final FoodProperties CORN_TORTILLA = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.8F).build();
+    public static final FoodProperties CANDIED_LIME_SLICE = (new FoodProperties.Builder())
+            .nutrition(3).saturationModifier(0.35f).build();
     public static final FoodProperties JERKY = (new FoodProperties.Builder())
             .nutrition(3).saturationModifier(0.1F).fast().build();
-
     public static final FoodProperties CHOCOLATE_BAR = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.3F)
             .effect(() -> new MobEffectInstance(BAEffects.VIGOR, 200, 0), 1F).build();

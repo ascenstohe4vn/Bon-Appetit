@@ -10,7 +10,7 @@
       "item": "minecraft:water_bucket"
     }
   ],
-  "recipe_book_tab": "drinks",
+  "recipe_book_tab": "sweets",
   "result": {
     "count": 1,
     "id": "bonappetit:caramel"

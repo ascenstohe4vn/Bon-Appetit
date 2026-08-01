@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public enum CookingPotRecipeBookTab implements StringRepresentable {
     MEALS("meals"),
     DRINKS("drinks"),
+    SWEETS("sweets"),
     MISC("misc");
 
     public static final Codec<CookingPotRecipeBookTab> CODEC = Codec.STRING.flatXmap(s -> {

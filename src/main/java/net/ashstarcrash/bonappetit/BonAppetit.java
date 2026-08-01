@@ -34,6 +34,7 @@ public class BonAppetit {
     public static final String ID = "bonappetit";
     public static final String MC = "minecraft";
     public static final String LOADER = "neoforge";
+    public static final String COMMON = "c";
     public static final Logger LOGGER = LogUtils.getLogger();
     private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
 

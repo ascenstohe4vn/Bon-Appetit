@@ -11,12 +11,14 @@ public class RecipeCategories {
     public static RecipeBookCategories COOKING_SEARCH;
     public static RecipeBookCategories COOKING_MEALS;
     public static RecipeBookCategories COOKING_DRINKS;
+    public static RecipeBookCategories COOKING_SWEETS;
     public static RecipeBookCategories COOKING_MISC;
 
     public static void init(RegisterRecipeBookCategoriesEvent event) {
         COOKING_SEARCH = RecipeBookCategories.valueOf("BONAPPETIT_COOKING_SEARCH");
         COOKING_MEALS = RecipeBookCategories.valueOf("BONAPPETIT_COOKING_MEALS");
         COOKING_DRINKS = RecipeBookCategories.valueOf("BONAPPETIT_COOKING_DRINKS");
+        COOKING_SWEETS = RecipeBookCategories.valueOf("BONAPPETIT_COOKING_SWEETS");
         COOKING_MISC = RecipeBookCategories.valueOf("BONAPPETIT_COOKING_MISC");
 
         event.registerBookCategories(RecipeBookType.valueOf("BONAPPETIT_COOKING"),
@@ -32,6 +34,7 @@ public class RecipeCategories {
                     return switch (tab) {
                         case MEALS -> COOKING_MEALS;
                         case DRINKS -> COOKING_DRINKS;
+                        case SWEETS -> COOKING_SWEETS;
                         case MISC -> COOKING_MISC;
                     };
                 }

@@ -108,7 +108,7 @@ public class BACreativeTabs {
                 //grains
                 output.accept(RICE);
 
-                //tea
+                //tea and coffee
                 output.accept(GREEN_TEA_LEAVES);
                 output.accept(YELLOW_TEA_LEAVES);
                 output.accept(BLACK_TEA_LEAVES);
@@ -140,6 +140,7 @@ public class BACreativeTabs {
                 output.accept(ORANGE_SHERBET);
                 output.accept(DRIED_BANANA);
                 output.accept(BANANA_BREAD);
+                output.accept(CANDIED_LIME_SLICE);
                 output.accept(RAISINS);
                 output.accept(DRIED_DRAGON_FRUIT);
                 output.accept(JERKY);

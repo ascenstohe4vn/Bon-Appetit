@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_corn": {
+    "has_lime_slice": {
       "conditions": {
         "items": [
           {
-            "items": "#c:citrus_foods"
+            "items": "bonappetit:lime_slice"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bonappetit:panettone"
+        "recipe": "bonappetit:cooking/candied_lime_slices_from_cooking"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_corn"
+      "has_lime_slice"
     ]
   ],
   "rewards": {
     "recipes": [
-      "bonappetit:panettone"
+      "bonappetit:cooking/candied_lime_slices_from_cooking"
     ]
   }
 }

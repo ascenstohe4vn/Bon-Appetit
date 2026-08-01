@@ -115,6 +115,12 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_SLICE.get(), 2).requires(LIME)
                 .unlockedBy("has_lime", has(LIME)).save(recipeOutput);
+        CookingPotRecipeBuilder.cookingPotRecipe(CANDIED_LIME_SLICE.get(), 3, 100, 0.5f, null)
+                .addIngredient(HONEY_BOTTLE)
+                .addIngredient(LIME_SLICE, 3)
+                .setRecipeBookTab(CookingPotRecipeBookTab.SWEETS)
+                .unlockedBy("has_lime_slice", has(LIME_SLICE))
+                .build(recipeOutput, "bonappetit:candied_lime_slices_from_cooking");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_CAKE_SLICE.get(), 7).requires(LIME_CAKE)
                 .unlockedBy("has_lime_cake", has(LIME_CAKE)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_CAKE, 1).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE)
@@ -167,7 +173,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
         CookingPotRecipeBuilder.cookingPotRecipe(CARAMEL.get(), 1, 100, 0.5f, null)
                 .addIngredient(SUGAR)
                 .addIngredient(WATER_BUCKET)
-                .setRecipeBookTab(CookingPotRecipeBookTab.DRINKS)
+                .setRecipeBookTab(CookingPotRecipeBookTab.SWEETS)
                 .unlockedBy("has_sugar", has(SUGAR))
                 .build(recipeOutput, "bonappetit:caramel_from_cooking");
 
@@ -176,8 +182,8 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy("has_jerky", has(JERKY)).save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PANETTONE.get(), 1)
-                .requires(MILK_BUCKET).requires(DOUGH).requires(SUGAR).requires(BATags.Items.CITRUS_FRUITS).requires(RAISINS).requires(RAISINS)
-                .unlockedBy("has_corn", has(BATags.Items.CITRUS_FRUITS)).save(recipeOutput);
+                .requires(MILK_BUCKET).requires(DOUGH).requires(SUGAR).requires(BATags.Items.CITRUS_FOODS).requires(RAISINS).requires(RAISINS)
+                .unlockedBy("has_corn", has(BATags.Items.CITRUS_FOODS)).save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(CHERRIES).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);

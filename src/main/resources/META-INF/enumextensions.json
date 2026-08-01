@@ -35,6 +35,15 @@
     },
     {
       "enum": "net/minecraft/client/RecipeBookCategories",
+      "name": "BONAPPETIT_COOKING_SWEETS",
+      "constructor": "(Ljava/util/function/Supplier;)V",
+      "parameters": {
+        "class": "net/ashstarcrash/bonappetit/core/common/EnumParameters",
+        "field": "PROXY_COOKING_SWEETS"
+      }
+    },
+    {
+      "enum": "net/minecraft/client/RecipeBookCategories",
       "name": "BONAPPETIT_COOKING_MISC",
       "constructor": "(Ljava/util/function/Supplier;)V",
       "parameters": {

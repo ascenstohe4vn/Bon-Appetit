@@ -19,6 +19,9 @@ public class EnumParameters {
     public static final EnumProxy<RecipeBookCategories> PROXY_COOKING_DRINKS = new EnumProxy<>(
             RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(BAItems.APPLE_CIDER.get()))
     );
+    public static final EnumProxy<RecipeBookCategories> PROXY_COOKING_SWEETS = new EnumProxy<>(
+            RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(BAItems.CANDIED_LIME_SLICE.get()))
+    );
     public static final EnumProxy<RecipeBookCategories> PROXY_COOKING_MISC = new EnumProxy<>(
             RecipeBookCategories.class, (Supplier<List<ItemStack>>) () -> List.of(new ItemStack(BAItems.CHOCOLATE_BAR.get()), new ItemStack(BAItems.BROWNIE.get()))
     );

@@ -1,6 +1,7 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.registry.BABlocks;
 import net.ashstarcrash.bonappetit.core.registry.BAEffects;
 import net.ashstarcrash.bonappetit.core.registry.BAEntities;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class BAEnglishLanguageProvider extends LanguageProvider {
     String BA = BonAppetit.ID;
+    String C = ModUtil.COMMON.id();
 
     private static final Map<String, String> ITEM_OVERRIDES = Map.ofEntries(
             Map.entry("corn_on_a_cob", "Corn on a Cob")
@@ -74,7 +76,7 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
 
         //tags
         add("tag.item." + BA + ".serving_containers", "Serving Containers");
-        add("tag.item." + BA + ".citrus_fruits", "Citrus Fruits");
+        add("tag.item." + C  + ".citrus_foods", "Citrus Foods");
 
         //configs
         add(BA + ".configuration.title", "Bon Appétit Config");
