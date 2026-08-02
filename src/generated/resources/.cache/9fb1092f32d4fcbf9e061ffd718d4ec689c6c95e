@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-02T01:02:28.272548157	Recipes
+// 1.21.1	2026-08-02T16:28:58.787296593	Recipes
 48e1e5b98507f7062bb0b6fdce6a50c70445a462 data/bonappetit/advancement/recipes/cooking/beetroot_soup_from_cooking.json
 2273cdba46498bd8fcfa4c973349762f7b2158a4 data/bonappetit/advancement/recipes/cooking/candied_lime_slices_from_cooking.json
 f5e7b3e6243eab87954570c5163847b47a83c67b data/bonappetit/advancement/recipes/cooking/caramel_from_cooking.json
@@ -62,7 +62,7 @@ ddb56d4129a7971c91839426273aed81f8ddc028 data/bonappetit/advancement/recipes/foo
 a57e313e108c8bbee461acef81c0869c3139b239 data/bonappetit/advancement/recipes/food/orange_pie_from_orange_pie_slices.json
 53cf997782651a53a559434428b7bdb3dba33323 data/bonappetit/advancement/recipes/food/orange_pie_slice.json
 7db3999fb418bae2ed4ee4107932c0002553d744 data/bonappetit/advancement/recipes/food/orange_slice.json
-9e6c5e167ab68c791728a2bbb425a9c2345d712c data/bonappetit/advancement/recipes/food/panettone.json
+6af5e44365f09c430ab78a983b01b6c17de95489 data/bonappetit/advancement/recipes/food/panettone.json
 83ce58e048292dca42772b0dacf00dadc6fb4f2a data/bonappetit/advancement/recipes/food/paper_plate.json
 445906660b18b69c513789b8b2106a6cee8f9838 data/bonappetit/advancement/recipes/food/pie_crust.json
 7b243db0b45d9dbe32685d13a089e168bf8ac09c data/bonappetit/advancement/recipes/food/pink_lemonade.json
@@ -143,7 +143,7 @@ e5546359d1ba9d5d6751a4181105264472a407d7 data/bonappetit/recipe/mango_pie_from_m
 3aca0bd8f82fe4906e376b441634eb5c4c0a2f72 data/bonappetit/recipe/orange_pie_from_orange_pie_slices.json
 e10714478abf02b809c6e94f13300a6dd0c7988a data/bonappetit/recipe/orange_pie_slice.json
 00ebe81984f8f50850bd8c8ead58061568024ae6 data/bonappetit/recipe/orange_slice.json
-3b685498895261bb4c1d6379bc981623d2d2b1fc data/bonappetit/recipe/panettone.json
+ba3f3271dbaf1a2d817ffbbba5bbc233c5e4dc97 data/bonappetit/recipe/panettone.json
 54e901b94c4ccbe9c184274b5caec8efaa2770fd data/bonappetit/recipe/paper_plate.json
 5ed9f6443ef28c2f4229fec94963653e82f6ba66 data/bonappetit/recipe/pie_crust.json
 9bda24b422a3b73cd8660fce3efc3af92444b45b data/bonappetit/recipe/pink_lemonade.json

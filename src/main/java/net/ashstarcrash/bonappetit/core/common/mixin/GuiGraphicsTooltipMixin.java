@@ -2,10 +2,13 @@ package net.ashstarcrash.bonappetit.core.common.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.ashstarcrash.bonappetit.BAConfig;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.util.FoodHealingHelper;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
 import net.minecraft.core.component.DataComponents;
@@ -24,6 +27,7 @@ import java.util.List;
 
 @Mixin(GuiGraphics.class)
 public abstract class GuiGraphicsTooltipMixin {
+
     @Shadow
     private ItemStack tooltipStack;
 
@@ -52,6 +56,11 @@ public abstract class GuiGraphicsTooltipMixin {
         if (components.isEmpty()) return;
 
         ItemStack stack = this.tooltipStack;
+        boolean usedEmiFallback = false;
+        if (stack == null || stack.isEmpty()) {
+            stack = ModUtil.getEmiFallbackStack(mouseX, mouseY);
+            usedEmiFallback = true;
+        }
         if (stack == null || stack.isEmpty()) return;
 
         FoodProperties food = stack.get(DataComponents.FOOD);
@@ -72,8 +81,14 @@ public abstract class GuiGraphicsTooltipMixin {
                 mouseX, mouseY, contentWidth, contentHeight
         );
 
+        int rowOffset = components.get(0).getHeight() + 2;
+        boolean isCreativeScreen = !usedEmiFallback && Minecraft.getInstance().screen instanceof CreativeModeInventoryScreen;
+        if (isCreativeScreen && components.size() > 1) {
+            rowOffset += components.get(1).getHeight();
+        }
+
         bonappetit$rowX = pos.x();
-        bonappetit$rowY = pos.y() + font.lineHeight + 2;
+        bonappetit$rowY = pos.y() + rowOffset;
         bonappetit$food = food;
         bonappetit$shouldRender = true;
     }
@@ -165,7 +180,7 @@ public abstract class GuiGraphicsTooltipMixin {
 
             if (BAConfig.SHOW_SATURATION_OVERLAY.get() && saturation > i * 2.0F) {
                 guiGraphics.blitSprite(
-                        ResourceLocation.fromNamespaceAndPath("bonappetit", "hud/saturation_overlay"),
+                        ModUtil.BA.asResource("hud/saturation_overlay"),
                         drawX, y, 9, 9
                 );
             }

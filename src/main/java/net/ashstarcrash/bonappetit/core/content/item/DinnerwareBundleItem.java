@@ -44,7 +44,7 @@ public class DinnerwareBundleItem extends BundleItem {
                         bundlecontents$mutable.tryInsert(itemstack2);
                     }
                 } else if (itemstack.canFitInsideContainerItems()) {
-                    if (itemstack.is(BATags.Items.CITRUS_FOODS)) {
+                    if (itemstack.is(BATags.Items.FOODS_CITRUS)) {
                         int i = bundlecontents$mutable.tryTransfer(slot, player);
                         if (i > 0) {
                             this.playInsertSound(player);

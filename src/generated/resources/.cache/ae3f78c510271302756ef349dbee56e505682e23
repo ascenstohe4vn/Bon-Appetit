@@ -1,11 +1,28 @@
-// 1.21.1	2026-08-02T01:02:28.275163599	Tags for minecraft:item mod id bonappetit
-5f3ac893b08978443e7883f6548546aa9e819ef2 data/c/tags/item/citrus_foods.json
-968714546c6775e4154b0af42fcbba2c1f28469f data/c/tags/item/drinks.json
-eb179f037afb0846f051e9121787018962129095 data/c/tags/item/foods.json
+// 1.21.1	2026-08-02T16:28:58.789805714	Tags for minecraft:item mod id bonappetit
+1b3f2786cfeaa2bc8b1d66494b5c210fb80dc35b data/c/tags/item/drinks.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/honey.json
+026fe0c103268f2645a428121a938c5d08b165c5 data/c/tags/item/drinks/juice.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/milk.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/water.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/watery.json
+dd966d39624f9c92af83e2d54956c25ed870003f data/c/tags/item/foods.json
 815ac4a2f0fc0ae97ee3933d8ff309c1aca422ef data/c/tags/item/foods/berry.json
-1d480cfc80acf9d3111381dc48dd1687b264eee4 data/c/tags/item/foods/cookie.json
-28ebdc551f81258d09e512f3fd1d05081dfec51c data/c/tags/item/foods/fruit.json
-fa329356ee7932c3d7361834eaa51efea5d357f3 data/c/tags/item/foods/golden.json
+5abc5ad5d9cfda7fb7aa22509fedc93e3871a6aa data/c/tags/item/foods/bread.json
+d8db899cecfd666ec8f2ede3d593170c5d4edb9a data/c/tags/item/foods/candy.json
+5f3ac893b08978443e7883f6548546aa9e819ef2 data/c/tags/item/foods/citrus.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/cooked_fish.json
+3784f541c4da2a0a6fb01b6b9a5cc33eedabd8a8 data/c/tags/item/foods/cooked_meat.json
+6daed9ef7467c9ae5ed6206b3715a5493c3c3c18 data/c/tags/item/foods/cookie.json
+20ec6810cb89aa2c3e7cfe9aa10ae46bfc2bbbc7 data/c/tags/item/foods/edible_when_placed.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/food_poisoning.json
+72b5334e4ca4b1990b0537da7a2e361e6e5312a2 data/c/tags/item/foods/fruit.json
+6b0f13332a3de8deefc99586abc73a38309a7f93 data/c/tags/item/foods/golden.json
+f3fac98b277c57241df3af563d4fa994cee93203 data/c/tags/item/foods/pie.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/raw_fish.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/raw_meat.json
+0042f2123b983d6dc6d893fa7fd84012fc6cc4a8 data/c/tags/item/foods/soup.json
 236c22bcd0b8dbc8d025c1e86e15f3791f3c1e75 data/c/tags/item/foods/vegetable.json
+0a9419a790c0727b422551fb33d3c991576c09ca data/c/tags/item/seeds.json
 04ea942870ac837968703c292f35ad78f91e41b5 data/minecraft/tags/item/dyeable.json
 9ca083549fe162b46fe9cc90d7f78f12384e7b09 data/minecraft/tags/item/fox_food.json
+5ef931f9b91cefad0e64308664f8f55e4064f43c data/minecraft/tags/item/villager_plantable_seeds.json

@@ -11,7 +11,7 @@ import net.minecraft.world.item.Item;
 public class BATags {
     public static class Items {
         public static final TagKey<Item> SERVING_CONTAINERS = ba(Registries.ITEM, "serving_containers");
-        public static final TagKey<Item> CITRUS_FOODS = c(Registries.ITEM, "citrus_foods");
+        public static final TagKey<Item> FOODS_CITRUS = c(Registries.ITEM, "foods/citrus");
     }
     public static class EntityTypes {
         public static final TagKey<EntityType<?>> RICOCHET_IMMUNE = ba(Registries.ENTITY_TYPE, "ricochet_immune");

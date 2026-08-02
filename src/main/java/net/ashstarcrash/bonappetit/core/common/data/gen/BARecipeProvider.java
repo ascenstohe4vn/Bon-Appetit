@@ -7,7 +7,6 @@ import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotRecipeBook
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
@@ -183,8 +182,8 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy("has_jerky", has(JERKY)).save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PANETTONE.get(), 1)
-                .requires(MILK_BUCKET).requires(DOUGH).requires(SUGAR).requires(BATags.Items.CITRUS_FOODS).requires(RAISINS).requires(RAISINS)
-                .unlockedBy("has_corn", has(BATags.Items.CITRUS_FOODS)).save(recipeOutput);
+                .requires(MILK_BUCKET).requires(DOUGH).requires(SUGAR).requires(BATags.Items.FOODS_CITRUS).requires(RAISINS).requires(RAISINS)
+                .unlockedBy("has_corn", has(BATags.Items.FOODS_CITRUS)).save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(CHERRIES).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);

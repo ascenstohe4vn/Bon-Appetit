@@ -1,13 +1,21 @@
 {
   "values": [
+    "bonappetit:apple_juice",
+    "bonappetit:apple_cider",
+    "bonappetit:applejack",
+    "bonappetit:orange_juice",
+    "bonappetit:banana_smoothie",
     "bonappetit:lemonade",
     "bonappetit:limeade",
+    "bonappetit:dragon_fruit_latte",
     "bonappetit:coffee",
+    "bonappetit:strawberry_banana_smoothie",
     "bonappetit:pink_lemonade",
     "bonappetit:pink_limeade",
     "bonappetit:blueberry_limeade",
     "bonappetit:lime_green_tea",
-    "bonappetit:cherry_lime_rickey_refresher",
-    "bonappetit:pink_lady"
+    "bonappetit:pink_lady",
+    "bonappetit:pink_lady",
+    "bonappetit:cherry_lime_rickey_refresher"
   ]
 }
