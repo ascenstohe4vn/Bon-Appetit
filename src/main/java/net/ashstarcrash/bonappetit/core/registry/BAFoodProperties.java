@@ -3,6 +3,9 @@ package net.ashstarcrash.bonappetit.core.registry;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Items;
+
+import static net.minecraft.world.item.Items.*;
 
 public class BAFoodProperties {
     public static final FoodProperties CORN = (new FoodProperties.Builder())
@@ -59,11 +62,11 @@ public class BAFoodProperties {
             .nutrition(11).saturationModifier(0.8F).build();
 
     public static final FoodProperties JEWELED_RICE_BOWL = (new FoodProperties.Builder())
-            .nutrition(12).saturationModifier(1.15F)
-            .effect(() -> new MobEffectInstance(BAEffects.FLAK, 750, 1), 1F)
-            .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 450, 0), 1F)
-            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 1), 1F)
-            .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1F).build();
+            .nutrition(12).saturationModifier(1.15F).usingConvertsTo(BOWL)
+            .effect(() -> new MobEffectInstance(BAEffects.FLAK, 750, 1), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 450, 0), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 1), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f).build();
 
     public static final FoodProperties CANDY_APPLE = (new FoodProperties.Builder())
             .nutrition(4).saturationModifier(0.35F)
@@ -141,7 +144,7 @@ public class BAFoodProperties {
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f).alwaysEdible().build();
     public static final FoodProperties PINK_LEMONADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.8F)
-            .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 600, 0), 1F)
+            .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 600, 0), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 300, 0), 1f).alwaysEdible().build();
     public static final FoodProperties PINK_LIMEADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.815F)
@@ -151,8 +154,17 @@ public class BAFoodProperties {
     public static final FoodProperties BLUEBERRY_LIMEADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.8F)
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f).alwaysEdible().build();
+    public static final FoodProperties LIME_GREEN_TEA = (new FoodProperties.Builder())
+            .nutrition(6).saturationModifier(0.775F)
+            .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.CAFFEINATED, 300, 0 /* temp until the tea effects are implemented */), 0.8f).alwaysEdible().build();
 
     public static final FoodProperties DRAGON_FRUIT_LATTE = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.625F)
             .effect(() -> new MobEffectInstance(BAEffects.FLAK, 750, 1), 1F).build();
+    public static final FoodProperties CHERRY_LIME_RICKEY_REFRESHER = (new FoodProperties.Builder())
+            .nutrition(8).saturationModifier(0.7F)
+            .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 600, 1), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.CAFFEINATED, 200, 0 /* temp until the tea effects are implemented */), 0.8f).alwaysEdible().build();
 }

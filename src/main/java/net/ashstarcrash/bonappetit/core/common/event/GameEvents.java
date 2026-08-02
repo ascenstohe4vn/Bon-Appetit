@@ -1,9 +1,16 @@
-package net.ashstarcrash.bonappetit.core.registry;
+package net.ashstarcrash.bonappetit.core.common.event;
 
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.client.tooltip.FoodTooltipData;
+import net.ashstarcrash.bonappetit.core.common.util.FoodHealingHelper;
+import net.ashstarcrash.bonappetit.core.common.util.FoodRegenData;
 import net.ashstarcrash.bonappetit.core.content.entity.goal.BeeMoveToFruitBushGoal;
 import net.ashstarcrash.bonappetit.core.content.entity.goal.BeePollinateFruitGoal;
+import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
+import net.ashstarcrash.bonappetit.core.registry.BADamageTypes;
+import net.ashstarcrash.bonappetit.core.registry.BAEffects;
+import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -36,7 +43,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
@@ -51,8 +57,8 @@ import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 import java.util.*;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
-public class BAEvents {
+@EventBusSubscriber(modid = BonAppetit.ID)
+public class GameEvents {
     private static final List<CherryEcho> ECHO_QUEUE = new ArrayList<>();
     private static final Map<UUID, Integer> MELLOW_STILL_TICKS = new HashMap<>();
     private static final Map<UUID, Integer> TWIN_STRIKE_COOLDOWN = new HashMap<>();
@@ -61,6 +67,30 @@ public class BAEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide) return;
+
+        FoodRegenData data = player.getData(BAAttachments.FOOD_REGEN.get());
+        if (!data.isActive()) return;
+
+        int ticksRemaining = data.getTicksRemaining() - 1;
+        int pulseTimer = data.getPulseTimer() + 1;
+
+        int pulseInterval = BAConfig.FOOD_REGEN_PULSE_INTERVAL_TICKS.get();
+        if (pulseTimer >= pulseInterval) {
+            pulseTimer = 0;
+            float healAmount = BAConfig.FOOD_REGEN_PULSE_HEAL_AMOUNT.get().floatValue();
+            if (player.getHealth() < player.getMaxHealth() && healAmount > 0.0F) {
+                player.heal(healAmount);
+            }
+        }
+
+        data.setTicksRemaining(Math.max(0, ticksRemaining));
+        data.setPulseTimer(pulseTimer);
+    }
+
+    @SubscribeEvent
+    public static void onPlayerMellowTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
         if (player.level().isClientSide) return;
         UUID uuid = player.getUUID();
@@ -406,6 +436,17 @@ public class BAEvents {
                 tooltip.add(effectText.withStyle(effectInstance.getEffect().value().getCategory().getTooltipFormatting()));
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void addFoodTooltip(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        FoodProperties food = stack.getFoodProperties(event.getEntity());
+        if (food == null) return;
+
+        List<Component> tooltip = event.getToolTip();
+        tooltip.add(1, Component.empty());
+        tooltip.add(2, Component.empty());
     }
 
     public static float getBoatFriction(Boat boat, float v) {

@@ -71,7 +71,7 @@ public class FervorEvent {
 
             int amp = effect.getAmplifier();
             float baseSpeed = 0.90f;
-            float maxSpeedLimit = 1.30f + (amp * 0.10f);
+            float maxSpeedLimit = 1.50f + (amp * 0.175f);
             float accelPerBlock = 0.05f + (amp * 0.025f);
 
             float currentMultiplier = baseSpeed + (state.blocksBroken * accelPerBlock);

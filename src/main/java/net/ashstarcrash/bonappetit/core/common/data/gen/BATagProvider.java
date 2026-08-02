@@ -175,6 +175,10 @@ public class BATagProvider {
                 .add(LIMEADE.get())
                 .add(COFFEE.get())
                 .add(PINK_LEMONADE.get())
+                .add(PINK_LIMEADE.get())
+                .add(BLUEBERRY_LIMEADE.get())
+                .add(LIME_GREEN_TEA.get())
+                .add(CHERRY_LIME_RICKEY_REFRESHER.get())
                 .add(PINK_LADY.get());
 
             this.tag(ItemTags.DYEABLE)

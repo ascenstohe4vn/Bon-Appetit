@@ -23,16 +23,7 @@ import java.util.function.Supplier;
 public abstract class BAItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BonAppetit.ID);
     public static void register(IEventBus eventBus) {ITEMS.register(eventBus);}
-
-    public static final int BRIEF_DURATION = 300;    //15s
-    public static final int SHORT_DURATION = 600;    //30s
-    public static final int MEDIUM_DURATION = 1200;    //60s
-    public static final int LONG_DURATION = 3600;    //3m
-    public static final int EXCESSIVE_DURATION = 6000;    //5m
-
-    public static Supplier<Item> suppRegister(final String name, final Supplier<Item> supplier) {
-        return ITEMS.register(name, supplier);
-    }
+    public static Supplier<Item> suppRegister(final String name, final Supplier<Item> supplier) {return ITEMS.register(name, supplier);}
 
     public static MobEffectInstance rooted(int duration) {return new MobEffectInstance(BAEffects.ROOTED, duration, 0, false, true);}
 
@@ -281,12 +272,15 @@ public abstract class BAItems {
 
     public static final DeferredItem<Item> JEWELED_RICE_BOWL = ITEMS.register("jeweled_rice_bowl", () -> new Item(new Item.Properties().food(BAFoodProperties.JEWELED_RICE_BOWL)));
 
+    public static final DeferredItem<Item> LIME_GREEN_TEA = ITEMS.register("lime_green_tea", () -> new BAPitcherDrinkItem(new Item.Properties().stacksTo(16).food(BAFoodProperties.LIME_GREEN_TEA)));
+    public static final DeferredItem<Item> CHERRY_LIME_RICKEY_REFRESHER = ITEMS.register("cherry_lime_rickey_refresher", () -> new BAPitcherDrinkItem(new Item.Properties().stacksTo(16).food(BAFoodProperties.CHERRY_LIME_RICKEY_REFRESHER)));
+
     /* NON-FOODS */
     //public static final DeferredItem<DinnerwareBundleItem> DINNERWARE_BUNDLE = ITEMS.register("dinnerware_bundle", () -> new DinnerwareBundleItem(new Item.Properties()));
 
     /*|* VANILLA FOODS *|*/
     //-------------------//
     public static final Map<Item, FoodProperties> VANILLA_EFFECTS = (new ImmutableMap.Builder<Item, FoodProperties>())
-            .put(Items.BEETROOT_SOUP, (new FoodProperties.Builder()).effect(() -> rooted(SHORT_DURATION), 1.0F).build())
+            .put(Items.BEETROOT_SOUP, (new FoodProperties.Builder()).effect(() -> rooted(600), 1.0F).build())
             .build();
 }

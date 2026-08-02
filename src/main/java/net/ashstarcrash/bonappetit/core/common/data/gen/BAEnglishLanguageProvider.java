@@ -83,17 +83,26 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add(BA + ".configuration.section.bonappetit.common.toml", "Bon Appétit Config");
         add(BA + ".configuration.section.bonappetit.common.toml.title", "Bon Appétit Config");
 
-        add(BA + ".configuration.registry", "Registry...");
+        add(BA + ".configuration.hunger", "Hunger");
+                add(BA + ".configuration.hungerBarEnabled", "Enable Vanilla Hunger Bar");
+                add(BA + ".configuration.foodHealMultiplier", "Instant Heal per Nutrition");
+                add(BA + ".configuration.foodRegenDurationPerSaturation", "Regen Duration per Saturation");
+                add(BA + ".configuration.foodRegenMinDurationTicks", "Minimum Regen Duration Threshold");
+                add(BA + ".configuration.foodRegenPulseIntervalTicks", "Regen Pulse Interval");
+                add(BA + ".configuration.foodRegenPulseHealAmount", "Regen Pulse Heal Amount");
+                add(BA + ".configuration.foodRegenMaxDurationTicks", "Maximum Regen Duration Cap");
+
+        add(BA + ".configuration.registry", "Registry");
                 add(BA + ".configuration.registerGrapefruit", "Grapefruit");
                 add(BA + ".configuration.registerCoffee", "Coffee");
 
-        add(BA + ".configuration.gameplay", "Gameplay...");
-                add(BA + ".configuration.cherry", "Cherry...");
+        add(BA + ".configuration.gameplay", "Gameplay");
+                add(BA + ".configuration.cherry", "Cherry");
                         add(BA + ".configuration.cherryEffectInitialMulti", "Twin Strike Initial Damage Multiplier");
                         add(BA + ".configuration.cherryEffectAdditiveMulti", "Twin Strike Additive Damage Multiplier");
 
-        add(BA + ".configuration.tweaks", "Tweaks...");
-                add(BA + ".configuration.cakes", "Cakes...");
+        add(BA + ".configuration.tweaks", "Tweaks");
+                add(BA + ".configuration.cakes", "Cakes");
                         add(BA + ".configuration.vanillaCakeEffect", "Vanilla Cake Effect");
                         add(BA + ".configuration.cakeRepairing", "Cake Repairing");
                         add(BA + ".configuration.cakeFallCushioning", "Cake Fall Cushioning");

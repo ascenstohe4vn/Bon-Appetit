@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:limeade"
+    },
+    {
+      "item": "bonappetit:green_tea_leaves"
+    },
+    {
+      "item": "bonappetit:green_tea_leaves"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:lime_green_tea"
+  }
+}

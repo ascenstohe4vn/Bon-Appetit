@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bonappetit:cooking/pink_limeade_from_cooking"
+        "recipe": "bonappetit:lime_green_tea_from_limeade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bonappetit:cooking/pink_limeade_from_cooking"
+      "bonappetit:lime_green_tea_from_limeade"
     ]
   }
 }

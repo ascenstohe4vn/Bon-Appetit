@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:limeade"
+    },
+    {
+      "item": "bonappetit:cherries"
+    },
+    {
+      "item": "bonappetit:cherries"
+    },
+    {
+      "item": "bonappetit:green_tea_leaves"
+    },
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:cherry_lime_rickey_refresher"
+  }
+}

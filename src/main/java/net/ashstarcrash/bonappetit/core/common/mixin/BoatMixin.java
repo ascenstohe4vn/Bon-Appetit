@@ -2,7 +2,7 @@ package net.ashstarcrash.bonappetit.core.common.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import net.ashstarcrash.bonappetit.core.registry.BAEvents;
+import net.ashstarcrash.bonappetit.core.common.event.GameEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -19,7 +19,7 @@ public class BoatMixin {
     public float bonappetit$getfriction(BlockState state, LevelReader level, BlockPos pos, @Nullable Entity entity, @NotNull Operation<Float> operation) {
         float v = operation.call(state, level, pos, entity);
         if (entity instanceof Boat boat) {
-            return BAEvents.getBoatFriction(boat, v);
+            return GameEvents.getBoatFriction(boat, v);
         }
         return v;
     }

@@ -55,6 +55,7 @@ public class BonAppetit {
         BAEffects.EFFECTS.register(modEventBus);
 
         BADataComponents.DATA_COMPONENTS.register(modEventBus);
+        BAAttachments.ATTACHMENTS.register(modEventBus);
         BARecipeTypes.RECIPE_TYPES.register(modEventBus);
         BARecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         BAMenuTypes.MENU_TYPES.register(modEventBus);

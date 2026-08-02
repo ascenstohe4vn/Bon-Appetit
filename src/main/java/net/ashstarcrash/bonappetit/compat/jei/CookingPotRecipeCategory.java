@@ -76,7 +76,7 @@ public class CookingPotRecipeCategory implements IRecipeCategory<RecipeHolder<Co
 
         ItemStack container = recipe.getOutputContainer();
         if (!container.isEmpty()) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 44)
+            builder.addSlot(RecipeIngredientRole.INPUT, 106, 44)
                     .addItemStack(container);
         }
     }

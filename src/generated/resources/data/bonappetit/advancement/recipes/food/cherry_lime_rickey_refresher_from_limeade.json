@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lime": {
+    "has_cherries": {
       "conditions": {
         "items": [
           {
-            "items": "bonappetit:lime"
+            "items": "bonappetit:cherries"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bonappetit:cooking/blueberry_limeade_from_cooking"
+        "recipe": "bonappetit:cherry_lime_rickey_refresher_from_limeade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_lime"
+      "has_cherries"
     ]
   ],
   "rewards": {
     "recipes": [
-      "bonappetit:cooking/blueberry_limeade_from_cooking"
+      "bonappetit:cherry_lime_rickey_refresher_from_limeade"
     ]
   }
 }

@@ -3,6 +3,7 @@ package net.ashstarcrash.bonappetit.core.registry;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.core.common.event.GameEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -35,7 +36,7 @@ public class BAClientEvents {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player == null) return;
 
-            boolean hidden = BAEvents.isHidden(mc.player);
+            boolean hidden = GameEvents.isHidden(mc.player);
             float pTicks = event.getPartialTick().getGameTimeDeltaPartialTick(true);
 
             if (hidden) {

@@ -4,9 +4,12 @@
   "package": "net.ashstarcrash.bonappetit.core.common.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "PlayerMixin",
+    "FoodDataMixin",
     "BoatMixin"
   ],
   "client": [
+    "GuiGraphicsTooltipMixin"
   ],
   "injectors": {
     "defaultRequire": 1

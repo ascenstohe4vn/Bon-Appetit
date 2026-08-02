@@ -208,7 +208,9 @@ public class BACreativeTabs {
                 output.accept(PINK_LEMONADE);
                 output.accept(PINK_LIMEADE);
                 output.accept(BLUEBERRY_LIMEADE);
+                output.accept(LIME_GREEN_TEA);
                 output.accept(PINK_LADY);
+                output.accept(CHERRY_LIME_RICKEY_REFRESHER);
             }).build());
 
     public static void register(IEventBus eventBus) {

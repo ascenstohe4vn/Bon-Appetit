@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bonappetit:item/cherry_lime_rickey_refresher"
+  }
+}
