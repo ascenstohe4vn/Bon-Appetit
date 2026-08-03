@@ -1,11 +1,11 @@
-// 1.21.1	2026-08-02T23:03:23.555597555	Tags for minecraft:item mod id bonappetit
+// 1.21.1	2026-08-02T23:55:46.895715643	Tags for minecraft:item mod id bonappetit
 999b2746034118f35f42cc5c10a4677d4d844ca1 data/c/tags/item/drinks.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/honey.json
 026fe0c103268f2645a428121a938c5d08b165c5 data/c/tags/item/drinks/juice.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/milk.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/water.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/watery.json
-dd966d39624f9c92af83e2d54956c25ed870003f data/c/tags/item/foods.json
+d7ea6596b4ee11f27649eb400e5bc24ca8a84ea5 data/c/tags/item/foods.json
 815ac4a2f0fc0ae97ee3933d8ff309c1aca422ef data/c/tags/item/foods/berry.json
 5abc5ad5d9cfda7fb7aa22509fedc93e3871a6aa data/c/tags/item/foods/bread.json
 d8db899cecfd666ec8f2ede3d593170c5d4edb9a data/c/tags/item/foods/candy.json
@@ -13,7 +13,7 @@ d8db899cecfd666ec8f2ede3d593170c5d4edb9a data/c/tags/item/foods/candy.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/cooked_fish.json
 3784f541c4da2a0a6fb01b6b9a5cc33eedabd8a8 data/c/tags/item/foods/cooked_meat.json
 6daed9ef7467c9ae5ed6206b3715a5493c3c3c18 data/c/tags/item/foods/cookie.json
-20ec6810cb89aa2c3e7cfe9aa10ae46bfc2bbbc7 data/c/tags/item/foods/edible_when_placed.json
+4c1852277c31b79b2ef5ead5f4c9f0d13f109198 data/c/tags/item/foods/edible_when_placed.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/food_poisoning.json
 72b5334e4ca4b1990b0537da7a2e361e6e5312a2 data/c/tags/item/foods/fruit.json
 6b0f13332a3de8deefc99586abc73a38309a7f93 data/c/tags/item/foods/golden.json

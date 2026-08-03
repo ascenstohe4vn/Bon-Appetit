@@ -20,13 +20,17 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 
 import java.util.function.Function;
 
+import static net.ashstarcrash.bonappetit.core.registry.BABlocks.*;
+
 public class BABlockStateProvider extends BlockStateProvider {
     public BABlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {super(output, BonAppetit.ID, exFileHelper);}
 
     @Override
     protected void registerStatesAndModels() {
-        cakeBlock(BABlocks.LEMON_CAKE.get());
-        cakeBlock(BABlocks.LIME_CAKE.get());
+        simpleBlock(PANETTONE.get());
+        simpleBlock(STOLLEN.get());
+        cakeBlock(LEMON_CAKE.get());
+        cakeBlock(LIME_CAKE.get());
     }
 
     private String name(Block block) {

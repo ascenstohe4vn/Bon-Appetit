@@ -9,7 +9,6 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import java.util.Set;
 
 public class BAItemModelProvider extends ItemModelProvider {
-
     private static final Set<String> BLACKLIST = Set.of(
             "pitchfork"
     );

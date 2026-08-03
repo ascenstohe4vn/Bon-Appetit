@@ -19,24 +19,31 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
+import static net.minecraft.world.level.block.Blocks.*;
+
 public class BABlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BonAppetit.ID);
 
     public static final DeferredBlock<CookingPotBlock> COOKING_POT = registerBlockNoItem("cooking_pot",
             () -> new CookingPotBlock(BlockBehaviour.Properties.of().dynamicShape().sound(SoundType.LANTERN).noOcclusion()));
     public static final DeferredBlock<DryingRackBlock> DRYING_RACK = registerBlock("drying_rack",
-            () -> new DryingRackBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).dynamicShape().sound(SoundType.WOOD).noOcclusion()));
+            () -> new DryingRackBlock(BlockBehaviour.Properties.ofFullCopy(GLASS).dynamicShape().sound(SoundType.WOOD).noOcclusion()));
     public static final DeferredBlock<CopperTankBlock> COPPER_TANK = registerBlock("copper_tank",
-            () -> new CopperTankBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WAXED_COPPER_BLOCK).sound(SoundType.COPPER).noOcclusion()));
+            () -> new CopperTankBlock(BlockBehaviour.Properties.ofFullCopy(WAXED_COPPER_BLOCK).sound(SoundType.COPPER).noOcclusion()));
+
+    public static final DeferredBlock<Block> PANETTONE = BLOCKS.register("panettone",
+            () -> new BAFlavorCakeBlock(BAFoodProperties.PANETTONE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
+    public static final DeferredBlock<Block> STOLLEN = BLOCKS.register("stollen",
+            () -> new BAFlavorCakeBlock(BAFoodProperties.STOLLEN, BlockBehaviour.Properties.ofFullCopy(CAKE)));
 
     public static final DeferredBlock<BAFlavorCakeBlock> LEMON_CAKE = BLOCKS.register("lemon_cake",
-            () -> new BAFlavorCakeBlock(BAFoodProperties.LEMON_CAKE, BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
+            () -> new BAFlavorCakeBlock(BAFoodProperties.LEMON_CAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
     public static final DeferredBlock<BAFlavorCakeBlock> LIME_CAKE = BLOCKS.register("lime_cake",
-            () -> new BAFlavorCakeBlock(BAFoodProperties.LIME_CAKE, BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)));
+            () -> new BAFlavorCakeBlock(BAFoodProperties.LIME_CAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
 
-    public static final DeferredBlock<Block> GRAPEFRUIT_VINE = registerBlockNoItem("grapefruit_vine", () -> new GrapefruitVineBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
-    public static final DeferredBlock<Block> CORN_BASE = registerBlockNoItem("corn_base", () -> new CornCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).randomTicks().offsetType(BlockBehaviour.OffsetType.NONE).instabreak().sound(SoundType.CROP)));
-    public static final DeferredBlock<Block> CORN_TOP = registerBlockNoItem("corn_top", () -> new CornCropBlockTop(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+    public static final DeferredBlock<Block> GRAPEFRUIT_VINE = registerBlockNoItem("grapefruit_vine", () -> new GrapefruitVineBlock(BlockBehaviour.Properties.ofFullCopy(WHEAT).randomTicks().offsetType(BlockBehaviour.OffsetType.XZ).instabreak().noCollission().sound(SoundType.WEEPING_VINES)));
+    public static final DeferredBlock<Block> CORN_BASE = registerBlockNoItem("corn_base", () -> new CornCropBlock(BlockBehaviour.Properties.ofFullCopy(WHEAT).randomTicks().offsetType(BlockBehaviour.OffsetType.NONE).instabreak().sound(SoundType.CROP)));
+    public static final DeferredBlock<Block> CORN_TOP = registerBlockNoItem("corn_top", () -> new CornCropBlockTop(BlockBehaviour.Properties.ofFullCopy(WHEAT)));
 
     private static ToIntFunction<BlockState> litBlockEmission(int level) {
         return (state) -> state.getValue(BlockStateProperties.LIT) ? level : 0;
@@ -46,13 +53,13 @@ public class BABlocks {
     }
     private static void registerCandleCakes(String name, DeferredBlock<BAFlavorCakeBlock> baseCake) {
         BLOCKS.register(name + "_candle_cake",
-                () -> new BAFlavorCandleCakeBlock(baseCake, Blocks.CANDLE, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE)));
+                () -> new BAFlavorCandleCakeBlock(baseCake, CANDLE, BlockBehaviour.Properties.ofFullCopy(CANDLE_CAKE)));
         for (net.minecraft.world.item.DyeColor color : net.minecraft.world.item.DyeColor.values()) {
             String colorName = color.getName();
             Block vanillaCandle = net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(
                     net.minecraft.resources.ResourceLocation.withDefaultNamespace(colorName + "_candle"));
             BLOCKS.register(colorName + "_candle_" + name + "_cake",
-                    () -> new BAFlavorCandleCakeBlock(baseCake, vanillaCandle, BlockBehaviour.Properties.ofFullCopy(Blocks.CANDLE_CAKE)));
+                    () -> new BAFlavorCandleCakeBlock(baseCake, vanillaCandle, BlockBehaviour.Properties.ofFullCopy(CANDLE_CAKE)));
         }
     }
     static {

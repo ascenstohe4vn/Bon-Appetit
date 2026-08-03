@@ -105,9 +105,12 @@ public class BATagProvider {
                     .add(CARAMEL.get())
                     .add(CHICKEN_QUESADILLA.get())
                     .add(JOCKEY_SANDWICH.get())
-                    .add(PANETTONE.get())
                     .add(AMBROSIA_SALAD.get())
                     .add(JEWELED_RICE_BOWL.get())
+                    .add(BAItems.PANETTONE.get())
+                    .add(PANETTONE_SLICE.get())
+                    .add(BAItems.STOLLEN.get())
+                    .add(STOLLEN_SLICE.get())
                     .add(PLAIN_COOKIE.get())
                     .add(LEMON_COOKIE.get())
                     .add(LIME_COOKIE.get())
@@ -249,6 +252,8 @@ public class BATagProvider {
                     .add(GOLDEN_COOKIE.get());
 
             this.tag(Tags.Items.FOODS_EDIBLE_WHEN_PLACED)
+                    .add(BAItems.PANETTONE.get())
+                    .add(BAItems.STOLLEN.get())
                     .add(BAItems.LEMON_CAKE.get())
                     .add(BAItems.LIME_CAKE.get());
 
