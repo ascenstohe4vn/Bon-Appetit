@@ -11,26 +11,29 @@ import static net.minecraft.world.item.Items.*;
 public class BAFoodProperties {
     public static final FoodProperties CORN = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.2F).build();
-    public static final FoodProperties CHERRIES = (new FoodProperties.Builder())
+
+    public static final FoodProperties GENERIC_FRUIT = (new FoodProperties.Builder())
             .nutrition(4).saturationModifier(0.3F).build();
+    public static final FoodProperties GENERIC_FRUIT_SLICE = (new FoodProperties.Builder())
+            .nutrition(2).saturationModifier(0.175f).build();
     public static final FoodProperties GOLDEN_CHERRIES = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.85F)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 0), 1F)
             .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 1200, 1), 1F).build();
-    public static final FoodProperties LEMON = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.3F).build();
-    public static final FoodProperties LEMON_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.175f).build();
-    public static final FoodProperties LIME = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.3F).build();
-    public static final FoodProperties LIME_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.175f).build();
-    public static final FoodProperties DRAGON_FRUIT = (new FoodProperties.Builder())
-            .nutrition(4).saturationModifier(0.3F).build();
-    public static final FoodProperties DRAGON_FRUIT_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.2F).build();
+    public static final FoodProperties GOLDEN_ORANGE = (new FoodProperties.Builder())
+            .nutrition(4).saturationModifier(1.1F)
+            .effect(() -> new MobEffectInstance(BAEffects.CONCENTRATION, 2400, 0), 1F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0), 1F).build();
+
+    public static final FoodProperties GENERIC_BERRY = (new FoodProperties.Builder())
+            .nutrition(2).saturationModifier(0.1F).build();
 
     public static final FoodProperties RICE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.05F).build();
+
+    public static final FoodProperties TEA_LEAVES = (new FoodProperties.Builder())
+            .nutrition(2).saturationModifier(0.5F)
+            .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 200, 0), 0.75F).build();
 
     public static final FoodProperties ACORN = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F)
@@ -84,6 +87,9 @@ public class BAFoodProperties {
                     new RandomMobEffectInstance.EffectEntry(BAEffects.RESONANCE, 300, 0, 1.0F),
                     new RandomMobEffectInstance.EffectEntry(BAEffects.DISSONANCE, 300, 0, 1.0F)), 1.0F).build();
 
+    public static final FoodProperties HONEY_APPLE = (new FoodProperties.Builder())
+            .nutrition(7).saturationModifier(0.3f)
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 200, 0), 0.8F).build();
     public static final FoodProperties CANDY_APPLE = (new FoodProperties.Builder())
             .nutrition(4).saturationModifier(0.35F)
             .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 100, 0), 1F).build();
@@ -134,13 +140,7 @@ public class BAFoodProperties {
     public static final FoodProperties LEMON_CAKE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F)
             .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 200, 0), 1f).fast().build();
-    public static final FoodProperties LEMON_CAKE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.1F)
-            .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 200, 0), 1f).fast().build();
     public static final FoodProperties LIME_CAKE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.1F)
-            .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 200, 0), 1f).fast().build();
-    public static final FoodProperties LIME_CAKE_SLICE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F)
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 200, 0), 1f).fast().build();
     public static final FoodProperties DRAGON_FRUIT_PIE = (new FoodProperties.Builder())

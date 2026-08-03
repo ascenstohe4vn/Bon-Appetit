@@ -38,6 +38,8 @@ public class BACreativeTabs {
                 output.accept(POMEGRANATE_SEEDS);
 
                 //veggies
+                output.accept(PUMPKIN_SLICE);
+
                 output.accept(CORN);
 
                 //fruits
@@ -54,8 +56,6 @@ public class BACreativeTabs {
 
                 output.accept(ORANGE);
                 output.accept(ORANGE_SLICE);
-
-                output.accept(PUMPKIN_SLICE);
 
                 output.accept(MANGO);
 
