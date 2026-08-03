@@ -153,9 +153,12 @@ public class BACreativeTabs {
                 output.accept(JOCKEY_SANDWICH);
 
                 //feasts/good meals
-                output.accept(PANETTONE);
                 output.accept(AMBROSIA_SALAD);
                 output.accept(JEWELED_RICE_BOWL);
+                output.accept(PANETTONE);
+                output.accept(PANETTONE_SLICE);
+                output.accept(STOLLEN);
+                output.accept(STOLLEN_SLICE);
 
                 //sweets
                 output.accept(PLAIN_COOKIE);

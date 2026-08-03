@@ -268,7 +268,6 @@ public class BATagProvider {
                     .add(BLUEBERRY_LIMEADE.get())
                     .add(LIME_GREEN_TEA.get())
                     .add(PINK_LADY.get())
-                    .add(PINK_LADY.get())
                     .add(CHERRY_LIME_RICKEY_REFRESHER.get());
             this.tag(Tags.Items.DRINKS_WATER);
             this.tag(Tags.Items.DRINKS_WATERY);

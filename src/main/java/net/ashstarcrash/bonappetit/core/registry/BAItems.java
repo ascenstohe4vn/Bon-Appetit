@@ -5,6 +5,7 @@ import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.common.template.BABottleDrinkItem;
 import net.ashstarcrash.bonappetit.core.common.template.BACocktailDrinkItem;
 import net.ashstarcrash.bonappetit.core.common.template.BAPitcherDrinkItem;
+import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
 import net.ashstarcrash.bonappetit.core.content.item.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -251,9 +252,6 @@ public abstract class BAItems {
     public static final DeferredItem<Item> MACARON = ITEMS.register("macaron", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().fast()
             .nutrition(4)
             .saturationModifier(0.225f).build())));
-    public static final DeferredItem<Item> PANETTONE = ITEMS.register("panettone", () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
-            .nutrition(9)
-            .saturationModifier(0.9f).build())));
     public static final DeferredItem<Item> AMBROSIA_SALAD = ITEMS.register("ambrosia_salad", () -> new Item(new Item.Properties().stacksTo(16).food(new FoodProperties.Builder().alwaysEdible()
             .nutrition(9)
             .saturationModifier(0.9f).build())));
@@ -271,6 +269,10 @@ public abstract class BAItems {
     public static final DeferredItem<Item> DRAGON_FRUIT_LATTE = ITEMS.register("dragon_fruit_latte", () -> new BAPitcherDrinkItem(new Item.Properties().food(BAFoodProperties.DRAGON_FRUIT_LATTE)));
 
     public static final DeferredItem<Item> JEWELED_RICE_BOWL = ITEMS.register("jeweled_rice_bowl", () -> new Item(new Item.Properties().food(BAFoodProperties.JEWELED_RICE_BOWL)));
+    public static final DeferredItem<Item> PANETTONE = ITEMS.register("panettone", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> PANETTONE_SLICE = ITEMS.register("panettone_slice", () -> new Item(new Item.Properties().food(BAFoodProperties.PANETTONE_SLICE)));
+    public static final DeferredItem<Item> STOLLEN = ITEMS.register("stollen", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> STOLLEN_SLICE = ITEMS.register("stollen_slice", () -> new Item(new Item.Properties().food(BAFoodProperties.STOLLEN_SLICE)));
 
     public static final DeferredItem<Item> LIME_GREEN_TEA = ITEMS.register("lime_green_tea", () -> new BAPitcherDrinkItem(new Item.Properties().stacksTo(16).food(BAFoodProperties.LIME_GREEN_TEA)));
     public static final DeferredItem<Item> CHERRY_LIME_RICKEY_REFRESHER = ITEMS.register("cherry_lime_rickey_refresher", () -> new BAPitcherDrinkItem(new Item.Properties().stacksTo(16).food(BAFoodProperties.CHERRY_LIME_RICKEY_REFRESHER)));

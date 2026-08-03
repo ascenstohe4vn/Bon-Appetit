@@ -1,5 +1,6 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
+import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -67,6 +68,21 @@ public class BAFoodProperties {
             .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 450, 0), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 1), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f).build();
+    public static final FoodProperties PANETTONE_SLICE = new FoodProperties.Builder()
+            .nutrition(7).saturationModifier(0.8F)
+            .effect(() -> new RandomMobEffectInstance(
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.REFLECTION, 200, 0, 1.0F),
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.CONCENTRATION, 200, 0, 1.0F),
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.RESONANCE, 200, 0, 1.0F),
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.DISSONANCE, 200, 0, 1.0F)), 1.0F).build();
+
+    public static final FoodProperties STOLLEN_SLICE = new FoodProperties.Builder()
+            .nutrition(9).saturationModifier(0.9F)
+            .effect(() -> new RandomMobEffectInstance(
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.REFLECTION, 300, 0, 1.0F),
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.CONCENTRATION, 300, 0, 1.0F),
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.RESONANCE, 300, 0, 1.0F),
+                    new RandomMobEffectInstance.EffectEntry(BAEffects.DISSONANCE, 300, 0, 1.0F)), 1.0F).build();
 
     public static final FoodProperties CANDY_APPLE = (new FoodProperties.Builder())
             .nutrition(4).saturationModifier(0.35F)

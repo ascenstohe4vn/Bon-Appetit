@@ -2,8 +2,6 @@ package net.ashstarcrash.bonappetit.core.common.event;
 
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
-import net.ashstarcrash.bonappetit.client.tooltip.FoodTooltipData;
-import net.ashstarcrash.bonappetit.core.common.util.FoodHealingHelper;
 import net.ashstarcrash.bonappetit.core.common.util.FoodRegenData;
 import net.ashstarcrash.bonappetit.core.content.entity.goal.BeeMoveToFruitBushGoal;
 import net.ashstarcrash.bonappetit.core.content.entity.goal.BeePollinateFruitGoal;
