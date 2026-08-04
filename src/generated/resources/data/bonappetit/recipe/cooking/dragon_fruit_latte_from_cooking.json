@@ -2,7 +2,7 @@
   "type": "bonappetit:cooking",
   "container": {
     "count": 1,
-    "id": "bonappetit:glass_pitcher"
+    "id": "bonappetit:glass_mug"
   },
   "experience": 1.0,
   "ingredients": [

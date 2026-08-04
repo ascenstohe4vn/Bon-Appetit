@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bonappetit:glass_pitcher"
+        "recipe": "bonappetit:glass_mug"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bonappetit:glass_pitcher"
+      "bonappetit:glass_mug"
     ]
   }
 }

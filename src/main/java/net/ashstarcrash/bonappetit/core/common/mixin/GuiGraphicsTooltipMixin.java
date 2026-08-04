@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.util.FoodHealingHelper;
+import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
@@ -12,7 +13,9 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Vector2ic;
@@ -27,7 +30,6 @@ import java.util.List;
 
 @Mixin(GuiGraphics.class)
 public abstract class GuiGraphicsTooltipMixin {
-
     @Shadow
     private ItemStack tooltipStack;
 
@@ -47,11 +49,15 @@ public abstract class GuiGraphicsTooltipMixin {
     private boolean bonappetit$shouldRender;
 
     @Unique
+    private boolean bonappetit$showUndiscovered;
+
+    @Unique
     private FoodProperties bonappetit$food;
 
     @Inject(method = "renderTooltipInternal", at = @At("HEAD"))
     private void bonappetit$computePosition(Font font, List<ClientTooltipComponent> components, int mouseX, int mouseY, ClientTooltipPositioner tooltipPositioner, CallbackInfo ci) {
         bonappetit$shouldRender = false;
+        bonappetit$showUndiscovered = false;
 
         if (components.isEmpty()) return;
 
@@ -65,6 +71,20 @@ public abstract class GuiGraphicsTooltipMixin {
 
         FoodProperties food = stack.get(DataComponents.FOOD);
         if (food == null) return;
+
+        BAConfig.FoodStatisticsTooltipDisplay displayMode = BAConfig.FOOD_STATISTICS_TOOLTIP_DISPLAY.get();
+        if (displayMode == BAConfig.FoodStatisticsTooltipDisplay.NONE) return;
+
+        boolean discoveredGate = false;
+        if (displayMode == BAConfig.FoodStatisticsTooltipDisplay.DISCOVERY) {
+            Player mcPlayer = Minecraft.getInstance().player;
+            if (mcPlayer != null) {
+                String itemId = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+                if (!mcPlayer.getData(BAAttachments.FOOD_DISCOVERY.get()).hasEaten(itemId)) {
+                    discoveredGate = true;
+                }
+            }
+        }
 
         GuiGraphics guiGraphics = (GuiGraphics) (Object) this;
 
@@ -90,6 +110,7 @@ public abstract class GuiGraphicsTooltipMixin {
         bonappetit$rowX = pos.x();
         bonappetit$rowY = pos.y() + rowOffset;
         bonappetit$food = food;
+        bonappetit$showUndiscovered = discoveredGate;
         bonappetit$shouldRender = true;
     }
 
@@ -98,10 +119,17 @@ public abstract class GuiGraphicsTooltipMixin {
         if (!bonappetit$shouldRender) return;
 
         GuiGraphics guiGraphics = (GuiGraphics) (Object) this;
-        boolean hungerEnabled = BAConfig.HUNGER_BAR_ENABLED.get();
-        FoodProperties food = bonappetit$food;
         int rowX = bonappetit$rowX;
         int rowY = bonappetit$rowY;
+
+        if (bonappetit$showUndiscovered) {
+            guiGraphics.drawString(font, "?", rowX, rowY, 0x808080, false);
+            bonappetit$shouldRender = false;
+            return;
+        }
+
+        boolean hungerEnabled = BAConfig.HUNGER_BAR_ENABLED.get();
+        FoodProperties food = bonappetit$food;
 
         if (!hungerEnabled) {
             float healAmount = (float) (food.nutrition() * BAConfig.FOOD_HEAL_MULTIPLIER.get());

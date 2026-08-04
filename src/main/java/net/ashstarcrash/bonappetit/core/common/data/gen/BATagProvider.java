@@ -258,6 +258,7 @@ public class BATagProvider {
                     .add(BAItems.LIME_CAKE.get());
 
             this.tag(Tags.Items.DRINKS)
+                    .add(WATER_MUG.get())
                     .add(APPLE_JUICE.get())
                     .add(APPLE_CIDER.get())
                     .add(APPLEJACK.get())
@@ -275,7 +276,8 @@ public class BATagProvider {
                     .add(PINK_LADY.get())
                     .add(CHERRY_LIME_RICKEY_REFRESHER.get());
             this.tag(Tags.Items.DRINKS_WATER);
-            this.tag(Tags.Items.DRINKS_WATERY);
+            this.tag(Tags.Items.DRINKS_WATERY)
+                    .add(WATER_MUG.get());
             this.tag(Tags.Items.DRINKS_JUICE)
                     .add(APPLE_JUICE.get())
                     .add(APPLE_CIDER.get())

@@ -30,7 +30,7 @@ public class BACreativeTabs {
                 //cabinets
                 //serving items
                 output.accept(PAPER_PLATE);
-                output.accept(GLASS_PITCHER);
+                output.accept(GLASS_MUG);
                 output.accept(GLASS_COCKTAIL);
 
                 //seeds
@@ -198,6 +198,7 @@ public class BACreativeTabs {
                 output.accept(PUMPKIN_PIE_SLICE);
 
                 //drinks
+                output.accept(WATER_MUG);
                 output.accept(APPLE_JUICE);
                 output.accept(APPLE_CIDER);
                 output.accept(APPLEJACK);

@@ -1,10 +1,10 @@
-// 1.21.1	2026-08-02T23:55:46.895715643	Tags for minecraft:item mod id bonappetit
-999b2746034118f35f42cc5c10a4677d4d844ca1 data/c/tags/item/drinks.json
+// 1.21.1	2026-08-04T00:05:53.91715641	Tags for minecraft:item mod id bonappetit
+1512fdf6619109a299ec9acdd105509a21101353 data/c/tags/item/drinks.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/honey.json
 026fe0c103268f2645a428121a938c5d08b165c5 data/c/tags/item/drinks/juice.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/milk.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/water.json
-35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/watery.json
+eb07169cc5e5da75391210dd101b5c9e55930628 data/c/tags/item/drinks/watery.json
 d7ea6596b4ee11f27649eb400e5bc24ca8a84ea5 data/c/tags/item/foods.json
 815ac4a2f0fc0ae97ee3933d8ff309c1aca422ef data/c/tags/item/foods/berry.json
 5abc5ad5d9cfda7fb7aa22509fedc93e3871a6aa data/c/tags/item/foods/bread.json

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "bonappetit:item/glass_pitcher"
+    "layer0": "bonappetit:item/water_mug"
   }
 }

@@ -19,18 +19,20 @@ public class BAConfig {
     //public static final ModConfigSpec.BooleanValue REGISTER_COFFEE;
 
     // --- GAMEPLAY CONFIG ---
-    public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_INITIAL_MULTI;
-    public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_ADDITIVE_MULTI;
+        public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_INITIAL_MULTI;
+        public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_ADDITIVE_MULTI;
 
     // --- TWEAKS CONFIG ---
-    public static final ModConfigSpec.BooleanValue VANILLA_CAKE_EFFECT;
-    public static final ModConfigSpec.BooleanValue CAKE_REPAIRING;
-    public static final ModConfigSpec.BooleanValue CAKE_FALL_CUSHIONING;
+    public static final ModConfigSpec.BooleanValue SMART_CONTAINER_RETURN;
+        public static final ModConfigSpec.BooleanValue VANILLA_CAKE_EFFECT;
+        public static final ModConfigSpec.BooleanValue CAKE_REPAIRING;
+        public static final ModConfigSpec.BooleanValue CAKE_FALL_CUSHIONING;
 
     // --- TOOLTIP CONFIG ---
     public static final ModConfigSpec.BooleanValue SHOW_SATURATION_OVERLAY;
-    public static final ModConfigSpec.BooleanValue EFFECT_TOOLTIPS;
     public static final ModConfigSpec.BooleanValue NEGATIVE_EFFECT_TOOLTIPS;
+    public static final ModConfigSpec.EnumValue<FoodStatisticsTooltipDisplay> FOOD_STATISTICS_TOOLTIP_DISPLAY;
+    public static final ModConfigSpec.EnumValue<EffectTooltipDisplay> EFFECT_TOOLTIPS_DISPLAY;
     public static final ModConfigSpec.EnumValue<ChanceDisplayMode> CHANCE_DISPLAY;
 
     static {
@@ -92,6 +94,12 @@ public class BAConfig {
         // --- Tweaks ---
         BUILDER.comment("Miscellaneous tweaks (Quality of Life)").push("tweaks");
 
+        SMART_CONTAINER_RETURN = BUILDER
+                .comment("If true, when the last food/drink item in a stack returns a container (bowl, bottle, mug, etc.) after use, " +
+                        "it tries to stack with existing containers in the inventory instead of replacing the item in your hand. " +
+                        "Disable if problems occur with items going to the inventory when they shouldn't")
+                .define("smartContainerReturn", true);
+
             BUILDER.comment("Cake tweaks").push("cakes");
 
             VANILLA_CAKE_EFFECT = BUILDER.gameRestart().define("vanillaCakeEffect", true);
@@ -105,16 +113,54 @@ public class BAConfig {
         // --- Tooltips ---
         BUILDER.comment("Tooltip settings for how food tooltips are shown").push("tooltips");
 
-        SHOW_SATURATION_OVERLAY = BUILDER
-                .comment("If true, overlays a saturation icon on hunger drumsticks in tooltips. Requires a saturation_overlay texture to be present; disable if none is provided by your resource pack.")
-                .define("showSaturationOverlay", false);
-        EFFECT_TOOLTIPS = BUILDER.define("effectTooltips", true);
-        NEGATIVE_EFFECT_TOOLTIPS = BUILDER.define("negativeEffectTooltips", false);
-        CHANCE_DISPLAY = BUILDER.defineEnum("chanceDisplayMode", ChanceDisplayMode.DYNAMIC);
+            BUILDER.comment("Food statistics tooltip settings (heal/regen/hunger icons)").push("foodStatistics");
+
+            FOOD_STATISTICS_TOOLTIP_DISPLAY = BUILDER
+                    .comment(
+                            "Controls when food/heal/regen icons show on food tooltips.",
+                            "",
+                            "FULL: Always show them.",
+                            "DISCOVERY: Only show them for foods you've eaten in a specific world.",
+                            "NONE: Show nothing."
+                    ).defineEnum("foodStatisticsTooltipDisplay", FoodStatisticsTooltipDisplay.FULL);
+            SHOW_SATURATION_OVERLAY = BUILDER
+                    .comment("DEV: If true, overlays a saturation icon on hunger drumsticks in tooltips. Requires a saturation_overlay texture to be present; disable if none is provided by your resource pack.")
+                    .define("showSaturationOverlay", false);
+
+            BUILDER.pop(); // foodStatistics end
+            /* ------------------------------------------------------------------------------------------------ */
+            BUILDER.comment("Food effect tooltip settings").push("effects");
+
+            EFFECT_TOOLTIPS_DISPLAY = BUILDER
+                    .comment(
+                            "Controls when food effect lines show on tooltips.",
+                            "",
+                            "FULL: Always show them.",
+                            "DISCOVERY: Only show them for foods you've eaten in a specific world.",
+                            "NONE: Show nothing."
+                    ).defineEnum("effectTooltipsDisplay", EffectTooltipDisplay.FULL);
+            NEGATIVE_EFFECT_TOOLTIPS = BUILDER.define("negativeEffectTooltips", false);
+            CHANCE_DISPLAY = BUILDER
+                    .comment(
+                            "Controls how effect probability is shown on food tooltips.",
+                            "",
+                            "FULL: Always show the exact percentage.",
+                            "HIDDEN: Always show a '?' instead of a percentage.",
+                            "DYNAMIC: Show the percentage for beneficial effects, '?' for harmful ones.",
+                            "NONE: Show nothing."
+                    ).defineEnum("chanceDisplayMode", ChanceDisplayMode.DYNAMIC);
+
+            BUILDER.pop(); // effects end
 
         BUILDER.pop(); // tooltip end
     }
 
+    public enum FoodStatisticsTooltipDisplay {
+        FULL, DISCOVERY, NONE
+    }
+    public enum EffectTooltipDisplay {
+        FULL, DISCOVERY, NONE
+    }
     public enum ChanceDisplayMode {
         FULL, HIDDEN, DYNAMIC, NONE
     }

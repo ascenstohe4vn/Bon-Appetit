@@ -4,9 +4,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
+import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -42,7 +44,19 @@ public class ClientEvents {
         ItemStack stack = event.getItemStack();
         FoodProperties foodProperties = stack.getFoodProperties(event.getEntity());
 
-        if (foodProperties != null && BAConfig.EFFECT_TOOLTIPS.get()) {
+        BAConfig.EffectTooltipDisplay effectMode = BAConfig.EFFECT_TOOLTIPS_DISPLAY.get();
+        boolean showEffects = switch (effectMode) {
+            case NONE -> false;
+            case FULL -> true;
+            case DISCOVERY -> {
+                Player p = event.getEntity();
+                if (p == null) yield false;
+                String itemId = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+                yield p.getData(BAAttachments.FOOD_DISCOVERY.get()).hasEaten(itemId);
+            }
+        };
+
+        if (foodProperties != null && showEffects) {
             List<Component> tooltip = event.getToolTip();
             Player player = event.getEntity();
             float tickRate = (player == null) ? 20.0F : player.level().tickRateManager().tickrate();
@@ -90,8 +104,8 @@ public class ClientEvents {
 
                     float probability = possibleEffect.probability();
                     if (probability < 1.0F) {
-                        BAConfig.ChanceDisplayMode mode = BAConfig.CHANCE_DISPLAY.get();
-                        switch (mode) {
+                        BAConfig.ChanceDisplayMode chanceMode = BAConfig.CHANCE_DISPLAY.get();
+                        switch (chanceMode) {
                             case FULL -> {
                                 int percent = (int) (probability * 100);
                                 line.append(Component.literal(" • " + percent + "%").withStyle(ChatFormatting.GRAY));

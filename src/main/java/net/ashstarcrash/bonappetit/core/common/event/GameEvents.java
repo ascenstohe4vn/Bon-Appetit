@@ -10,7 +10,9 @@ import net.ashstarcrash.bonappetit.core.registry.BADamageTypes;
 import net.ashstarcrash.bonappetit.core.registry.BAEffects;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerLevel;
@@ -46,6 +48,7 @@ import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -62,6 +65,15 @@ public class GameEvents {
     private static final Map<UUID, Integer> TWIN_STRIKE_COOLDOWN = new HashMap<>();
 
     private record CherryEcho(LivingEntity attacker, LivingEntity victim, float damage, int timer) {}
+
+    @SubscribeEvent
+    public static void onFinishEating(LivingEntityUseItemEvent.Finish event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        if (!event.getItem().getComponents().has(DataComponents.FOOD)) return;
+
+        String id = BuiltInRegistries.ITEM.getKey(event.getItem().getItem()).toString();
+        player.getData(BAAttachments.FOOD_DISCOVERY.get()).markEaten(id);
+    }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {

@@ -35,7 +35,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .define('#', PAPER).unlockedBy("has_paper", has(PAPER)).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PIE_CRUST.get(), 2).pattern("W W").pattern(" W ")
                 .define('W', WHEAT).unlockedBy("has_wheat", has(WHEAT)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GLASS_PITCHER.get(), 5).pattern("# #").pattern("# #").pattern(" # ")
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GLASS_MUG.get(), 5).pattern("# #").pattern("# #").pattern(" # ")
                 .define('#', GLASS).unlockedBy("has_glass", has(GLASS)).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GLASS_COCKTAIL.get(), 6).pattern("# #").pattern(" # ").pattern("###")
                 .define('#', GLASS).unlockedBy("has_glass", has(GLASS)).save(recipeOutput);
@@ -185,25 +185,25 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .requires(MILK_BUCKET).requires(DOUGH).requires(SUGAR).requires(BATags.Items.FOODS_CITRUS).requires(RAISINS).requires(RAISINS)
                 .unlockedBy("has_corn", has(BATags.Items.FOODS_CITRUS)).save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(CHERRIES).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(SUGAR).requires(GLASS_MUG).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LEMONADE.get(), 1).requires(LEMON_SLICE).requires(LEMON_SLICE).requires(CHERRIES).requires(SUGAR).requires(GLASS_MUG).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LEMONADE.get(), 1).requires(LEMONADE).requires(CHERRIES).unlockedBy("has_lemon", has(LEMON)).save(recipeOutput, "bonappetit:pink_lemonade_from_lemonade");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIMEADE.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LIMEADE.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(POMEGRANATE_SLICE).requires(POMEGRANATE_SLICE).requires(POMEGRANATE_SLICE).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIMEADE.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(SUGAR).requires(GLASS_MUG).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LIMEADE.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(POMEGRANATE_SLICE).requires(POMEGRANATE_SLICE).requires(POMEGRANATE_SLICE).requires(SUGAR).requires(GLASS_MUG).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PINK_LIMEADE.get(), 1).requires(LIMEADE).requires(POMEGRANATE_SLICE).requires(POMEGRANATE_SLICE).requires(POMEGRANATE_SLICE).unlockedBy("has_lime", has(LIME)).save(recipeOutput, "bonappetit:pink_limeade_from_limeade");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, BLUEBERRY_LIMEADE.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(BLUEBERRIES).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, BLUEBERRY_LIMEADE.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(BLUEBERRIES).requires(SUGAR).requires(GLASS_MUG).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, BLUEBERRY_LIMEADE.get(), 1).requires(LIMEADE).requires(BLUEBERRIES).unlockedBy("has_lime", has(LIME)).save(recipeOutput, "bonappetit:blueberry_limeade_from_limeade");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_GREEN_TEA.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(GREEN_TEA_LEAVES).requires(GREEN_TEA_LEAVES).requires(SUGAR).requires(GLASS_PITCHER).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_GREEN_TEA.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(GREEN_TEA_LEAVES).requires(GREEN_TEA_LEAVES).requires(SUGAR).requires(GLASS_MUG).unlockedBy("has_lime", has(LIME)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_GREEN_TEA.get(), 1).requires(LIMEADE).requires(GREEN_TEA_LEAVES).requires(GREEN_TEA_LEAVES).unlockedBy("has_lime", has(LIME)).save(recipeOutput, "bonappetit:lime_green_tea_from_limeade");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_LATTE.get(), 1).requires(DRAGON_FRUIT_SLICE).requires(DRAGON_FRUIT_SLICE).requires(Tags.Items.BUCKETS_MILK).requires(ROSE_BUSH).requires(GLASS_PITCHER).unlockedBy("has_dragon_fruit", has(DRAGON_FRUIT)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CHERRY_LIME_RICKEY_REFRESHER.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(CHERRIES).requires(CHERRIES).requires(GREEN_TEA_LEAVES).requires(ICE /*replace with tag later*/).requires(GLASS_PITCHER).unlockedBy("has_cherries", has(CHERRIES)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_LATTE.get(), 1).requires(DRAGON_FRUIT_SLICE).requires(DRAGON_FRUIT_SLICE).requires(Tags.Items.BUCKETS_MILK).requires(ROSE_BUSH).requires(GLASS_MUG).unlockedBy("has_dragon_fruit", has(DRAGON_FRUIT)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CHERRY_LIME_RICKEY_REFRESHER.get(), 1).requires(LIME_SLICE).requires(LIME_SLICE).requires(CHERRIES).requires(CHERRIES).requires(GREEN_TEA_LEAVES).requires(ICE /*replace with tag later*/).requires(GLASS_MUG).unlockedBy("has_cherries", has(CHERRIES)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CHERRY_LIME_RICKEY_REFRESHER.get(), 1).requires(LIMEADE).requires(CHERRIES).requires(CHERRIES).requires(GREEN_TEA_LEAVES).requires(ICE /*replace with tag later*/).unlockedBy("has_cherries", has(CHERRIES)).save(recipeOutput, "bonappetit:cherry_lime_rickey_refresher_from_limeade");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, JEWELED_RICE_BOWL.get(), 1).requires(DRAGON_FRUIT_SLICE).requires(DRAGON_FRUIT_SLICE).requires(DRAGON_FRUIT_SLICE).requires(POMEGRANATE_SEEDS).requires(LIME).requires(ROASTED_ACORN).requires(RICE).requires(BOWL).unlockedBy("has_dragon_fruit", has(DRAGON_FRUIT)).save(recipeOutput);
 
 
 
-        CookingPotRecipeBuilder.cookingPotRecipe(DRAGON_FRUIT_LATTE.get(), 1, 200, 1.0f, GLASS_PITCHER.get())
+        CookingPotRecipeBuilder.cookingPotRecipe(DRAGON_FRUIT_LATTE.get(), 1, 200, 1.0f, GLASS_MUG.get())
                 .addIngredient(DRAGON_FRUIT_SLICE.get(), 2)
                 .addIngredient(MILK_BUCKET)
                 .addIngredient(ROSE_BUSH)

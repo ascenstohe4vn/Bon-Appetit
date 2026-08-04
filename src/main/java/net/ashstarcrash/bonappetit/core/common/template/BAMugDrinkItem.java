@@ -10,12 +10,20 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
-public class BAPitcherDrinkItem extends Item {
+public class BAMugDrinkItem extends Item {
     private static final int DRINK_DURATION = 32;
-    public BAPitcherDrinkItem(Item.Properties properties) {super(properties);}
+    public BAMugDrinkItem(Item.Properties properties) {super(properties);}
+
+    protected ItemStack turnBottleIntoItem(ItemStack bottleStack, Player player, ItemStack filledBottleStack) {
+        player.awardStat(Stats.ITEM_USED.get(this));
+        return ItemUtils.createFilledResult(bottleStack, player, filledBottleStack);
+    }
 
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving) {
         super.finishUsingItem(stack, level, entityLiving);
@@ -25,12 +33,12 @@ public class BAPitcherDrinkItem extends Item {
         }
 
         if (stack.isEmpty()) {
-            return new ItemStack(BAItems.GLASS_PITCHER.get());
+            return new ItemStack(BAItems.GLASS_MUG.get());
         } else {
             if (entityLiving instanceof Player) {
                 Player player = (Player)entityLiving;
                 if (!player.hasInfiniteMaterials()) {
-                    ItemStack itemstack = new ItemStack(BAItems.GLASS_PITCHER.get());
+                    ItemStack itemstack = new ItemStack(BAItems.GLASS_MUG.get());
                     if (!player.getInventory().add(itemstack)) {
                         player.drop(itemstack, false);
                     }

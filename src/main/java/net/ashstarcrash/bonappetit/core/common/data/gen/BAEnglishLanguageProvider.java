@@ -102,15 +102,20 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
                         add(BA + ".configuration.cherryEffectAdditiveMulti", "Twin Strike Additive Damage Multiplier");
 
         add(BA + ".configuration.tweaks", "Tweaks");
+                add(BA + ".configuration.smartContainerReturn", "Smart Container Return");
                 add(BA + ".configuration.cakes", "Cakes");
                         add(BA + ".configuration.vanillaCakeEffect", "Vanilla Cake Effect");
                         add(BA + ".configuration.cakeRepairing", "Cake Repairing");
                         add(BA + ".configuration.cakeFallCushioning", "Cake Fall Cushioning");
 
         add(BA + ".configuration.tooltips", "Tooltips");
-                add(BA + ".configuration.effectTooltips", "Enable Food Effect Tooltips");
-                add(BA + ".configuration.negativeEffectTooltips", "Enable Negative Food Effect Tooltips");
-                add(BA + ".configuration.chanceDisplayMode", "Effect Chance Display Mode");
+                add(BA + ".configuration.foodStatistics", "Food Statistics Tooltips");
+                        add(BA + ".configuration.foodStatisticsTooltipDisplay", "Food Statistics Tooltip Display");
+                        add(BA + ".configuration.showSaturationOverlay", "Show Saturation Overlay");
+                add(BA + ".configuration.effects", "Effect Tooltips");
+                        add(BA + ".configuration.effectTooltipsDisplay", "Food Effect Display Mode");
+                        add(BA + ".configuration.negativeEffectTooltips", "Enable Negative Food Effect Tooltips");
+                        add(BA + ".configuration.chanceDisplayMode", "Effect Chance Display Mode");
 
         BAItems.ITEMS.getEntries().forEach(item -> {
             if (item.getId() == null) return;
