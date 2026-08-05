@@ -26,7 +26,7 @@ public class TwinStrikeEffect extends MobEffect implements Holder<MobEffect> {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        return true;//float healAmount = 1.0F * (amplifier + 1);//entity.heal(healAmount);//return true;
+        return true;
     }
 
     @Override

@@ -71,6 +71,7 @@ public abstract class GuiGraphicsTooltipMixin {
 
         FoodProperties food = stack.get(DataComponents.FOOD);
         if (food == null) return;
+        if (food.nutrition() <= 0 && food.saturation() <= 0.0F) return;
 
         BAConfig.FoodStatisticsTooltipDisplay displayMode = BAConfig.FOOD_STATISTICS_TOOLTIP_DISPLAY.get();
         if (displayMode == BAConfig.FoodStatisticsTooltipDisplay.NONE) return;

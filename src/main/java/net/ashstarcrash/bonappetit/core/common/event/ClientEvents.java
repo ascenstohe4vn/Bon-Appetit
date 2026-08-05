@@ -63,6 +63,7 @@ public class ClientEvents {
 
             for (FoodProperties.PossibleEffect possibleEffect : foodProperties.effects()) {
                 MobEffectInstance effectInstance = possibleEffect.effectSupplier().get();
+                if (effectInstance.getDuration() <= 0) continue;
 
                 if (effectInstance instanceof RandomMobEffectInstance randomEffect) {
                     List<RandomMobEffectInstance.EffectEntry> pool = randomEffect.getPool();

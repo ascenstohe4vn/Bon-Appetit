@@ -4,6 +4,7 @@ import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.core.common.util.FoodHealingHelper;
 import net.ashstarcrash.bonappetit.core.common.util.IFoodDataOwner;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodConstants;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,7 +33,7 @@ public abstract class FoodDataMixin implements IFoodDataOwner {
     private void bonappetit$cancelEatRaw(int nutrition, float saturationModifier, CallbackInfo ci) {
         if (!BAConfig.HUNGER_BAR_ENABLED.get()) {
             if (this.bonappetit$owner != null) {
-                float saturation = net.minecraft.world.food.FoodConstants.saturationByModifier(nutrition, saturationModifier);
+                float saturation = FoodConstants.saturationByModifier(nutrition, saturationModifier);
                 FoodHealingHelper.applyRaw(this.bonappetit$owner, nutrition, saturation);
             }
             ci.cancel();

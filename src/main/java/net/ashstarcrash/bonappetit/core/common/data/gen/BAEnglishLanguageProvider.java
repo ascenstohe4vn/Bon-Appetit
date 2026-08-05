@@ -67,6 +67,9 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add("advancements.husbandry.not_a_lie.title", "Not a Lie");
         add("advancements.husbandry.not_a_lie.description",
                 "You will bake every flavor of cake there is... and then there will be cake.");
+        add("advancements.story.not_tomorrow_thank_you.title", "Not Tomorrow Either, Thank You");
+        add("advancements.story.not_tomorrow_thank_you.description",
+                "Reflect a projectile using the power of grapefruits");
         add("advancements.adventure.shadow_strike.title", "Shadow Strike");
         add("advancements.adventure.shadow_strike.description",
                 "Using the power of pears, perform a stealth strike on a mob");
@@ -103,6 +106,8 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
 
         add(BA + ".configuration.tweaks", "Tweaks");
                 add(BA + ".configuration.smartContainerReturn", "Smart Container Return");
+                add(BA + ".configuration.foodMovementMultiplier", "Eating Movement Multiplier");
+                add(BA + ".configuration.drinkMovementMultiplier", "Drinking Movement Multiplier");
                 add(BA + ".configuration.cakes", "Cakes");
                         add(BA + ".configuration.vanillaCakeEffect", "Vanilla Cake Effect");
                         add(BA + ".configuration.cakeRepairing", "Cake Repairing");

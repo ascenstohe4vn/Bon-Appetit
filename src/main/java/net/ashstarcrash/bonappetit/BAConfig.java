@@ -24,16 +24,18 @@ public class BAConfig {
 
     // --- TWEAKS CONFIG ---
     public static final ModConfigSpec.BooleanValue SMART_CONTAINER_RETURN;
+    public static final ModConfigSpec.DoubleValue FOOD_MOVEMENT_MULTIPLIER;
+    public static final ModConfigSpec.DoubleValue DRINK_MOVEMENT_MULTIPLIER;
         public static final ModConfigSpec.BooleanValue VANILLA_CAKE_EFFECT;
         public static final ModConfigSpec.BooleanValue CAKE_REPAIRING;
         public static final ModConfigSpec.BooleanValue CAKE_FALL_CUSHIONING;
 
     // --- TOOLTIP CONFIG ---
-    public static final ModConfigSpec.BooleanValue SHOW_SATURATION_OVERLAY;
-    public static final ModConfigSpec.BooleanValue NEGATIVE_EFFECT_TOOLTIPS;
-    public static final ModConfigSpec.EnumValue<FoodStatisticsTooltipDisplay> FOOD_STATISTICS_TOOLTIP_DISPLAY;
-    public static final ModConfigSpec.EnumValue<EffectTooltipDisplay> EFFECT_TOOLTIPS_DISPLAY;
-    public static final ModConfigSpec.EnumValue<ChanceDisplayMode> CHANCE_DISPLAY;
+        public static final ModConfigSpec.BooleanValue SHOW_SATURATION_OVERLAY;
+        public static final ModConfigSpec.BooleanValue NEGATIVE_EFFECT_TOOLTIPS;
+        public static final ModConfigSpec.EnumValue<FoodStatisticsTooltipDisplay> FOOD_STATISTICS_TOOLTIP_DISPLAY;
+        public static final ModConfigSpec.EnumValue<EffectTooltipDisplay> EFFECT_TOOLTIPS_DISPLAY;
+        public static final ModConfigSpec.EnumValue<ChanceDisplayMode> CHANCE_DISPLAY;
 
     static {
         // --- Hunger ---
@@ -99,12 +101,24 @@ public class BAConfig {
                         "it tries to stack with existing containers in the inventory instead of replacing the item in your hand. " +
                         "Disable if problems occur with items going to the inventory when they shouldn't")
                 .define("smartContainerReturn", true);
+        FOOD_MOVEMENT_MULTIPLIER = BUILDER
+                .comment("Movement speed multiplier when eating foods (edible items NOT tagged #c:drinks). Vanilla's default for all item use is 0.2. Set to 1.0 for no slowdown at all while eating.")
+                .defineInRange("foodMovementMultiplier", 0.2, 0.0, 1.0);
+        DRINK_MOVEMENT_MULTIPLIER = BUILDER
+                .comment("Movement speed multiplier when drinking drinks (edible items tagged #c:drinks; this does NOT affect potions or ominous bottles). Vanilla's default for all item use is 0.2. Set to 1.0 for no slowdown at all while drinking.")
+                .defineInRange("drinkMovementMultiplier", 0.5, 0.0, 1.0);
 
             BUILDER.comment("Cake tweaks").push("cakes");
 
-            VANILLA_CAKE_EFFECT = BUILDER.gameRestart().define("vanillaCakeEffect", true);
-            CAKE_REPAIRING = BUILDER.define("cakeRepairing", true);
-            CAKE_FALL_CUSHIONING = BUILDER.define("cakeFallCushioning", true);
+            VANILLA_CAKE_EFFECT = BUILDER.gameRestart()
+                    .comment("Makes vanilla-flavored cakes and vanilla-flavored cake slices grant the Vigor effect when eaten")
+                    .define("vanillaCakeEffect", true);
+            CAKE_REPAIRING = BUILDER
+                    .comment("Allows cakes to be repaired by right-clicking a partially eaten one with their specific flavor of cake slice")
+                    .define("cakeRepairing", true);
+            CAKE_FALL_CUSHIONING = BUILDER
+                    .comment("Allows cakes to cushion 80% of fall damage (akin to hay bales) at the expense of sometimes destroying the cake")
+                    .define("cakeFallCushioning", true);
 
             BUILDER.pop(); // cake end
 

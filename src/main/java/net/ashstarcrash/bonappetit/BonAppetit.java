@@ -3,8 +3,8 @@ package net.ashstarcrash.bonappetit;
 import com.mojang.logging.LogUtils;
 import net.ashstarcrash.bonappetit.core.common.event.*;
 import net.ashstarcrash.bonappetit.core.common.recipe.RecipeCategories;
-import net.ashstarcrash.bonappetit.core.registry.*;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CopperTankEntity;
+import net.ashstarcrash.bonappetit.core.registry.*;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
@@ -45,6 +45,7 @@ public class BonAppetit {
         if (FMLEnvironment.dist.isClient()) {
             modEventBus.addListener(RecipeCategories::init);
         }
+
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::modifyComponents);
 
@@ -57,9 +58,12 @@ public class BonAppetit {
 
         BADataComponents.DATA_COMPONENTS.register(modEventBus);
         BAAttachments.ATTACHMENTS.register(modEventBus);
+        BATriggers.TRIGGERS.register(modEventBus);
+
         BARecipeTypes.RECIPE_TYPES.register(modEventBus);
         BARecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         BAMenuTypes.MENU_TYPES.register(modEventBus);
+
         BAFeatures.FEATURES.register(modEventBus);
         BALootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
 

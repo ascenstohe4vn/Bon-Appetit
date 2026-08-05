@@ -1,0 +1,27 @@
+{
+  "parent": "minecraft:story/deflect_arrow",
+  "criteria": {
+    "reflected_projectile": {
+      "trigger": "bonappetit:reflected_projectile"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.story.not_tomorrow_thank_you.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bonappetit:grapefruit"
+    },
+    "title": {
+      "translate": "advancements.story.not_tomorrow_thank_you.title"
+    }
+  },
+  "requirements": [
+    [
+      "reflected_projectile"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

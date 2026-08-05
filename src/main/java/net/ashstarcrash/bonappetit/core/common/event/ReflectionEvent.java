@@ -1,9 +1,11 @@
 package net.ashstarcrash.bonappetit.core.common.event;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.core.registry.BATriggers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -75,6 +77,10 @@ public class ReflectionEvent {
                 server.playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.COPPER_BULB_TURN_ON, SoundSource.NEUTRAL, 1.0F, 1.8F);
                 server.playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.SHIELD_BLOCK, SoundSource.NEUTRAL, 0.6F, 1.1F);
                 server.playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.HONEY_BLOCK_BREAK, SoundSource.NEUTRAL, 0.8F, 1.4F);
+
+                if (victim instanceof ServerPlayer serverPlayer) {
+                    BATriggers.REFLECTED_PROJECTILE.get().trigger(serverPlayer);
+                }
 
                 impact.setCanceled(true);
             }

@@ -1,5 +1,6 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
+import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -99,8 +100,8 @@ public class BAFoodProperties {
             .effect(() -> new MobEffectInstance(BAEffects.VIGOR, 200, 0), 1F).build();
 
     public static final FoodProperties CAKE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.1F)
-            .effect(() -> new MobEffectInstance(BAEffects.VIGOR, 200, 0), 1f).fast().build();
+            .nutrition(2).saturationModifier(0.1F).fast()
+            .effect(() -> new MobEffectInstance(BAEffects.VIGOR, BAConfig.VANILLA_CAKE_EFFECT.get() ? 200 : 0, 0), 1f).build();
     public static final FoodProperties CHERRY_PIE = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.35F)
             .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 900, 1), 1f).build();
