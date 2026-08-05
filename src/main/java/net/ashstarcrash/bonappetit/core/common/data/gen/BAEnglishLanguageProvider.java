@@ -103,6 +103,10 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
                 add(BA + ".configuration.cherry", "Cherry");
                         add(BA + ".configuration.cherryEffectInitialMulti", "Twin Strike Initial Damage Multiplier");
                         add(BA + ".configuration.cherryEffectAdditiveMulti", "Twin Strike Additive Damage Multiplier");
+                add(BA + ".configuration.pomegranate", "Pomegranate");
+                        add(BA + ".configuration.seededOverlay", "Seeded Health Overlay");
+                        add(BA + ".configuration.seededMaxStacks", "Maximum Seeded Stacks");
+
 
         add(BA + ".configuration.tweaks", "Tweaks");
                 add(BA + ".configuration.smartContainerReturn", "Smart Container Return");

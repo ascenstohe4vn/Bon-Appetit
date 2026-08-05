@@ -175,7 +175,7 @@ public class GameEvents {
                 MobEffectInstance seeded = victim.getEffect(BAEffects.SEEDED);
                 int stacks = (seeded == null) ? 0 : seeded.getAmplifier() + 1;
 
-                if (stacks >= 3) {
+                if (stacks >= (BAConfig.SEEDED_MAX_STACKS.get() - 1)) {
                     victim.removeEffect(BAEffects.SEEDED);
                     victim.hurt(victim.level().damageSources().magic(), 4.0f + (pomegranateAmplifier * 1.5f));
                     victim.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(),

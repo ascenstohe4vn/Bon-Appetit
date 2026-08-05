@@ -11,7 +11,8 @@
     "BoatMixin"
   ],
   "client": [
-    "GuiGraphicsTooltipMixin"
+    "GuiGraphicsTooltipMixin",
+    "GuiSeededOverlayMixin"
   ],
   "injectors": {
     "defaultRequire": 1

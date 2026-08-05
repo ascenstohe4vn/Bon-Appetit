@@ -5,7 +5,6 @@ import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Items;
 
 import static net.minecraft.world.item.Items.*;
 
@@ -165,8 +164,8 @@ public class BAFoodProperties {
             .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 300, 0), 1f).alwaysEdible().build();
     public static final FoodProperties PINK_LIMEADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.815F)
-            .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 600, 0), 1f)
-            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 2), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 800, 0), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 0), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f).alwaysEdible().build();
     public static final FoodProperties BLUEBERRY_LIMEADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.8F)

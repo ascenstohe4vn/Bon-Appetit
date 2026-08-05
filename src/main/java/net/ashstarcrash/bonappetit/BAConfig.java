@@ -22,6 +22,9 @@ public class BAConfig {
         public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_INITIAL_MULTI;
         public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_ADDITIVE_MULTI;
 
+        public static final ModConfigSpec.BooleanValue SEEDED_OVERLAY;
+        public static final ModConfigSpec.IntValue SEEDED_MAX_STACKS;
+
     // --- TWEAKS CONFIG ---
     public static final ModConfigSpec.BooleanValue SMART_CONTAINER_RETURN;
     public static final ModConfigSpec.DoubleValue FOOD_MOVEMENT_MULTIPLIER;
@@ -90,6 +93,17 @@ public class BAConfig {
                     .defineInRange("cherryEffectAdditiveMulti", 0.15, 0.0, Double.MAX_VALUE);
 
             BUILDER.pop(); // cherry end
+            /* ------------------------------------------------------------------------------------------------ */
+            BUILDER.comment("Pomegranate, Proliferate effect and Seeded effect configurations").push("pomegranate");
+
+            SEEDED_OVERLAY = BUILDER
+                    .comment("Enables or disables the health overlay displayed when you have any Seeded level")
+                    .define("seededOverlay", true);
+            SEEDED_MAX_STACKS = BUILDER
+                    .comment("Number of Proliferate hits required to burst Seeded. A value of 4 means the effect bursts on the 4th hit, not taking into account external modifiers like Twin Strike")
+                    .defineInRange("seededMaxStacks", 4, 1, 20);
+
+            BUILDER.pop(); // pomegranate end
 
         BUILDER.pop(); // gameplay end
 
