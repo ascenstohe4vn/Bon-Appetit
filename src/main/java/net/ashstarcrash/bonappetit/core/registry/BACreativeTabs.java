@@ -131,6 +131,7 @@ public class BACreativeTabs {
                 output.accept(POPCORN);
                 output.accept(RAW_CORN_TORTILLA);
                 output.accept(CORN_TORTILLA);
+                output.accept(CORNBREAD);
                 output.accept(HONEY_APPLE);
                 output.accept(CANDY_APPLE);
                 output.accept(CARAMEL_APPLE);

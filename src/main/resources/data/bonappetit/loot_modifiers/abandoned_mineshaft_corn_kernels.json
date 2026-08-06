@@ -1,13 +1,13 @@
 {
-  "type": "bonappetit:add_item",
+  "type": "bonappetit:add_mineshaft_item",
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/simple_dungeon"
+      "loot_table_id": "minecraft:chests/abandoned_mineshaft"
     },
     {
       "condition": "minecraft:random_chance",
-      "chance": 0.3
+      "chance": 0.35
     }
   ],
   "item": "bonappetit:corn_kernels",
@@ -16,7 +16,7 @@
       "function": "minecraft:set_count",
       "count": {
         "min": 2,
-        "max": 5
+        "max": 6
       }
     }
   ]

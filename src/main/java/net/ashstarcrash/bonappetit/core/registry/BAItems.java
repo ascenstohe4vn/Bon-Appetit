@@ -138,6 +138,7 @@ public abstract class BAItems {
     public static final DeferredItem<Item> POPCORN = ITEMS.register("popcorn", () -> new PopcornItem(new Item.Properties().food(new FoodProperties.Builder().fast().alwaysEdible().nutrition(2).saturationModifier(0.1f).build())));
     public static final DeferredItem<Item> RAW_CORN_TORTILLA = ITEMS.register("raw_corn_tortilla", () -> new Item(new Item.Properties().food(BAFoodProperties.RAW_CORN_TORTILLA)));
     public static final DeferredItem<Item> CORN_TORTILLA = ITEMS.register("corn_tortilla", () -> new Item(new Item.Properties().food(BAFoodProperties.CORN_TORTILLA)));
+    public static final DeferredItem<Item> CORNBREAD = ITEMS.register("cornbread", () -> new Item(new Item.Properties().food(BAFoodProperties.CORNBREAD)));
     public static final DeferredItem<Item> HONEY_APPLE = ITEMS.register("honey_apple", () -> new Item(new Item.Properties().food(BAFoodProperties.HONEY_APPLE)));
     public static final DeferredItem<Item> CANDY_APPLE = ITEMS.register("candy_apple", () -> new Item(new Item.Properties().food(BAFoodProperties.CANDY_APPLE)));
     public static final DeferredItem<Item> CARAMEL_APPLE = ITEMS.register("caramel_apple", () -> new Item(new Item.Properties().food(BAFoodProperties.CARAMEL_APPLE)));

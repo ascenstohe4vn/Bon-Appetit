@@ -40,6 +40,8 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GLASS_COCKTAIL.get(), 6).pattern("# #").pattern(" # ").pattern("###")
                 .define('#', GLASS).unlockedBy("has_glass", has(GLASS)).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, CORNBREAD.get()).pattern("CCC")
+                .define('C', CORN.get()).unlockedBy("has_corn", has(CORN.get())).save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, GOLDEN_CHERRIES.get(), 1).pattern("GGG").pattern("G#G").pattern("GGG")
                 .define('#', CHERRIES.get()).define('G', GOLD_INGOT).unlockedBy("has_gold_ingot", has(GOLD_INGOT)).save(recipeOutput);

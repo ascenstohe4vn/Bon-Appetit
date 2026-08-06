@@ -23,6 +23,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
 
 import java.util.AbstractMap;
@@ -79,7 +80,7 @@ public class BonAppetit {
     }
 
     @SubscribeEvent
-    public static void onServerTick(net.neoforged.neoforge.event.tick.ServerTickEvent.Post event) {
+    public static void onServerTick(ServerTickEvent.Post event) {
         var iterator = workQueue.iterator();
         while (iterator.hasNext()) {
             var entry = iterator.next();

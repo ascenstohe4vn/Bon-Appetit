@@ -78,16 +78,17 @@ public class BATagProvider {
                     .add(ACORN.get())
                     .add(ROASTED_ACORN.get())
                     .add(CORN.get())
-                    .add(CORN_ON_A_COB.get())
-                    .add(POPCORN.get())
-                    .add(RAW_CORN_TORTILLA.get())
-                    .add(CORN_TORTILLA.get())
                     .add(RICE.get())
                     .add(GREEN_TEA_LEAVES.get())
                     .add(YELLOW_TEA_LEAVES.get())
                     .add(BLACK_TEA_LEAVES.get())
                     .add(COFFEE_CHERRIES.get())
                     .add(COFFEE_BEANS.get())
+                    .add(CORN_ON_A_COB.get())
+                    .add(POPCORN.get())
+                    .add(RAW_CORN_TORTILLA.get())
+                    .add(CORN_TORTILLA.get())
+                    .add(CORNBREAD.get())
                     .add(HONEY_APPLE.get())
                     .add(CANDY_APPLE.get())
                     .add(CARAMEL_APPLE.get())
@@ -209,6 +210,7 @@ public class BATagProvider {
             this.tag(Tags.Items.FOODS_FOOD_POISONING);
 
             this.tag(Tags.Items.FOODS_BREAD)
+                    .add(CORNBREAD.get())
                     .add(BANANA_BREAD.get());
 
             this.tag(Tags.Items.FOODS_SOUP)

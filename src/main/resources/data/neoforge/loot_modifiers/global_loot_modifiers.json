@@ -1,6 +1,9 @@
 {
   "replace": false,
   "entries": [
-    "bonappetit:add_corn_to_dungeons"
+    "bonappetit:dungeon_corn",
+    "bonappetit:dungeon_corn_kernels",
+    "bonappetit:abandoned_mineshaft_corn_kernels",
+    "bonappetit:abandoned_mineshaft_cornbread"
   ]
 }

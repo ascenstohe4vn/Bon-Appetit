@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class BAEnglishLanguageProvider extends LanguageProvider {
     String BA = BonAppetit.ID;
+    String MC = BonAppetit.MC;
     String C = ModUtil.COMMON.id();
 
     private static final Map<String, String> ITEM_OVERRIDES = Map.ofEntries(
@@ -36,6 +37,9 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add("emi.info.macarons",
                 "Macarons are able to be dyed like leather armor!");
 
+        //items
+        add("item." + MC + "bread", "Wheat Bread");
+
         //effect desc
         add("effect." + BA + ".twin_strike.description",
                 "Makes all attacks hit twice, with the second hit doing less damage; higher levels increase the second hit's damage.");
@@ -49,12 +53,14 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
                 "Spawns a potion cloud with all your positive effects; higher levels increase the cloud duration and size.");
         add("effect." + BA + ".dissonance.description",
                 "Spawns a potion cloud with all your negative effects; higher levels increase the cloud duration and size.");
+        add("effect." + BA + ".vitality.description",
+                "Temporary description!");
+        add("effect." + BA + ".flak.description",
+                "Has a chance to shoot out shard shrapnel upon taking damage; higher levels increase the chance of it activating, the damage of the shards, and the amount of shards shot out.");
         add("effect." + BA + ".proliferate.description",
                 "Makes all attacks inflict a stacking Seeded effect that ruptures after a certain number of hits; higher levels increase the damage dealt by the rupture.");
         add("effect." + BA + ".seeded.description",
                 "Ruptures after a certain level, dealing magic damage dependent on the level of Proliferate on the attacker. Additionally obscures part of the health bar with a parasitic vine; higher levels obscure more.");
-        add("effect." + BA + ".flak.description",
-                "Has a chance to shoot out shard shrapnel upon taking damage; higher levels increase the chance of it activating, the damage of the shards, and the amount of shards shot out.");
         add("effect." + BA + ".rooted.description",
                 "Increases knockback resistance and armor for the user.");
         add("effect." + BA + ".caffeinated.description",

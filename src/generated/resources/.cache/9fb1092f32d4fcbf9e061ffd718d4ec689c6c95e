@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-03T23:58:05.883059001	Recipes
+// 1.21.1	2026-08-06T00:14:45.971052309	Recipes
 48e1e5b98507f7062bb0b6fdce6a50c70445a462 data/bonappetit/advancement/recipes/cooking/beetroot_soup_from_cooking.json
 2273cdba46498bd8fcfa4c973349762f7b2158a4 data/bonappetit/advancement/recipes/cooking/candied_lime_slices_from_cooking.json
 f5e7b3e6243eab87954570c5163847b47a83c67b data/bonappetit/advancement/recipes/cooking/caramel_from_cooking.json
@@ -27,6 +27,7 @@ e9628ba08881aa484b314c81f02cc5202c066baf data/bonappetit/advancement/recipes/foo
 ea2d1ecd62592ca300eda523f341503dc1215ad4 data/bonappetit/advancement/recipes/food/coconut_slice.json
 d01f944761ad05bd8a95399a40a33696eaa178d7 data/bonappetit/advancement/recipes/food/corn_kernels.json
 7fa9c69adac6fd8faab8fc059d4dfc13a061ece9 data/bonappetit/advancement/recipes/food/corn_on_a_cob.json
+f294ed64d4481b1e7fb24a3f13223c6057d85c36 data/bonappetit/advancement/recipes/food/cornbread.json
 d85238103114b9385415f98fc488c7e56d13fb93 data/bonappetit/advancement/recipes/food/dragon_fruit_latte.json
 fbdc7398e309e69d2ea6df5450beb2f9b421c9bf data/bonappetit/advancement/recipes/food/dragon_fruit_pie.json
 f9759d1ac20fcfce340b36fbde75a8393a7230b6 data/bonappetit/advancement/recipes/food/dragon_fruit_pie_from_dragon_fruit_pie_slices.json
@@ -108,6 +109,7 @@ e976eabe2b9821e68df4e4cc86c2aa18304abb30 data/bonappetit/recipe/cooking/popcorn_
 aa9199c954ec7586e8905b142151fceff21ce9c0 data/bonappetit/recipe/cooking/rabbit_stew_from_cooking.json
 94d73a33191f3b5c2b478ddfd2719a3a65f784e5 data/bonappetit/recipe/corn_kernels.json
 8492f3db1f4fe1866aaaf844f82be02a534d929f data/bonappetit/recipe/corn_on_a_cob.json
+fd4ea8b6d23c413ad3c8adb105faf6ff8f7cc496 data/bonappetit/recipe/cornbread.json
 5c470781dc89b18f6eb885c8e24894795c21b9d3 data/bonappetit/recipe/dragon_fruit_latte.json
 cd1d93f4303ed79969bc9ce0c77a085e142354e3 data/bonappetit/recipe/dragon_fruit_pie.json
 1dc65be4fe496667d3df8ac2bffc8fb600314056 data/bonappetit/recipe/dragon_fruit_pie_from_dragon_fruit_pie_slices.json

@@ -49,6 +49,8 @@ public class BAFoodProperties {
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 100, 0), 0.5f).build();
     public static final FoodProperties CORN_TORTILLA = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.8F).build();
+    public static final FoodProperties CORNBREAD = new FoodProperties.Builder()
+            .nutrition(4).saturationModifier(0.5f).build();
     public static final FoodProperties CANDIED_LIME_SLICE = (new FoodProperties.Builder())
             .nutrition(3).saturationModifier(0.35f).build();
     public static final FoodProperties JERKY = (new FoodProperties.Builder())

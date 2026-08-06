@@ -17,15 +17,17 @@ public class BAEffects {
     public static final DeferredHolder<MobEffect, ReflectionEffect> REFLECTION = EFFECTS.register("reflection", ReflectionEffect::new);
     public static final DeferredHolder<MobEffect, ConcentrationEffect> CONCENTRATION = EFFECTS.register("concentration", ConcentrationEffect::new);
     public static final DeferredHolder<MobEffect, FervorEffect> FERVOR = EFFECTS.register("fervor", FervorEffect::new);
-    public static final DeferredHolder<MobEffect, MobEffect> AGILITY = EFFECTS.register("agility", () -> new AgilityEffect(MobEffectCategory.NEUTRAL, 0xFCF5CA)
+    public static final DeferredHolder<MobEffect, MobEffect> AGILITY = EFFECTS.register("agility", () -> new AgilityEffect(MobEffectCategory.BENEFICIAL, 0xFCF5CA)
             .addAttributeModifier(Attributes.MOVEMENT_SPEED, BonAppetit.asResource("effect.agility.movement_speed"), 0.025F, AttributeModifier.Operation.ADD_VALUE));
     public static final DeferredHolder<MobEffect, MobEffect> RESONANCE = EFFECTS.register("resonance", () -> new ResonanceEffect(MobEffectCategory.NEUTRAL, 0xFCF5CA)
             .addAttributeModifier(Attributes.ARMOR, BonAppetit.asResource("effect.resonance.armor"), 1.0F, AttributeModifier.Operation.ADD_VALUE));
     public static final DeferredHolder<MobEffect, MobEffect> DISSONANCE = EFFECTS.register("dissonance", () -> new DissonanceEffect(MobEffectCategory.NEUTRAL, 0xE8FED8)
             .addAttributeModifier(Attributes.ATTACK_DAMAGE, BonAppetit.asResource("effect.dissonance.attack_damage"), 1.0F, AttributeModifier.Operation.ADD_VALUE));
+    public static final DeferredHolder<MobEffect, MobEffect> VITALITY = EFFECTS.register("vitality", () -> new VitalityEffect(MobEffectCategory.BENEFICIAL, 0xE1A67A)
+            .addAttributeModifier(Attributes.MAX_HEALTH, BonAppetit.asResource("effect.vitality.max_health"), 4.0D, AttributeModifier.Operation.ADD_VALUE));
+    public static final DeferredHolder<MobEffect, FlakEffect> FLAK = EFFECTS.register("flak", FlakEffect::new);
     public static final DeferredHolder<MobEffect, ProliferateEffect> PROLIFERATE = EFFECTS.register("proliferate", ProliferateEffect::new);
     public static final DeferredHolder<MobEffect, SeededEffect> SEEDED = EFFECTS.register("seeded", SeededEffect::new);
-    public static final DeferredHolder<MobEffect, FlakEffect> FLAK = EFFECTS.register("flak", FlakEffect::new);
     public static final DeferredHolder<MobEffect, DischargeEffect> DISCHARGE = EFFECTS.register("discharge", DischargeEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> ROOTED = EFFECTS.register("rooted", () -> new RootedEffect(MobEffectCategory.BENEFICIAL, 0xA4272C)

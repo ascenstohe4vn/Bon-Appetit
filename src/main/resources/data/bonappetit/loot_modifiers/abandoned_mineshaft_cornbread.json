@@ -1,0 +1,12 @@
+{
+  "type": "bonappetit:add_mineshaft_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+    }
+  ],
+  "item": "bonappetit:cornbread",
+  "target_item": "minecraft:bread",
+  "replace_chance": 0.8
+}

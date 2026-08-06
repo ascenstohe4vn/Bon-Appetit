@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-03T23:58:05.880604529	Item Models: bonappetit
+// 1.21.1	2026-08-06T00:14:45.968924293	Item Models: bonappetit
 ec3c3ea6a4c300bc3d777f48d375957a22f30006 assets/bonappetit/models/item/acorn.json
 5953bac818e0925ab2b3cb45857599a494346edf assets/bonappetit/models/item/ambrosia_salad.json
 7d6c0786636808d4c79d6c4d4fce64126b309b14 assets/bonappetit/models/item/apple_cake_slice.json
@@ -43,6 +43,7 @@ a722361cbe7dd199d35d7378a06e4e5a5679d09b assets/bonappetit/models/item/coconut_s
 b47758a82989be504bea87b5c45d6517718f9521 assets/bonappetit/models/item/corn_kernels.json
 194283b4a0fa5610f2fe56165b9e26ae69d058a4 assets/bonappetit/models/item/corn_on_a_cob.json
 2462ff8aea5a6ea8873c6c98e0d3262689e513d8 assets/bonappetit/models/item/corn_tortilla.json
+e81d54d3bdd4a32fcaa1e85450bae986f37e4822 assets/bonappetit/models/item/cornbread.json
 78a66ddfa49542c43ca498a598c2fe14f9ef381d assets/bonappetit/models/item/cranberries.json
 495b883b05c0935404884e513299be0c32728704 assets/bonappetit/models/item/double_lime_popsicle.json
 fa6407b1906be0ee086bc69b628f409de5d0bf3e assets/bonappetit/models/item/dough.json

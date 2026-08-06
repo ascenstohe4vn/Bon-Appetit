@@ -1,0 +1,23 @@
+{
+  "type": "bonappetit:add_dungeon_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/simple_dungeon"
+    },
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.25
+    }
+  ],
+  "item": "bonappetit:corn",
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": {
+        "min": 1,
+        "max": 4
+      }
+    }
+  ]
+}
