@@ -9,6 +9,7 @@ import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
 import net.ashstarcrash.bonappetit.core.registry.BAEffects;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -17,13 +18,17 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Bee;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -43,6 +48,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -53,9 +59,36 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = BonAppetit.ID)
 public class GameEvents {
+    private record MobEffectConfigRule(Supplier<Holder<MobEffect>> effect, ModConfigSpec.BooleanValue enabled, ModConfigSpec.ConfigValue<List<? extends String>> spawnables) {}
+    private static final MobEffectConfigRule[] RULES = new MobEffectConfigRule[] {
+            new MobEffectConfigRule(() -> BAEffects.TWIN_STRIKE, BAConfig.TWIN_STRIKE_MOB_SPAWNING, BAConfig.TWIN_STRIKE_MOB_SPAWNABLES),
+            new MobEffectConfigRule(() -> BAEffects.FLAK, BAConfig.FLAK_MOB_SPAWNING, BAConfig.FLAK_MOB_SPAWNABLES),
+            new MobEffectConfigRule(() -> BAEffects.PROLIFERATE, BAConfig.PROLIFERATE_MOB_SPAWNING, BAConfig.PROLIFERATE_MOB_SPAWNABLES)
+    };
+
+    @SubscribeEvent
+    public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
+        if (event.getLevel().isClientSide() || event.getLevel().getDifficulty() != Difficulty.HARD) return;
+        if (!(event.getEntity() instanceof LivingEntity living) || !(living instanceof Enemy)) return;
+
+        EntityType<?> type = living.getType();
+
+        for (MobEffectConfigRule rule : RULES) {
+            Holder<MobEffect> effectHolder = rule.effect().get();
+            if (living.hasEffect(effectHolder)) continue;
+
+            if (event.getLevel().getRandom().nextFloat() < 0.10f) {
+                if (BAConfig.isValidEntity(type, rule.enabled(), rule.spawnables())) {
+                    living.addEffect(new MobEffectInstance(effectHolder, MobEffectInstance.INFINITE_DURATION, 0));
+                }
+            }
+        }
+    }
+
     @SubscribeEvent
     public static void onFinishEating(LivingEntityUseItemEvent.Finish event) {
         if (!(event.getEntity() instanceof Player player)) return;

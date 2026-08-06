@@ -41,7 +41,7 @@ public class TwinStrikeEvent {
                 int cooldown = TWIN_STRIKE_COOLDOWN.getOrDefault(attackerUUID, 0);
 
                 if (charge >= 0.9f && cooldown <= 0) {
-                    ECHO_QUEUE.add(new CherryEcho(attacker, victim, (float)((damage * BAConfig.CHERRY_EFFECT_INITIAL_MULTI.get()) + (cherryAmplifier * BAConfig.CHERRY_EFFECT_ADDITIVE_MULTI.get())), 5));
+                    ECHO_QUEUE.add(new CherryEcho(attacker, victim, (float)((damage * BAConfig.TWIN_STRIKE_INITIAL_MULTI.get()) + (cherryAmplifier * BAConfig.TWIN_STRIKE_ADDITIVE_MULTI.get())), 5));
                     TWIN_STRIKE_COOLDOWN.put(attackerUUID, 5);
 
                     attacker.level().playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.CHERRY_SAPLING_PLACE, SoundSource.PLAYERS, 0.8f, 0.5f);

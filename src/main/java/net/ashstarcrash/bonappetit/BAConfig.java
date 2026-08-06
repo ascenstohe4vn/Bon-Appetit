@@ -1,6 +1,11 @@
 package net.ashstarcrash.bonappetit;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
 
 public class BAConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
@@ -19,11 +24,18 @@ public class BAConfig {
     //public static final ModConfigSpec.BooleanValue REGISTER_COFFEE;
 
     // --- GAMEPLAY CONFIG ---
-        public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_INITIAL_MULTI;
-        public static final ModConfigSpec.DoubleValue CHERRY_EFFECT_ADDITIVE_MULTI;
+        public static final ModConfigSpec.DoubleValue TWIN_STRIKE_INITIAL_MULTI;
+        public static final ModConfigSpec.DoubleValue TWIN_STRIKE_ADDITIVE_MULTI;
+        public static final ModConfigSpec.BooleanValue TWIN_STRIKE_MOB_SPAWNING;
+        public static final ModConfigSpec.ConfigValue<List<? extends String>> TWIN_STRIKE_MOB_SPAWNABLES;
+
+        public static final ModConfigSpec.BooleanValue FLAK_MOB_SPAWNING;
+        public static final ModConfigSpec.ConfigValue<List<? extends String>> FLAK_MOB_SPAWNABLES;
 
         public static final ModConfigSpec.BooleanValue SEEDED_OVERLAY;
         public static final ModConfigSpec.IntValue SEEDED_MAX_STACKS;
+        public static final ModConfigSpec.BooleanValue PROLIFERATE_MOB_SPAWNING;
+        public static final ModConfigSpec.ConfigValue<List<? extends String>> PROLIFERATE_MOB_SPAWNABLES;
 
     // --- TWEAKS CONFIG ---
     public static final ModConfigSpec.BooleanValue SMART_CONTAINER_RETURN;
@@ -84,14 +96,30 @@ public class BAConfig {
 
             BUILDER.comment("Cherry and Twin Strike effect configurations").push("cherry");
 
-            CHERRY_EFFECT_INITIAL_MULTI = BUILDER
+            TWIN_STRIKE_INITIAL_MULTI = BUILDER
                     .comment("The initial multiplier of Twin Strike's second strike, without any amplifiers")
-                    .defineInRange("cherryEffectInitialMulti", 0.35, 0.0, Double.MAX_VALUE);
-
-            CHERRY_EFFECT_ADDITIVE_MULTI = BUILDER
+                    .defineInRange("twinStrikeInitialMulti", 0.35, 0.0, Double.MAX_VALUE);
+            TWIN_STRIKE_ADDITIVE_MULTI = BUILDER
                     .comment("The additive multiplier of Twin Strike's second strike, which is used for higher effect levels")
-                    .defineInRange("cherryEffectAdditiveMulti", 0.15, 0.0, Double.MAX_VALUE);
+                    .defineInRange("twinStrikeAdditiveMulti", 0.15, 0.0, Double.MAX_VALUE);
+            TWIN_STRIKE_MOB_SPAWNING = BUILDER
+                    .comment("Allows mobs to spawn with the Twin Strike effect on hard difficulty")
+                    .define("twinStrikeMobSpawning", true);
+            TWIN_STRIKE_MOB_SPAWNABLES = BUILDER
+                    .comment("List of entities that can spawn with the Twin Strike effect on hard difficulty if 'Allow Twin Strike Mob Spawning' is true")
+                    .defineListAllowEmpty("twinStrikeMobSpawnables", List.of("minecraft:spider"), () -> "", BAConfig::validateEntityName);
 
+            BUILDER.pop(); // cherry end
+            /* ------------------------------------------------------------------------------------------------ */
+            BUILDER.comment("Dragon Fruit and Flak effect configurations").push("dragonFruit");
+            
+            FLAK_MOB_SPAWNING = BUILDER
+                    .comment("Allows mobs to spawn with the Flak effect on hard difficulty")
+                    .define("flakMobSpawning", true);
+            FLAK_MOB_SPAWNABLES = BUILDER
+                    .comment("List of entities that can spawn with the Flak effect on hard difficulty if 'Allow Flak Mob Spawning' is true")
+                    .defineListAllowEmpty("flakMobSpawnables", List.of("minecraft:enderman"), () -> "", BAConfig::validateEntityName);
+    
             BUILDER.pop(); // cherry end
             /* ------------------------------------------------------------------------------------------------ */
             BUILDER.comment("Pomegranate, Proliferate effect and Seeded effect configurations").push("pomegranate");
@@ -102,6 +130,12 @@ public class BAConfig {
             SEEDED_MAX_STACKS = BUILDER
                     .comment("Number of Proliferate hits required to burst Seeded. A value of 4 means the effect bursts on the 4th hit, not taking into account external modifiers like Twin Strike")
                     .defineInRange("seededMaxStacks", 4, 1, 20);
+            PROLIFERATE_MOB_SPAWNING = BUILDER
+                    .comment("Allows mobs to spawn with the Proliferate effect on hard difficulty")
+                    .define("proliferateMobSpawning", true);
+            PROLIFERATE_MOB_SPAWNABLES = BUILDER
+                    .comment("List of entities that can spawn with the Proliferate effect on hard difficulty")
+                    .defineListAllowEmpty("proliferateMobSpawnables", List.of("minecraft:piglin", "minecraft:zombified_piglin"), () -> "", BAConfig::validateEntityName);
 
             BUILDER.pop(); // pomegranate end
 
@@ -191,6 +225,35 @@ public class BAConfig {
     }
     public enum ChanceDisplayMode {
         FULL, HIDDEN, DYNAMIC, NONE
+    }
+
+    private static ResourceLocation toEntityId(String input) {
+        if (input == null) return null;
+        input = input.trim();
+        if (input.isEmpty()) return null;
+        if (input.startsWith("#")) return null;
+        if (input.endsWith(":*")) return null;
+        if (!input.contains(":")) {
+            input = "minecraft:" + input;
+        }
+        ResourceLocation rl = ResourceLocation.tryParse(input);
+        if (rl == null) return null;
+        return BuiltInRegistries.ENTITY_TYPE.containsKey(rl) ? rl : null;
+    }
+    public static boolean isValidEntity(EntityType<?> type, ModConfigSpec.BooleanValue enabledConfig, ModConfigSpec.ConfigValue<List<? extends String>> listConfig) {
+        if (!enabledConfig.get()) return false;
+
+        ResourceLocation id = BuiltInRegistries.ENTITY_TYPE.getKey(type);
+        if (id == null) return false;
+
+        return listConfig.get().stream().map(BAConfig::toEntityId).anyMatch(id::equals);
+    }
+    private static boolean validateEntityName(final Object obj) {
+        if (!(obj instanceof String s)) return false;
+        if (s.isBlank()) return true;
+
+        ResourceLocation rl = toEntityId(s);
+        return rl != null;
     }
 
     public static final ModConfigSpec SPEC = BUILDER.build();

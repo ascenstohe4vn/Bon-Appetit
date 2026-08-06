@@ -104,11 +104,18 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
 
         add(BA + ".configuration.gameplay", "Gameplay");
                 add(BA + ".configuration.cherry", "Cherry");
-                        add(BA + ".configuration.cherryEffectInitialMulti", "Twin Strike Initial Damage Multiplier");
-                        add(BA + ".configuration.cherryEffectAdditiveMulti", "Twin Strike Additive Damage Multiplier");
+                        add(BA + ".configuration.twinStrikeInitialMulti", "Twin Strike Initial Damage Multiplier");
+                        add(BA + ".configuration.twinStrikeAdditiveMulti", "Twin Strike Additive Damage Multiplier");
+                        add(BA + ".configuration.twinStrikeMobSpawning", "Allow Twin Strike Mob Spawning");
+                        add(BA + ".configuration.twinStrikeMobSpawnables", "Spawnable Twin Strike Mobs");
+                add(BA + ".configuration.dragonFruit", "Dragon Fruit");
+                        add(BA + ".configuration.flakMobSpawning", "Allow Flak Mob Spawning");
+                        add(BA + ".configuration.flakMobSpawnables", "Spawnable Flak Mobs");
                 add(BA + ".configuration.pomegranate", "Pomegranate");
                         add(BA + ".configuration.seededOverlay", "Seeded Health Overlay");
                         add(BA + ".configuration.seededMaxStacks", "Maximum Seeded Stacks");
+                        add(BA + ".configuration.proliferateMobSpawning", "Allow Proliferate Mob Spawning");
+                        add(BA + ".configuration.proliferateMobSpawnables", "Spawnable Proliferate Mobs");
 
 
         add(BA + ".configuration.tweaks", "Tweaks");

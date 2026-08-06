@@ -31,8 +31,8 @@ public class ProliferateEvent {
                 if (stacks >= (BAConfig.SEEDED_MAX_STACKS.get() - 1)) {
                     victim.removeEffect(BAEffects.SEEDED);
                     victim.hurt(victim.level().damageSources().magic(), 4.0f + (pomegranateAmplifier * 1.5f));
-                    victim.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(),
-                            SoundEvents.CHERRY_WOOD_BREAK, SoundSource.HOSTILE, 1.5f, 0.8f);
+                    victim.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.CHERRY_WOOD_BREAK, SoundSource.HOSTILE, 1.5f, 0.8f);
+                    if (attacker instanceof ServerPlayer serverPlayer) BATriggers.SEEDED_RUPTURE.get().trigger(serverPlayer);
                     if (victim.level() instanceof ServerLevel sl) {
                         sl.sendParticles(ParticleTypes.CRIMSON_SPORE, victim.getX(), victim.getY() + 1, victim.getZ(), 30, 0.3, 0.3, 0.3, 0.1);
                         sl.sendParticles(ParticleTypes.EXPLOSION, victim.getX(), victim.getY() + 1, victim.getZ(), 1, 0, 0, 0, 0);
@@ -40,7 +40,6 @@ public class ProliferateEvent {
                 } else {
                     victim.addEffect(new MobEffectInstance(BAEffects.SEEDED, 100, stacks));
                     victim.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.CHERRY_SAPLING_STEP, SoundSource.PLAYERS, 0.5f, 1.2f);
-                    if (victim instanceof ServerPlayer serverPlayer) BATriggers.SEEDED_RUPTURE.get().trigger(serverPlayer);
                 }
             }
         }
