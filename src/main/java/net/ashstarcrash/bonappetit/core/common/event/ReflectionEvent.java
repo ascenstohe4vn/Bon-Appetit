@@ -20,7 +20,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.ProjectileImpactEvent;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
+@EventBusSubscriber(modid = BonAppetit.ID)
 public class ReflectionEvent {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onReflectProjectile(ProjectileImpactEvent impact) {

@@ -1,17 +1,13 @@
 package net.ashstarcrash.bonappetit.core.common.event;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
 import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectUtil;
@@ -29,9 +25,6 @@ import java.util.List;
 
 @EventBusSubscriber(modid = BonAppetit.ID, value = Dist.CLIENT)
 public class ClientEvents {
-    private static final ResourceLocation VIGNETTE_TEXTURE = ResourceLocation.withDefaultNamespace("textures/misc/vignette.png");
-    private static float vignetteAlpha = 0.0f;
-
     @SubscribeEvent
     public static void onFoodBar(RenderGuiLayerEvent.Pre event) {
         if (!BAConfig.HUNGER_BAR_ENABLED.get() && event.getName().equals(VanillaGuiLayers.FOOD_LEVEL)) {
@@ -170,42 +163,6 @@ public class ClientEvents {
                     }
                 }
                 tooltip.add(effectText);
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onRenderOverlay(RenderGuiLayerEvent.Post event) {
-        if (event.getName().equals(VanillaGuiLayers.CAMERA_OVERLAYS)) {
-            Minecraft mc = Minecraft.getInstance();
-            if (mc.player == null) return;
-
-            boolean hidden = GameEvents.isHidden(mc.player);
-            float pTicks = event.getPartialTick().getGameTimeDeltaPartialTick(true);
-
-            if (hidden) {
-                vignetteAlpha = Math.min(1.0f, vignetteAlpha + 0.02f * pTicks);
-            } else {
-                vignetteAlpha = Math.max(0.0f, vignetteAlpha - 0.05f * pTicks);
-            }
-
-            if (vignetteAlpha > 0) {
-                GuiGraphics guiGraphics = event.getGuiGraphics();
-                int width = mc.getWindow().getGuiScaledWidth();
-                int height = mc.getWindow().getGuiScaledHeight();
-
-                RenderSystem.disableDepthTest();
-                RenderSystem.depthMask(false);
-                RenderSystem.enableBlend();
-                RenderSystem.defaultBlendFunc();
-
-                guiGraphics.setColor(0.0F, 0.02F, 0.08F, vignetteAlpha * 0.5f);
-                guiGraphics.blit(VIGNETTE_TEXTURE, 0, 0, -90, 0.0F, 0.0F, width, height, width, height);
-
-                guiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-                RenderSystem.disableBlend();
-                RenderSystem.depthMask(true);
-                RenderSystem.enableDepthTest();
             }
         }
     }

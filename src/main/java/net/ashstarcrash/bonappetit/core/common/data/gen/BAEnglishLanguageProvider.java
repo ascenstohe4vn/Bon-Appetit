@@ -40,7 +40,7 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add("effect." + BA + ".twin_strike.description",
                 "Makes all attacks hit twice, with the second hit doing less damage; higher levels increase the second hit's damage.");
         add("effect." + BA + ".reflection.description",
-                "Reflects any projectiles that make contact with the user; higher levels increase the chance.");
+                "Has a chance to reflect any projectiles that make contact with the user; higher levels increase the chance.");
         add("effect." + BA + ".concentration.description",
                 "Removes gravity from any projectile shot and amplifies the damage; higher levels increase the projectile velocity and damage.");
         add("effect." + BA + ".agility.description",
@@ -49,6 +49,12 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
                 "Spawns a potion cloud with all your positive effects; higher levels increase the cloud duration and size.");
         add("effect." + BA + ".dissonance.description",
                 "Spawns a potion cloud with all your negative effects; higher levels increase the cloud duration and size.");
+        add("effect." + BA + ".proliferate.description",
+                "Makes all attacks inflict a stacking Seeded effect that ruptures after a certain number of hits; higher levels increase the damage dealt by the rupture.");
+        add("effect." + BA + ".seeded.description",
+                "Ruptures after a certain level, dealing magic damage dependent on the level of Proliferate on the attacker. Additionally obscures part of the health bar with a parasitic vine; higher levels obscure more.");
+        add("effect." + BA + ".flak.description",
+                "Has a chance to shoot out shard shrapnel upon taking damage; higher levels increase the chance of it activating, the damage of the shards, and the amount of shards shot out.");
         add("effect." + BA + ".rooted.description",
                 "Increases knockback resistance and armor for the user.");
         add("effect." + BA + ".caffeinated.description",
@@ -70,12 +76,9 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add("advancements.story.not_tomorrow_thank_you.title", "Not Tomorrow Either, Thank You");
         add("advancements.story.not_tomorrow_thank_you.description",
                 "Reflect a projectile using the power of grapefruits");
-        add("advancements.adventure.shadow_strike.title", "Shadow Strike");
-        add("advancements.adventure.shadow_strike.description",
-                "Using the power of pears, perform a stealth strike on a mob");
-        add("advancements.adventure.slip_under_the_door.title", "Slip Under The Door");
-        add("advancements.adventure.slip_under_the_door.description",
-                "Stay hidden in a group of at least five mobs using the power of pears");
+        add("advancements.adventure.wearing_the_inside_out.title", "Wearing the Inside Out");
+        add("advancements.adventure.wearing_the_inside_out.description",
+                "Rend apart a mob from the inside out using the power of a pomegranate");
 
         //tags
         add("tag.item." + BA + ".serving_containers", "Serving Containers");

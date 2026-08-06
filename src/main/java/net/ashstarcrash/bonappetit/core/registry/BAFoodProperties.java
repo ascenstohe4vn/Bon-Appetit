@@ -15,7 +15,7 @@ public class BAFoodProperties {
     public static final FoodProperties GENERIC_FRUIT = (new FoodProperties.Builder())
             .nutrition(4).saturationModifier(0.3F).build();
     public static final FoodProperties GENERIC_FRUIT_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.175f).build();
+            .nutrition(2).saturationModifier(0.175F).build();
     public static final FoodProperties GOLDEN_CHERRIES = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.85F)
             .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 0), 1F)
@@ -24,6 +24,9 @@ public class BAFoodProperties {
             .nutrition(4).saturationModifier(1.1F)
             .effect(() -> new MobEffectInstance(BAEffects.CONCENTRATION, 2400, 0), 1F)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 600, 0), 1F).build();
+    public static final FoodProperties POMEGRANATE_SEEDS = (new FoodProperties.Builder())
+            .nutrition(1).saturationModifier(0.0F).fast().alwaysEdible()
+            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 0), 0.8F).build();
 
     public static final FoodProperties GENERIC_BERRY = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F).build();
@@ -69,7 +72,7 @@ public class BAFoodProperties {
             .nutrition(12).saturationModifier(1.15F).usingConvertsTo(BOWL)
             .effect(() -> new MobEffectInstance(BAEffects.FLAK, 750, 1), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 450, 0), 1f)
-            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 100, 1), 1f)
+            .effect(() -> new MobEffectInstance(BAEffects.SEEDED, 200, 1), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f).build();
     public static final FoodProperties PANETTONE = new FoodProperties.Builder()
             .nutrition(7).saturationModifier(0.8F)
@@ -78,7 +81,6 @@ public class BAFoodProperties {
                     new RandomMobEffectInstance.EffectEntry(BAEffects.CONCENTRATION, 200, 0, 1.0F),
                     new RandomMobEffectInstance.EffectEntry(BAEffects.RESONANCE, 200, 0, 1.0F),
                     new RandomMobEffectInstance.EffectEntry(BAEffects.DISSONANCE, 200, 0, 1.0F)), 1.0F).build();
-
     public static final FoodProperties STOLLEN = new FoodProperties.Builder()
             .nutrition(9).saturationModifier(0.9F)
             .effect(() -> new RandomMobEffectInstance(
@@ -126,11 +128,9 @@ public class BAFoodProperties {
             .nutrition(2).saturationModifier(0.35F)
             .effect(() -> new MobEffectInstance(BAEffects.CONCENTRATION, 200, 1), 1f).fast().build();
     public static final FoodProperties MANGO_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(BAEffects.INSATIABLE, 900, 1), 1f).build();
+            .nutrition(8).saturationModifier(0.35F).build();
     public static final FoodProperties MANGO_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(BAEffects.INSATIABLE, 200, 1), 1f).fast().build();
+            .nutrition(2).saturationModifier(0.35F).fast().build();
     public static final FoodProperties LEMON_TART = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.3F)
             .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 900, 1), 1f).build();

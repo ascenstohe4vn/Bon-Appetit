@@ -23,7 +23,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
+@EventBusSubscriber(modid = BonAppetit.ID)
 public class ConcentrationEvent {
     public static final Set<Projectile> CONCENTRATION_PROJECTILES = new HashSet<>();
 

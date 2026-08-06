@@ -14,7 +14,7 @@ import org.joml.Vector3f;
 
 import java.util.WeakHashMap;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
+@EventBusSubscriber(modid = BonAppetit.ID)
 public class FervorEvent {
     private static final WeakHashMap<Player, MiningState> STATES = new WeakHashMap<>();
 

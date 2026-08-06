@@ -16,7 +16,7 @@ import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 import java.util.WeakHashMap;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
+@EventBusSubscriber(modid = BonAppetit.ID)
 public class DischargeEvent {
     private static final WeakHashMap<LivingEntity, Float> RESERVOIR = new WeakHashMap<>();
 

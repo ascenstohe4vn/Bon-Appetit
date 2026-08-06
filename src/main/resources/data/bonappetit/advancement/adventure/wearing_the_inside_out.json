@@ -1,0 +1,26 @@
+{
+  "parent": "minecraft:adventure/kill_a_mob",
+  "criteria": {
+    "seeded_rupture": {
+      "trigger": "bonappetit:seeded_rupture"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.adventure.wearing_the_inside_out.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "bonappetit:pomegranate_slice"
+    },
+    "title": {
+      "translate": "advancements.adventure.wearing_the_inside_out.title"
+    }
+  },
+  "requirements": [
+    [
+      "seeded_rupture"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

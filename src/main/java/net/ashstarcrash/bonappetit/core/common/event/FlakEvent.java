@@ -1,5 +1,6 @@
 package net.ashstarcrash.bonappetit.core.common.event;
 
+import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.registry.BAEffects;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.ashstarcrash.bonappetit.core.content.entity.DragonShardEntity;
@@ -14,7 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = BonAppetit.ID)
 public class FlakEvent {
 
     @SubscribeEvent

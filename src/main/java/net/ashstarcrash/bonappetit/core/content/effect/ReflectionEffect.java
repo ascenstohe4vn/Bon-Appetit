@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /*\
- * Reflection reflects all projectiles that attempt to hit you.
+ * Reflection reflects all projectiles that attempt to hit you with a chance.
  * Starting % is 40 at amplifier 0, and adding 30 for every amplifier up to 100% at amplifier 2
 \*/
 public class ReflectionEffect extends MobEffect implements Holder<MobEffect> {

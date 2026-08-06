@@ -16,7 +16,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
-@Mod(value = BonAppetit.ID) @EventBusSubscriber(modid = BonAppetit.ID)
+@EventBusSubscriber(modid = BonAppetit.ID)
 public class VigorEvent {
     private static final ResourceLocation VIGOR_SPEED_ID = ModUtil.BA.asResource("vigor_speed");
 
