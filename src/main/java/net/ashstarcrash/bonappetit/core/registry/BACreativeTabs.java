@@ -37,11 +37,6 @@ public class BACreativeTabs {
                 output.accept(CORN_KERNELS);
                 output.accept(POMEGRANATE_SEEDS);
 
-                //veggies
-                output.accept(PUMPKIN_SLICE);
-
-                output.accept(CORN);
-
                 //fruits
                 output.accept(CHERRIES);
                 output.accept(GOLDEN_CHERRIES);
@@ -105,6 +100,14 @@ public class BACreativeTabs {
                 output.accept(RASPBERRIES);
                 output.accept(BLACK_RASPBERRIES);
 
+                //veggies
+                output.accept(CORN);
+
+                output.accept(ONION);
+                output.accept(ONION_SLICE);
+
+                output.accept(PUMPKIN_SLICE);
+
                 //grains
                 output.accept(RICE);
 
@@ -132,6 +135,7 @@ public class BACreativeTabs {
                 output.accept(RAW_CORN_TORTILLA);
                 output.accept(CORN_TORTILLA);
                 output.accept(CORNBREAD);
+                output.accept(ONION_RINGS);
                 output.accept(HONEY_APPLE);
                 output.accept(CANDY_APPLE);
                 output.accept(CARAMEL_APPLE);
@@ -163,6 +167,7 @@ public class BACreativeTabs {
 
                 //sweets
                 output.accept(PLAIN_COOKIE);
+                output.accept(SUGAR_COOKIE);
                 output.accept(LEMON_COOKIE);
                 output.accept(LIME_COOKIE);
                 output.accept(SNICKERDOODLE);
@@ -215,7 +220,7 @@ public class BACreativeTabs {
                 output.accept(BLUEBERRY_LIMEADE);
                 output.accept(LIME_GREEN_TEA);
                 output.accept(PINK_LADY);
-                output.accept(CHERRY_LIME_RICKEY_REFRESHER);
+                output.accept(CHERRY_LIME_REFRESHER);
             }).build());
 
     public static void register(IEventBus eventBus) {

@@ -1,0 +1,51 @@
+{
+  "type": "bonappetit:add_leaves_item",
+  "conditions": [
+    {
+      "condition": "minecraft:block_state_property",
+      "block": "minecraft:cherry_leaves"
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:any_of",
+        "terms": [
+          {
+            "condition": "neoforge:can_item_perform_ability",
+            "ability": "shears_dig"
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "predicates": {
+                "minecraft:enchantments": [
+                  {
+                    "enchantments": "minecraft:silk_touch",
+                    "levels": {
+                      "min": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "condition": "minecraft:table_bonus",
+      "enchantment": "minecraft:fortune",
+      "chances": [
+        0.005,
+        0.0055555557,
+        0.00625,
+        0.008333334,
+        0.025
+      ]
+    },
+    {
+      "condition": "minecraft:survives_explosion"
+    }
+  ],
+  "item": "bonappetit:cherries"
+}

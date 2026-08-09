@@ -10,7 +10,8 @@ import java.util.Set;
 
 public class BAItemModelProvider extends ItemModelProvider {
     private static final Set<String> BLACKLIST = Set.of(
-            "pitchfork"
+            "pitchfork",
+            "sugar_cookie"
     );
 
     private static final Set<String> BLOCK_ITEMS = Set.of(

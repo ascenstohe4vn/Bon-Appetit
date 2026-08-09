@@ -27,7 +27,7 @@ import java.util.List;
 public class ClientEvents {
     @SubscribeEvent
     public static void onFoodBar(RenderGuiLayerEvent.Pre event) {
-        if (!BAConfig.HUNGER_BAR_ENABLED.get() && event.getName().equals(VanillaGuiLayers.FOOD_LEVEL)) {
+        if (!BAConfig.VANILLA_HUNGER_BAR.get() && event.getName().equals(VanillaGuiLayers.FOOD_LEVEL)) {
             event.setCanceled(true);
         }
     }
@@ -37,7 +37,7 @@ public class ClientEvents {
         ItemStack stack = event.getItemStack();
         FoodProperties foodProperties = stack.getFoodProperties(event.getEntity());
 
-        BAConfig.EffectTooltipDisplay effectMode = BAConfig.EFFECT_TOOLTIPS_DISPLAY.get();
+        BAConfig.EffectTooltipDisplay effectMode = BAConfig.EFFECT_TOOLTIP_DISPLAY.get();
         boolean showEffects = switch (effectMode) {
             case NONE -> false;
             case FULL -> true;
@@ -98,7 +98,7 @@ public class ClientEvents {
 
                     float probability = possibleEffect.probability();
                     if (probability < 1.0F) {
-                        BAConfig.ChanceDisplayMode chanceMode = BAConfig.CHANCE_DISPLAY.get();
+                        BAConfig.ChanceDisplayMode chanceMode = BAConfig.EFFECT_CHANCE_DISPLAY.get();
                         switch (chanceMode) {
                             case FULL -> {
                                 int percent = (int) (probability * 100);
@@ -141,7 +141,7 @@ public class ClientEvents {
                 effectText.withStyle(category.getTooltipFormatting());
 
                 if (probability < 1.0F) {
-                    BAConfig.ChanceDisplayMode mode = BAConfig.CHANCE_DISPLAY.get();
+                    BAConfig.ChanceDisplayMode mode = BAConfig.EFFECT_CHANCE_DISPLAY.get();
 
                     switch (mode) {
                         case FULL -> {

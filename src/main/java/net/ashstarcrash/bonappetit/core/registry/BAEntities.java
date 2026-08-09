@@ -1,6 +1,7 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
 import net.ashstarcrash.bonappetit.core.content.entity.DragonShardEntity;
+import net.ashstarcrash.bonappetit.core.content.entity.PomegranateSeedEntity;
 import net.ashstarcrash.bonappetit.core.content.entity.ThrownPitchfork;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.EntityType;
@@ -23,4 +24,10 @@ public class BAEntities {
                     .clientTrackingRange(4)
                     .updateInterval(20)
                     .build("dragon_shard"));
+    public static final DeferredHolder<EntityType<?>, EntityType<PomegranateSeedEntity>> POMEGRANATE_SEED =
+            ENTITIES.register("pomegranate_seed", () -> EntityType.Builder.<PomegranateSeedEntity>of(PomegranateSeedEntity::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("pomegranate_seed"));
 }

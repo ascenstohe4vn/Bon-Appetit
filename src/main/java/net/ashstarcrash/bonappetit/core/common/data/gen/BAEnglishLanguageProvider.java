@@ -1,5 +1,7 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
+import com.electronwill.nightconfig.core.UnmodifiableConfig;
+import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.registry.BABlocks;
@@ -33,12 +35,14 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("tab." + BA, "Bon Appétit");
 
-        //emi info
+        //recipe viewers
+        add("jei." + BA + ".category.cooking_pot", "Pot Cooking");
+
         add("emi.info.macarons",
                 "Macarons are able to be dyed like leather armor!");
 
         //items
-        add("item." + MC + "bread", "Wheat Bread");
+        add("item." + MC + ".bread", "Wheat Bread");
 
         //effect desc
         add("effect." + BA + ".twin_strike.description",
@@ -91,56 +95,21 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add("tag.item." + C  + ".citrus_foods", "Citrus Foods");
 
         //configs
-        add(BA + ".configuration.title", "Bon Appétit Config");
+        add(BA + ".configuration.title", "Bon Appétit");
         add(BA + ".configuration.section.bonappetit.common.toml", "Bon Appétit Config");
         add(BA + ".configuration.section.bonappetit.common.toml.title", "Bon Appétit Config");
 
         add(BA + ".configuration.hunger", "Hunger");
-                add(BA + ".configuration.hungerBarEnabled", "Enable Vanilla Hunger Bar");
-                add(BA + ".configuration.foodHealMultiplier", "Instant Heal per Nutrition");
-                add(BA + ".configuration.foodRegenDurationPerSaturation", "Regen Duration per Saturation");
-                add(BA + ".configuration.foodRegenMinDurationTicks", "Minimum Regen Duration Threshold");
-                add(BA + ".configuration.foodRegenPulseIntervalTicks", "Regen Pulse Interval");
-                add(BA + ".configuration.foodRegenPulseHealAmount", "Regen Pulse Heal Amount");
-                add(BA + ".configuration.foodRegenMaxDurationTicks", "Maximum Regen Duration Cap");
-
-        add(BA + ".configuration.registry", "Registry");
-                add(BA + ".configuration.registerGrapefruit", "Grapefruit");
-                add(BA + ".configuration.registerCoffee", "Coffee");
-
         add(BA + ".configuration.gameplay", "Gameplay");
-                add(BA + ".configuration.cherry", "Cherry");
-                        add(BA + ".configuration.twinStrikeInitialMulti", "Twin Strike Initial Damage Multiplier");
-                        add(BA + ".configuration.twinStrikeAdditiveMulti", "Twin Strike Additive Damage Multiplier");
-                        add(BA + ".configuration.twinStrikeMobSpawning", "Allow Twin Strike Mob Spawning");
-                        add(BA + ".configuration.twinStrikeMobSpawnables", "Spawnable Twin Strike Mobs");
-                add(BA + ".configuration.dragonFruit", "Dragon Fruit");
-                        add(BA + ".configuration.flakMobSpawning", "Allow Flak Mob Spawning");
-                        add(BA + ".configuration.flakMobSpawnables", "Spawnable Flak Mobs");
-                add(BA + ".configuration.pomegranate", "Pomegranate");
-                        add(BA + ".configuration.seededOverlay", "Seeded Health Overlay");
-                        add(BA + ".configuration.seededMaxStacks", "Maximum Seeded Stacks");
-                        add(BA + ".configuration.proliferateMobSpawning", "Allow Proliferate Mob Spawning");
-                        add(BA + ".configuration.proliferateMobSpawnables", "Spawnable Proliferate Mobs");
-
-
+        add(BA + ".configuration.cherry", "Cherry");
+        add(BA + ".configuration.dragonFruit", "Dragon Fruit");
+        add(BA + ".configuration.pomegranate", "Pomegranate");
+        add(BA + ".configuration.onion", "Onion");
         add(BA + ".configuration.tweaks", "Tweaks");
-                add(BA + ".configuration.smartContainerReturn", "Smart Container Return");
-                add(BA + ".configuration.foodMovementMultiplier", "Eating Movement Multiplier");
-                add(BA + ".configuration.drinkMovementMultiplier", "Drinking Movement Multiplier");
-                add(BA + ".configuration.cakes", "Cakes");
-                        add(BA + ".configuration.vanillaCakeEffect", "Vanilla Cake Effect");
-                        add(BA + ".configuration.cakeRepairing", "Cake Repairing");
-                        add(BA + ".configuration.cakeFallCushioning", "Cake Fall Cushioning");
-
+        add(BA + ".configuration.cakes", "Cakes");
         add(BA + ".configuration.tooltips", "Tooltips");
-                add(BA + ".configuration.foodStatistics", "Food Statistics Tooltips");
-                        add(BA + ".configuration.foodStatisticsTooltipDisplay", "Food Statistics Tooltip Display");
-                        add(BA + ".configuration.showSaturationOverlay", "Show Saturation Overlay");
-                add(BA + ".configuration.effects", "Effect Tooltips");
-                        add(BA + ".configuration.effectTooltipsDisplay", "Food Effect Display Mode");
-                        add(BA + ".configuration.negativeEffectTooltips", "Enable Negative Food Effect Tooltips");
-                        add(BA + ".configuration.chanceDisplayMode", "Effect Chance Display Mode");
+        add(BA + ".configuration.food_statistics_tooltips", "Food Statistics Tooltips");
+        add(BA + ".configuration.effect_tooltips", "Effect Tooltips");
 
         BAItems.ITEMS.getEntries().forEach(item -> {
             if (item.getId() == null) return;
@@ -171,11 +140,23 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
             String path = effect.getId().getPath();
             add("effect." + BA + "." + path, toTitleCase(path));
         });
+
+        addConfigLangEntries(BAConfig.SPEC.getValues());
     }
 
     private static String toTitleCase(String id) {
         return Arrays.stream(id.split("_"))
                 .map(s -> s.substring(0, 1).toUpperCase() + s.substring(1))
                 .collect(Collectors.joining(" "));
+    }
+
+    private void addConfigLangEntries(UnmodifiableConfig config) {
+        config.valueMap().forEach((key, value) -> {
+            if (value instanceof UnmodifiableConfig nested) {
+                addConfigLangEntries(nested);
+            } else {
+                add(BA + ".configuration." + key, toTitleCase(key));
+            }
+        });
     }
 }

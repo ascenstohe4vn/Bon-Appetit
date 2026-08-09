@@ -1,5 +1,6 @@
 package net.ashstarcrash.bonappetit;
 
+import net.ashstarcrash.bonappetit.core.content.entity.*;
 import net.ashstarcrash.bonappetit.core.registry.BABlockEntities;
 import net.ashstarcrash.bonappetit.core.registry.BAEntities;
 import net.ashstarcrash.bonappetit.core.registry.BAMenuTypes;
@@ -7,10 +8,6 @@ import net.ashstarcrash.bonappetit.core.registry.BAModelLayers;
 import net.ashstarcrash.bonappetit.core.common.recipe.RecipeCategories;
 import net.ashstarcrash.bonappetit.client.renderer.DryingRackRenderer;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotScreen;
-import net.ashstarcrash.bonappetit.core.content.entity.DragonShardModel;
-import net.ashstarcrash.bonappetit.core.content.entity.DragonShardRenderer;
-import net.ashstarcrash.bonappetit.core.content.entity.PitchforkModel;
-import net.ashstarcrash.bonappetit.core.content.entity.ThrownPitchforkRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -34,12 +31,14 @@ public class BonAppetitClient {
         event.registerBlockEntityRenderer(BABlockEntities.DRYING_RACK.get(), DryingRackRenderer::new);
         event.registerEntityRenderer(BAEntities.PITCHFORK.get(), ThrownPitchforkRenderer::new);
         event.registerEntityRenderer(BAEntities.DRAGON_SHARD.get(), DragonShardRenderer::new);
+        event.registerEntityRenderer(BAEntities.POMEGRANATE_SEED.get(), PomegranateSeedRenderer::new);
     }
 
     @SubscribeEvent
     public static void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(BAModelLayers.PITCHFORK, PitchforkModel::createLayer);
         event.registerLayerDefinition(BAModelLayers.DRAGON_SHARD, DragonShardModel::createBodyLayer);
+        event.registerLayerDefinition(BAModelLayers.POMEGRANATE_SEED, PomegranateSeedModel::createBodyLayer);
     }
 
     @SubscribeEvent

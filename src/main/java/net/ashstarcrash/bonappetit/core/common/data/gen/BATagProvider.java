@@ -113,6 +113,7 @@ public class BATagProvider {
                     .add(BAItems.STOLLEN.get())
                     .add(STOLLEN_SLICE.get())
                     .add(PLAIN_COOKIE.get())
+                    .add(SUGAR_COOKIE.get())
                     .add(LEMON_COOKIE.get())
                     .add(LIME_COOKIE.get())
                     .add(SNICKERDOODLE.get())
@@ -239,6 +240,7 @@ public class BATagProvider {
 
             this.tag(Tags.Items.FOODS_COOKIE)
                     .add(PLAIN_COOKIE.get())
+                    .add(SUGAR_COOKIE.get())
                     .add(LEMON_COOKIE.get())
                     .add(LIME_COOKIE.get())
                     .add(SNICKERDOODLE.get())
@@ -276,7 +278,7 @@ public class BATagProvider {
                     .add(BLUEBERRY_LIMEADE.get())
                     .add(LIME_GREEN_TEA.get())
                     .add(PINK_LADY.get())
-                    .add(CHERRY_LIME_RICKEY_REFRESHER.get());
+                    .add(CHERRY_LIME_REFRESHER.get());
             this.tag(Tags.Items.DRINKS_WATER);
             this.tag(Tags.Items.DRINKS_WATERY)
                     .add(WATER_MUG.get());
@@ -305,6 +307,7 @@ public class BATagProvider {
                     .add(COFFEE_CHERRIES.get());
 
             this.tag(ItemTags.DYEABLE)
+                    .add(SUGAR_COOKIE.get())
                     .add(MACARON.get());
         }
     }

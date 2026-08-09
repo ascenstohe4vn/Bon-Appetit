@@ -129,17 +129,17 @@ public abstract class GuiGraphicsTooltipMixin {
             return;
         }
 
-        boolean hungerEnabled = BAConfig.HUNGER_BAR_ENABLED.get();
+        boolean hungerEnabled = BAConfig.VANILLA_HUNGER_BAR.get();
         FoodProperties food = bonappetit$food;
 
         if (!hungerEnabled) {
-            float healAmount = (float) (food.nutrition() * BAConfig.FOOD_HEAL_MULTIPLIER.get());
+            float healAmount = (float) (food.nutrition() * BAConfig.HEAL_PER_NUTRITION.get());
             int regenDuration = FoodHealingHelper.computeRegenDuration(food);
             int regenTotalHp = regenDuration > 0 ? FoodHealingHelper.computeTotalRegenHp(regenDuration) : 0;
 
             drawHeartRow(guiGraphics, rowX, rowY, healAmount, regenTotalHp);
         } else {
-            drawFoodRow(guiGraphics, rowX, rowY, food.nutrition() * 2.0F, food.saturation());
+            drawFoodRow(guiGraphics, rowX, rowY, food.nutrition(), food.saturation());
         }
 
         bonappetit$shouldRender = false;

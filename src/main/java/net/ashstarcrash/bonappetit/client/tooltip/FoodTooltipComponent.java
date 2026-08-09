@@ -55,14 +55,12 @@ public class FoodTooltipComponent implements ClientTooltipComponent {
     }
 
     private void drawHungerRow(GuiGraphics guiGraphics, int x, int y) {
-        float amount = data.foodLevel();
+        float amount = (data.foodLevel() / 2.0F);
         int fullUnits = (int) (amount / 2.0F);
         boolean hasHalf = (amount % 2.0F) >= 1.0F;
         int totalIcons = fullUnits + (hasHalf ? 1 : 0);
 
-        if (totalIcons > MAX_ICONS) {
-            return;
-        }
+        if (totalIcons > MAX_ICONS) return;
 
         for (int i = 0; i < totalIcons; i++) {
             int drawX = x + i * 8;

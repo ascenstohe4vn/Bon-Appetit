@@ -29,22 +29,28 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.Ghast;
 import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.component.DyedItemColor;
+import net.minecraft.world.item.trading.ItemCost;
+import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
@@ -55,20 +61,41 @@ import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.village.WandererTradesEvent;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = BonAppetit.ID)
 public class GameEvents {
     private record MobEffectConfigRule(Supplier<Holder<MobEffect>> effect, ModConfigSpec.BooleanValue enabled, ModConfigSpec.ConfigValue<List<? extends String>> spawnables) {}
     private static final MobEffectConfigRule[] RULES = new MobEffectConfigRule[] {
-            new MobEffectConfigRule(() -> BAEffects.TWIN_STRIKE, BAConfig.TWIN_STRIKE_MOB_SPAWNING, BAConfig.TWIN_STRIKE_MOB_SPAWNABLES),
-            new MobEffectConfigRule(() -> BAEffects.FLAK, BAConfig.FLAK_MOB_SPAWNING, BAConfig.FLAK_MOB_SPAWNABLES),
-            new MobEffectConfigRule(() -> BAEffects.PROLIFERATE, BAConfig.PROLIFERATE_MOB_SPAWNING, BAConfig.PROLIFERATE_MOB_SPAWNABLES)
+            new MobEffectConfigRule(() -> BAEffects.TWIN_STRIKE, BAConfig.TWIN_STRIKE_MOB_SPAWNING, BAConfig.SPAWNABLE_TWIN_STRIKE_MOBS),
+            new MobEffectConfigRule(() -> BAEffects.FLAK, BAConfig.FLAK_MOB_SPAWNING, BAConfig.SPAWNABLE_FLAK_MOBS),
+            new MobEffectConfigRule(() -> BAEffects.PROLIFERATE, BAConfig.PROLIFERATE_MOB_SPAWNING, BAConfig.SPAWNABLE_PROLIFERATE_MOBS)
     };
+
+    @SubscribeEvent
+    public static void addWanderingTrades(WandererTradesEvent event) {
+        List<VillagerTrades.ItemListing> common = event.getGenericTrades();
+        List<VillagerTrades.ItemListing> rare = event.getRareTrades();
+
+        common.add((entity, randomSource) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 1),
+                new ItemStack(BAItems.CORN_KERNELS.get(), 1), 12, 1, 0.05f));
+        rare.add((entity, randomSource) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 2),
+                new ItemStack(Items.COCOA_BEANS, 1), 12, 1, 0.05f));
+        rare.add((entity, randomSource) -> new MerchantOffer(
+                new ItemCost(Items.EMERALD, 2),
+                new ItemStack(BAItems.POMEGRANATE_SEEDS.get(), 1), 12, 1, 0.05f));
+    }
 
     @SubscribeEvent
     public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
@@ -98,6 +125,47 @@ public class GameEvents {
         player.getData(BAAttachments.FOOD_DISCOVERY.get()).markEaten(id);
     }
 
+    private static final Map<UUID, Integer> LAST_ONION_TEAR_TICK = new HashMap<>();
+    @SubscribeEvent
+    public static void onOnionSliceCrafted(PlayerEvent.ItemCraftedEvent event) {
+        if (!event.getCrafting().is(BAItems.ONION_SLICE.get())) return;
+
+        Player player = event.getEntity();
+        Level level = player.level();
+        if (level.isClientSide) return;
+
+        int currentTick = level.getServer().getTickCount();
+        int lastTick = LAST_ONION_TEAR_TICK.getOrDefault(player.getUUID(), -1);
+        if (currentTick == lastTick) return;
+        LAST_ONION_TEAR_TICK.put(player.getUUID(), currentTick);
+
+        int radius = BAConfig.ONION_TEAR_RADIUS.get();
+        if (radius <= 0) return;
+
+        int ghastRadius = radius * 4;
+        AABB area = player.getBoundingBox().inflate(radius);
+
+        AABB ghastArea = player.getBoundingBox().inflate(ghastRadius);
+        for (Ghast ghast : level.getEntitiesOfClass(Ghast.class, ghastArea)) {
+            if (level.random.nextFloat() < 0.5F) {
+                ghast.spawnAtLocation(Items.GHAST_TEAR);
+                level.playSound(null, ghast.blockPosition(), SoundEvents.GHAST_AMBIENT, SoundSource.NEUTRAL, 1.0F, 1.2F);
+            }
+        }
+
+        for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, area)) {
+            entity.hurt(level.damageSources().starve(), 1.0F);
+        }
+
+        BlockPos center = player.blockPosition();
+        BlockPos.betweenClosed(center.offset(-radius, -radius, -radius), center.offset(radius, radius, radius))
+                .forEach(pos -> {
+                    if (level.getBlockState(pos).is(Blocks.OBSIDIAN) && level.random.nextFloat() < 0.2F) {
+                        level.setBlockAndUpdate(pos, Blocks.CRYING_OBSIDIAN.defaultBlockState());
+                    }
+                });
+    }
+
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
@@ -109,10 +177,10 @@ public class GameEvents {
         int ticksRemaining = data.getTicksRemaining() - 1;
         int pulseTimer = data.getPulseTimer() + 1;
 
-        int pulseInterval = BAConfig.FOOD_REGEN_PULSE_INTERVAL_TICKS.get();
+        int pulseInterval = BAConfig.REGEN_PULSE_INTERVAL.get();
         if (pulseTimer >= pulseInterval) {
             pulseTimer = 0;
-            float healAmount = BAConfig.FOOD_REGEN_PULSE_HEAL_AMOUNT.get().floatValue();
+            float healAmount = BAConfig.REGEN_PULSE_HEAL_AMOUNT.get().floatValue();
             if (player.getHealth() < player.getMaxHealth() && healAmount > 0.0F) {
                 player.heal(healAmount);
             }
@@ -264,7 +332,7 @@ public class GameEvents {
         if (food == null) return;
 
         List<Component> tooltip = event.getToolTip();
-        if (!(food.nutrition() <= 0)) {
+        if (!(food.nutrition() <= 0) && !BAConfig.FOOD_STATISTICS_TOOLTIP_DISPLAY.get().equals(BAConfig.FoodStatisticsTooltipDisplay.NONE)) {
             tooltip.add(1, Component.empty());
             tooltip.add(2, Component.empty());
         }
@@ -289,9 +357,15 @@ public class GameEvents {
 
     @SubscribeEvent
     public static void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
-        event.register((p_329705_, p_329706_) -> {
-            event.register((stack, index) -> index == 0 ? DyedItemColor.getOrDefault(stack, -1) : -1, BAItems.MACARON);
-            return 0xFFFFFFFF;
-        }, BAItems.MACARON.value());
+        event.register((stack, tintIndex) -> {
+            if (tintIndex == 1) {
+                return stack.get(DataComponents.DYED_COLOR) != null ? (0xFF000000 | stack.get(DataComponents.DYED_COLOR).rgb()) : 0xFFFFFFFF;
+            }
+            return -1;
+        }, BAItems.SUGAR_COOKIE.get());
+
+        event.register((stack, tintIndex) -> {
+            return tintIndex == 0 ? DyedItemColor.getOrDefault(stack, -1) : -1;
+        }, BAItems.MACARON.get());
     }
 }

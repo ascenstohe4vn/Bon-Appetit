@@ -36,12 +36,12 @@ public abstract class LocalPlayerMixin {
 
         boolean isPlainDrink = stack.is(drinksTag) && !stack.is(magicDrinksTag) && !stack.is(ominousDrinksTag);
         if (isPlainDrink) {
-            return (float) BAConfig.DRINK_MOVEMENT_MULTIPLIER.get().doubleValue();
+            return (float) BAConfig.DRINKING_MOVEMENT_MULTIPLIER.get().doubleValue();
         }
 
         boolean isMagicOrOminousDrink = stack.is(magicDrinksTag) || stack.is(ominousDrinksTag);
         if (!isMagicOrOminousDrink) {
-            return (float) BAConfig.FOOD_MOVEMENT_MULTIPLIER.get().doubleValue();
+            return (float) BAConfig.EATING_MOVEMENT_MULTIPLIER.get().doubleValue();
         }
 
         return original;

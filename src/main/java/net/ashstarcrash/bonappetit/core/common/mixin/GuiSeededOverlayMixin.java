@@ -22,7 +22,7 @@ public abstract class GuiSeededOverlayMixin {
         if (seeded == null) return;
 
         int stacks = seeded.getAmplifier() + 1;
-        int maxStacks = (BAConfig.SEEDED_MAX_STACKS.get());
+        int maxStacks = (BAConfig.MAXIMUM_SEEDED_STACKS.get());
         if (stacks > maxStacks) return;
 
         float rawHp = ((float) stacks / maxStacks) * 20.0F;

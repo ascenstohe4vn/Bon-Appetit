@@ -31,6 +31,11 @@ public class BAFoodProperties {
     public static final FoodProperties GENERIC_BERRY = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F).build();
 
+    public static final FoodProperties ONION = new FoodProperties.Builder()
+            .nutrition(2).saturationModifier(0.6f).build();
+    public static final FoodProperties ONION_SLICE = new FoodProperties.Builder()
+            .nutrition(1).saturationModifier(0.4f).fast().build();
+
     public static final FoodProperties RICE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.05F).build();
 
@@ -51,6 +56,8 @@ public class BAFoodProperties {
             .nutrition(2).saturationModifier(0.8F).build();
     public static final FoodProperties CORNBREAD = new FoodProperties.Builder()
             .nutrition(4).saturationModifier(0.5f).build();
+    public static final FoodProperties ONION_RINGS = new FoodProperties.Builder()
+            .nutrition(4).saturationModifier(0.45f).build();
     public static final FoodProperties CANDIED_LIME_SLICE = (new FoodProperties.Builder())
             .nutrition(3).saturationModifier(0.35f).build();
     public static final FoodProperties JERKY = (new FoodProperties.Builder())
@@ -180,7 +187,13 @@ public class BAFoodProperties {
     public static final FoodProperties DRAGON_FRUIT_LATTE = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.625F)
             .effect(() -> new MobEffectInstance(BAEffects.FLAK, 750, 1), 1F).build();
-    public static final FoodProperties CHERRY_LIME_RICKEY_REFRESHER = (new FoodProperties.Builder())
+    public static final FoodProperties PINK_LADY = (new FoodProperties.Builder())
+            .nutrition(9).saturationModifier(0.6F).alwaysEdible()
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 600, 1), 0.9F)
+            .effect(() -> new MobEffectInstance(BAEffects.PROLIFERATE, 300, 0), 1F)
+            .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 300, 0), 1F)
+            .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 200, 0), 0.75F).build();
+    public static final FoodProperties CHERRY_LIME_REFRESHER = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.7F)
             .effect(() -> new MobEffectInstance(BAEffects.TWIN_STRIKE, 600, 1), 1f)
             .effect(() -> new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1f)

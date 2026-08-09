@@ -66,7 +66,7 @@ public class BonAppetit {
         BAMenuTypes.MENU_TYPES.register(modEventBus);
 
         BAFeatures.FEATURES.register(modEventBus);
-        BALootModifiers.LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
+        BALootModifiers.LOOT_MODIFIERS.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(ReflectionEvent.class);
         NeoForge.EVENT_BUS.register(ConcentrationEvent.class);
@@ -76,7 +76,7 @@ public class BonAppetit {
         NeoForge.EVENT_BUS.register(VigorEvent.class);
         NeoForgeMod.enableMilkFluid();
         modEventBus.addListener((RegisterCapabilitiesEvent event) -> {event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, BABlockEntities.COPPER_TANK.get(), (be, side) -> {if (be instanceof CopperTankEntity tank) {return tank.getTank();}return null;});});
-        modContainer.registerConfig(ModConfig.Type.COMMON, BAConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, BAConfig.SPEC, "bonappetit.toml");
     }
 
     @SubscribeEvent

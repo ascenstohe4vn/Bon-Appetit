@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cocoa_stage0",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "bonappetit:block/pomegranate_block_stage0",
+    "selection": "bonappetit:block/pomegranate_block_stage0"
+  }
+}

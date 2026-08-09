@@ -31,7 +31,7 @@ public abstract class FoodDataMixin implements IFoodDataOwner {
 
     @Inject(method = "eat(IF)V", at = @At("HEAD"), cancellable = true)
     private void bonappetit$cancelEatRaw(int nutrition, float saturationModifier, CallbackInfo ci) {
-        if (!BAConfig.HUNGER_BAR_ENABLED.get()) {
+        if (!BAConfig.VANILLA_HUNGER_BAR.get()) {
             if (this.bonappetit$owner != null) {
                 float saturation = FoodConstants.saturationByModifier(nutrition, saturationModifier);
                 FoodHealingHelper.applyRaw(this.bonappetit$owner, nutrition, saturation);
@@ -42,7 +42,7 @@ public abstract class FoodDataMixin implements IFoodDataOwner {
 
     @Inject(method = "eat(Lnet/minecraft/world/food/FoodProperties;)V", at = @At("HEAD"), cancellable = true)
     private void bonappetit$cancelEatProps(FoodProperties foodProperties, CallbackInfo ci) {
-        if (!BAConfig.HUNGER_BAR_ENABLED.get()) {
+        if (!BAConfig.VANILLA_HUNGER_BAR.get()) {
             if (this.bonappetit$owner != null) {
                 FoodHealingHelper.applyRaw(this.bonappetit$owner, foodProperties.nutrition(), foodProperties.saturation());
             }
@@ -52,7 +52,7 @@ public abstract class FoodDataMixin implements IFoodDataOwner {
 
     @Inject(method = "tick(Lnet/minecraft/world/entity/player/Player;)V", at = @At("HEAD"), cancellable = true)
     private void bonappetit$cancelTick(Player player, CallbackInfo ci) {
-        if (!BAConfig.HUNGER_BAR_ENABLED.get()) {
+        if (!BAConfig.VANILLA_HUNGER_BAR.get()) {
             ((FoodData) (Object) this).setExhaustion(0.0F);
             ((FoodData) (Object) this).setSaturation(0.0F);
             ci.cancel();
@@ -61,7 +61,7 @@ public abstract class FoodDataMixin implements IFoodDataOwner {
 
     @Inject(method = "needsFood", at = @At("HEAD"), cancellable = true)
     private void bonappetit$alwaysNeedsFood(CallbackInfoReturnable<Boolean> cir) {
-        if (!BAConfig.HUNGER_BAR_ENABLED.get()) {
+        if (!BAConfig.VANILLA_HUNGER_BAR.get()) {
             cir.setReturnValue(true);
             cir.cancel();
         }
@@ -69,7 +69,7 @@ public abstract class FoodDataMixin implements IFoodDataOwner {
 
     @Inject(method = "addExhaustion", at = @At("HEAD"), cancellable = true)
     private void bonappetit$cancelExhaustion(float exhaustion, CallbackInfo ci) {
-        if (!BAConfig.HUNGER_BAR_ENABLED.get()) {
+        if (!BAConfig.VANILLA_HUNGER_BAR.get()) {
             ci.cancel();
         }
     }

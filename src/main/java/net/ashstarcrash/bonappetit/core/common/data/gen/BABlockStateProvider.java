@@ -3,6 +3,7 @@ package net.ashstarcrash.bonappetit.core.common.data.gen;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.registry.BABlocks;
 import net.ashstarcrash.bonappetit.core.common.template.BAFlavorCandleCakeBlock;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -27,6 +28,7 @@ public class BABlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        pomegranateBlock(POMEGRANATE_BLOCK.get());
         simpleBlock(PANETTONE.get());
         simpleBlock(STOLLEN.get());
         cakeBlock(LEMON_CAKE.get());
@@ -88,5 +90,20 @@ public class BABlockStateProvider extends BlockStateProvider {
                         .modelFile(state.getValue(BlockStateProperties.LIT) ? lit : unlit)
                         .build()
         );
+    }
+    public void pomegranateBlock(Block block) {
+        this.getVariantBuilder(block).forAllStates(state -> {
+            Direction facing = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
+            int age = state.getValue(BlockStateProperties.AGE_3);
+            int yRot = ((int) facing.toYRot() + 180) % 360;
+
+            String parentModel = "block/cocoa_stage" + Math.min(age, 2); //temp
+            ModelFile model = models().withExistingParent(name(block) + "_stage" + age, mcLoc(parentModel))
+                    .texture("particle", blockTexture(block).withSuffix("_stage" + age))
+                    .texture("selection", blockTexture(block).withSuffix("_stage" + age))
+                    .renderType("cutout");
+
+            return ConfiguredModel.builder().modelFile(model).rotationY(yRot).build();
+        });
     }
 }

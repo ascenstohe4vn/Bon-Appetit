@@ -1,7 +1,9 @@
 package net.ashstarcrash.bonappetit.core.content.entity;
 
 import net.ashstarcrash.bonappetit.core.registry.BAEntities;
+import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -37,6 +39,11 @@ public class DragonShardEntity extends AbstractArrow implements ItemSupplier {
         builder.define(DATA_ITEM_STACK, new ItemStack(Items.AMETHYST_SHARD));
     }
 
+    public void setShardItem(ItemStack stack) {
+        this.setItem(stack);
+        this.setPickupItemStack(stack);
+    }
+
     public void setItem(ItemStack stack) {
         this.getEntityData().set(DATA_ITEM_STACK, stack);
     }
@@ -44,6 +51,21 @@ public class DragonShardEntity extends AbstractArrow implements ItemSupplier {
     @Override
     public ItemStack getItem() {
         return this.getEntityData().get(DATA_ITEM_STACK);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.put("Item", this.getItem().save(this.registryAccess()));
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        if (tag.contains("Item", 10)) {
+            ItemStack savedItem = ItemStack.parse(this.registryAccess(), tag.getCompound("Item")).orElse(new ItemStack(BAItems.DRAGON_SHARD.get()));
+            this.setShardItem(savedItem);
+        }
     }
 
     @Override
@@ -69,6 +91,6 @@ public class DragonShardEntity extends AbstractArrow implements ItemSupplier {
 
     @Override
     protected ItemStack getDefaultPickupItem() {
-        return ItemStack.EMPTY;
+        return new ItemStack(BAItems.DRAGON_SHARD.get());
     }
 }
