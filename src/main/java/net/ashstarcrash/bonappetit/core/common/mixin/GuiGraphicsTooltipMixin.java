@@ -15,6 +15,7 @@ import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositione
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
@@ -194,24 +195,42 @@ public abstract class GuiGraphicsTooltipMixin {
     private void drawFoodRow(GuiGraphics guiGraphics, int x, int y, float foodLevel, float saturation) {
         int fullCount = (int) (foodLevel / 2.0F);
         boolean hasHalf = (foodLevel % 2.0F) >= 1.0F;
-        int totalIcons = fullCount + (hasHalf ? 1 : 0);
+        int nutritionIcons = fullCount + (hasHalf ? 1 : 0);
+        int saturationIcons = (int) Math.ceil(Mth.clamp(saturation, 0.0F, 20.0F) / 2.0F);
+        int totalIcons = Math.max(nutritionIcons, saturationIcons);
         if (totalIcons > 20) return;
 
         RenderSystem.enableBlend();
         for (int i = 0; i < totalIcons; i++) {
             int drawX = x + i * 8;
-            boolean isHalf = hasHalf && i == totalIcons - 1;
-            guiGraphics.blitSprite(
-                    isHalf ? ResourceLocation.withDefaultNamespace("hud/food_half")
-                            : ResourceLocation.withDefaultNamespace("hud/food_full"),
-                    drawX, y, 9, 9
-            );
+            int iconFromRight = totalIcons - 1 - i;
+            boolean withinNutrition = iconFromRight < nutritionIcons;
 
-            if (BAConfig.SHOW_SATURATION_OVERLAY.get() && saturation > i * 2.0F) {
+            if (withinNutrition) {
+                boolean isHalf = hasHalf && iconFromRight == nutritionIcons - 1;
                 guiGraphics.blitSprite(
-                        ModUtil.BA.asResource("hud/saturation_overlay"),
+                        isHalf ? ResourceLocation.withDefaultNamespace("hud/food_half") : ResourceLocation.withDefaultNamespace("hud/food_full"),
                         drawX, y, 9, 9
                 );
+            }
+
+            if (BAConfig.SHOW_SATURATION_OVERLAY.get()) {
+                float iconSatHp = Math.clamp(Mth.clamp(saturation, 0.0F, 20.0F) - iconFromRight * 2.0F, 0.0F, 2.0F);
+                float fraction = iconSatHp / 2.0F;
+
+                if (fraction > 0.0F) {
+                    ResourceLocation overlay;
+                    if (fraction >= 0.96F) {
+                        overlay = ModUtil.BA.asResource("hud/saturation_overlay_3");
+                    } else if (fraction <= 0.33F) {
+                        overlay = ModUtil.BA.asResource("hud/saturation_overlay_0");
+                    } else if (fraction <= 0.66F) {
+                        overlay = ModUtil.BA.asResource("hud/saturation_overlay_1");
+                    } else {
+                        overlay = ModUtil.BA.asResource("hud/saturation_overlay_2");
+                    }
+                    guiGraphics.blitSprite(overlay, drawX, y, 9, 9);
+                }
             }
         }
         RenderSystem.disableBlend();

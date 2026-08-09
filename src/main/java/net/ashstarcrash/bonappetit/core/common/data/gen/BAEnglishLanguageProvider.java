@@ -102,7 +102,7 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
         add(BA + ".configuration.hunger", "Hunger");
         add(BA + ".configuration.gameplay", "Gameplay");
         add(BA + ".configuration.cherry", "Cherry");
-        add(BA + ".configuration.dragonFruit", "Dragon Fruit");
+        add(BA + ".configuration.dragon_fruit", "Dragon Fruit");
         add(BA + ".configuration.pomegranate", "Pomegranate");
         add(BA + ".configuration.onion", "Onion");
         add(BA + ".configuration.tweaks", "Tweaks");

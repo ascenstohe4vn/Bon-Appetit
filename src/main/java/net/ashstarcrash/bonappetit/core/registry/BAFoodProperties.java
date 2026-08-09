@@ -141,10 +141,10 @@ public class BAFoodProperties {
     public static final FoodProperties MANGO_PIE_SLICE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.35F).fast().build();
     public static final FoodProperties LEMON_TART = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.3F)
+            .nutrition(8).saturationModifier(0.35F)
             .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 900, 1), 1f).build();
     public static final FoodProperties LEMON_TART_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.3F)
+            .nutrition(2).saturationModifier(0.35F)
             .effect(() -> new MobEffectInstance(BAEffects.RESONANCE, 200, 0), 1f).fast().build();
     public static final FoodProperties LEMON_CAKE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F)
