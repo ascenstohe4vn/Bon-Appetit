@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.115'
+    id 'com.modrinth.minotaur' version '2.+'
     id 'idea'
 }
 
@@ -206,4 +207,32 @@ tasks.register("runDataAndClientAuth") {
 
     dependsOn("runData")
     finalizedBy("runClientAuth")
+}
+
+def extractChangelog = {
+    def changelogFile = file("CHANGELOG.md")
+    if (!changelogFile.exists()) return "No changelog provided."
+
+    def lines = changelogFile.readLines()
+    def versionHeader = ~/^##\s*\[?${java.util.regex.Pattern.quote(mod_version.toString())}\]?/
+    def startIndex = lines.findIndexOf { it =~ versionHeader }
+    if (startIndex == -1) return "No changelog entry found for version ${mod_version}."
+
+    def endIndex = lines.findIndexOf(startIndex + 1) { it.startsWith("## ") }
+    if (endIndex == -1) endIndex = lines.size()
+
+    return lines.subList(startIndex + 1, endIndex).join("\n").trim()
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "bon-appetit"
+    versionNumber = project.mod_version.toString()
+    versionType = (project.findProperty("modrinth_version_type") ?: "release").toString()
+    changelog = project.hasProperty("modrinth_changelog")
+            ? project.property("modrinth_changelog").toString()
+            : extractChangelog()
+    uploadFile = tasks.named("jar")
+    gameVersions = [project.minecraft_version.toString()]
+    loaders = ["neoforge"]
 }
