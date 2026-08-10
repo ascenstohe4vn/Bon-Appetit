@@ -10,7 +10,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

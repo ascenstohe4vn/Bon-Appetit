@@ -1,8 +1,8 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipe;
-import net.ashstarcrash.bonappetit.core.common.recipe.FoodServingRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.FoodServingRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;

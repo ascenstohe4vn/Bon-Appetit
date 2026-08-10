@@ -6,7 +6,8 @@
   "mixins": [
     "PlayerMixin",
     "LocalPlayerMixin",
-    "LivingEntityContainerReturnMixin",
+    "LivingEntityMixin",
+    "ItemStackMixin",
     "FoodDataMixin",
     "BoatMixin"
   ],

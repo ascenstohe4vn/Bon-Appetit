@@ -5,7 +5,7 @@ import net.ashstarcrash.bonappetit.core.registry.BABlockEntities;
 import net.ashstarcrash.bonappetit.core.registry.BAEntities;
 import net.ashstarcrash.bonappetit.core.registry.BAMenuTypes;
 import net.ashstarcrash.bonappetit.core.registry.BAModelLayers;
-import net.ashstarcrash.bonappetit.core.common.recipe.RecipeCategories;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.RecipeCategories;
 import net.ashstarcrash.bonappetit.client.renderer.DryingRackRenderer;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotScreen;
 import net.neoforged.api.distmarker.Dist;

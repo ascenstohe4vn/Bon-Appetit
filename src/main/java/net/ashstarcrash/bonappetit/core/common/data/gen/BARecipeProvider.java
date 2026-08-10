@@ -2,7 +2,7 @@ package net.ashstarcrash.bonappetit.core.common.data.gen;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.registry.BATags;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipeBuilder;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipeBuilder;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotRecipeBookTab;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

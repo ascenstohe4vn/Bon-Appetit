@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.core.common;
+package net.ashstarcrash.bonappetit.core.common.util;
 
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.client.RecipeBookCategories;

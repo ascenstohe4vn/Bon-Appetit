@@ -5,7 +5,7 @@ import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.registry.BABlocks;
 import net.ashstarcrash.bonappetit.core.registry.BAMenuTypes;
 import net.ashstarcrash.bonappetit.core.registry.BATags;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;

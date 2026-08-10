@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.core.common.loot;
+package net.ashstarcrash.bonappetit.core.common.data.loot;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

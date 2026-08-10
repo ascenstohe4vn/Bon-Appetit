@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityContainerReturnMixin {
+public abstract class LivingEntityMixin {
     @Redirect(method = "completeUsingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;setItemInHand(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;)V"))
     private void bonappetit$redirectContainerToInventory(LivingEntity self, InteractionHand hand, ItemStack itemstack) {
         if (!BAConfig.SMART_CONTAINER_RETURN.get() || !(self instanceof Player player) || player.hasInfiniteMaterials()) {

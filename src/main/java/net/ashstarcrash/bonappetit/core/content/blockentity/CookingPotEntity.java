@@ -11,7 +11,7 @@ import net.ashstarcrash.bonappetit.core.common.util.CookingPotItemHandler;
 import net.ashstarcrash.bonappetit.core.common.util.ItemHelper;
 import net.ashstarcrash.bonappetit.core.common.util.ItemStackWrapper;
 import net.ashstarcrash.bonappetit.core.common.util.TextHelper;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.ashstarcrash.bonappetit.core.content.block.CookingPotBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

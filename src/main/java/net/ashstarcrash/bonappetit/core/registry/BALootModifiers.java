@@ -1,9 +1,9 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
 import com.mojang.serialization.MapCodec;
-import net.ashstarcrash.bonappetit.core.common.loot.AbandonedMineshaftLootModifier;
-import net.ashstarcrash.bonappetit.core.common.loot.DungeonLootModifier;
-import net.ashstarcrash.bonappetit.core.common.loot.LeavesLootModifier;
+import net.ashstarcrash.bonappetit.core.common.data.loot.AbandonedMineshaftLootModifier;
+import net.ashstarcrash.bonappetit.core.common.data.loot.DungeonLootModifier;
+import net.ashstarcrash.bonappetit.core.common.data.loot.LeavesLootModifier;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

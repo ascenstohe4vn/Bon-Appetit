@@ -2,7 +2,7 @@ package net.ashstarcrash.bonappetit.core.content.blockentity;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.common.util.TextHelper;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.network.chat.Component;

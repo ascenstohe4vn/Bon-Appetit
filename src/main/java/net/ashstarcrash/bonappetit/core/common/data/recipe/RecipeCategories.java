@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.core.common.recipe;
+package net.ashstarcrash.bonappetit.core.common.data.recipe;
 
 import com.google.common.collect.ImmutableList;
 import net.ashstarcrash.bonappetit.core.registry.BARecipeTypes;

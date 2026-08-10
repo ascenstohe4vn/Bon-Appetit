@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.core.common.recipe;
+package net.ashstarcrash.bonappetit.core.common.data.recipe;
 
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.ashstarcrash.bonappetit.core.registry.BARecipeSerializers;

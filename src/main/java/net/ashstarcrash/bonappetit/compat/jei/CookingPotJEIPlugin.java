@@ -7,7 +7,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.ashstarcrash.bonappetit.BonAppetit;
-import net.ashstarcrash.bonappetit.core.common.recipe.CookingPotRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotMenu;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.ashstarcrash.bonappetit.core.registry.BAMenuTypes;

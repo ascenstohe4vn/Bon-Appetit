@@ -1,6 +1,6 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
-import net.ashstarcrash.bonappetit.core.common.data.CookingRecipes;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingRecipes;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

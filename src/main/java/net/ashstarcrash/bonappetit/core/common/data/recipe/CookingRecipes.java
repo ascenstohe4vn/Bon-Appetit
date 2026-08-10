@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.core.common.data;
+package net.ashstarcrash.bonappetit.core.common.data.recipe;
 
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.world.item.crafting.Ingredient;

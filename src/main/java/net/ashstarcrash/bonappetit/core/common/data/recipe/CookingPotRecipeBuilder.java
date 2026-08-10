@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.core.common.recipe;
+package net.ashstarcrash.bonappetit.core.common.data.recipe;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotRecipeBookTab;

@@ -2,7 +2,7 @@ package net.ashstarcrash.bonappetit;
 
 import com.mojang.logging.LogUtils;
 import net.ashstarcrash.bonappetit.core.common.event.*;
-import net.ashstarcrash.bonappetit.core.common.recipe.RecipeCategories;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.RecipeCategories;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CopperTankEntity;
 import net.ashstarcrash.bonappetit.core.registry.*;
 import net.minecraft.core.component.DataComponents;
@@ -103,12 +103,6 @@ public class BonAppetit {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         LOGGER.info("Bon Appetit successfully loaded");
-/*
-        if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));}
-
-        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));*/
     }
 
     @SubscribeEvent
