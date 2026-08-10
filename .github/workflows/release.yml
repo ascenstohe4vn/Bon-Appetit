@@ -49,10 +49,10 @@ jobs:
           COMMIT_COUNT=$(git rev-list --count $RANGE)
 
           if [ "$COMMIT_COUNT" -gt 32 ]; then
-            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s - by %an" -n 32 $RANGE)
+            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s – %an" -n 32 $RANGE)
             COMMITS="$COMMITS"$'\n'"* ...and $((COMMIT_COUNT - 32)) more commits. [View full changelog]($COMPARE_URL)"
           else
-            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s - by %an" $RANGE)
+            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s – %an" $RANGE)
           fi
 
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
