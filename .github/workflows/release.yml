@@ -72,12 +72,45 @@ jobs:
           find ./build/libs/ -type f -name "*.jar" ! -name "*-sources.jar" >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
 
+      - name: Generate Release Changelog
+        id: release_changelog
+        run: |
+          REPO="${{ github.repository }}"
+          CURRENT_TAG="${{ github.ref_name }}"
+          
+          PREV_TAG=$(git describe --tags --abbrev=0 "$CURRENT_TAG^" 2>/dev/null || true)
+          
+          if [ -n "$PREV_TAG" ]; then
+            RANGE="$PREV_TAG..$CURRENT_TAG"
+            COMPARE_URL="https://github.com/$REPO/compare/$PREV_TAG...$CURRENT_TAG"
+          else
+            RANGE="$CURRENT_TAG"
+            COMPARE_URL="https://github.com/$REPO/commits/$CURRENT_TAG"
+          fi
+
+          COMMIT_COUNT=$(git rev-list --count $RANGE)
+
+          if [ "$COMMIT_COUNT" -gt 32 ]; then
+            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s - by %an" -n 32 $RANGE)
+            COMMITS="$COMMITS\n* ...and $((COMMIT_COUNT - 32)) more commits. [View full changelog]($COMPARE_URL)"
+          else
+            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s - by %an" $RANGE)
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg title "Building new release: ${{ steps.read_properties.outputs.mod_version }}" \
+            --arg desc "$COMMITS" \
+            '{embeds: [{title: $title, description: $desc, color: 16711935}]}')
+
+          echo "payload=$PAYLOAD" >> $GITHUB_OUTPUT
+
       - name: Send building message to discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          PAYLOAD: ${{ steps.release_changelog.outputs.payload }}
         if: env.DISCORD_WEBHOOK != ''
         run: |
-          curl -H "Content-Type: application/json" -X POST -d '{"content": null, "embeds": [{"title": "Building new release: ${{ steps.read_properties.outputs.mod_version }}", "color": null}], "attachments": []}' $DISCORD_WEBHOOK
+          curl -H "Content-Type: application/json" -X POST -d "$PAYLOAD" "$DISCORD_WEBHOOK"
 
       - name: Send built file to discord
         env:

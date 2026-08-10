@@ -67,14 +67,40 @@ jobs:
           JARS=$(find ./build/libs/ -maxdepth 1 -type f -name "*.jar" ! -name "*-sources.jar" ! -name "*-javadoc.jar" | tr '\n' ' ')
           echo "jars=$JARS" >> $GITHUB_OUTPUT
 
+      - name: Generate Discord Nightly Message
+        id: discord_msg
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          BRANCH="${{ steps.get_branch.outputs.branch }}"
+          REPO="${{ github.repository }}"
+          
+          if [ -n "$BEFORE_SHA" ] && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]; then
+            SHORT_BEFORE=$(echo "$BEFORE_SHA" | cut -c1-7)
+            SHORT_AFTER=$(echo "$AFTER_SHA" | cut -c1-7)
+            RANGE_LINK="[\`$SHORT_BEFORE...$SHORT_AFTER\`](https://github.com/$REPO/compare/$BEFORE_SHA...$AFTER_SHA)"
+            COMMITS=$(git log --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s - by %an" $BEFORE_SHA..$AFTER_SHA 2>/dev/null)
+          else
+            SHORT_AFTER=$(echo "$AFTER_SHA" | cut -c1-7)
+            RANGE_LINK="[\`$SHORT_AFTER\`](https://github.com/$REPO/commit/$AFTER_SHA)"
+            COMMITS=$(git log -1 --format="* [\`%h\`](https://github.com/$REPO/commit/%H) %s - by %an")
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg title "Building mod from branch $BRANCH" \
+            --arg desc "$RANGE_LINK\n\n$COMMITS" \
+            '{embeds: [{title: $title, description: $desc, color: 16711935}]}')
+
+          echo "payload=$PAYLOAD" >> $GITHUB_OUTPUT
+
       - name: Send building message to discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          PAYLOAD: ${{ steps.discord_msg.outputs.payload }}
         if: env.DISCORD_WEBHOOK != '' && github.event_name == 'push'
-        uses: realRobotix/action-discord-notifier@master
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message-title: Building mod from branch ${{ steps.get_branch.outputs.branch }}
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d "$PAYLOAD" "$DISCORD_WEBHOOK"
 
       - name: Send built file to discord
         env:
