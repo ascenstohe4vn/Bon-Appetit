@@ -18,7 +18,8 @@ tasks.named('jar', Jar) {
     archiveClassifier = ''
 }
 
-version = mod_version
+String buildSuffix = project.hasProperty('buildSuffix') ? project.property('buildSuffix') : ''
+version = "${mod_version}${buildSuffix}"
 group = mod_group_id
 
 repositories {

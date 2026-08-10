@@ -50,7 +50,7 @@ jobs:
             loom-cache
 
       - name: Build jar
-        run: ./gradlew build
+        run: ./gradlew build -PbuildSuffix="-nightly.${{ github.run_number }}"
 
       - name: Publish to Maven Repository
         env:
@@ -59,15 +59,13 @@ jobs:
           MAVEN_USER: ${{ secrets.MAVEN_USER }}
           MAVEN_ACCESS_TOKEN: ${{ secrets.MAVEN_ACCESS_TOKEN }}
         if: env.MAVEN_USER != '' && env.MAVEN_ACCESS_TOKEN != '' && env.GITHUB_TOKEN != ''
-        run: ./gradlew publish -PrealRobotixMavenUsername=${{ secrets.MAVEN_USER }} -PrealRobotixMavenPassword=${{ secrets.MAVEN_ACCESS_TOKEN }}
+        run: ./gradlew publish -PrealRobotixMavenUsername=${{ secrets.MAVEN_USER }} -PrealRobotixMavenPassword=${{ secrets.MAVEN_ACCESS_TOKEN }} -PbuildSuffix="-nightly+${{ github.run_number }}"
 
       - name: Find jars
         id: find_jars
         run: |
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "jars<<$EOF" >> $GITHUB_OUTPUT
-          find ./build/libs/ -type f -name "*.jar" ! -name "*-sources.jar" >> $GITHUB_OUTPUT
-          echo "$EOF" >> $GITHUB_OUTPUT
+          JARS=$(find ./build/libs/ -maxdepth 1 -type f -name "*.jar" ! -name "*-sources.jar" ! -name "*-javadoc.jar" | tr '\n' ' ')
+          echo "jars=$JARS" >> $GITHUB_OUTPUT
 
       - name: Send building message to discord
         env:
@@ -82,11 +80,12 @@ jobs:
         env:
           JARS: ${{ steps.find_jars.outputs.jars }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        if: env.DISCORD_WEBHOOK != ''
+        if: env.DISCORD_WEBHOOK != '' && env.JARS != ''
         run: |
-          while IFS= read -r f
-            do curl -F "file=@$f" $DISCORD_WEBHOOK
-          done <<< "$JARS"
+          for jar in $JARS; do
+            echo "Uploading $jar to Discord..."
+            curl -F "file=@$jar" "$DISCORD_WEBHOOK"
+          done
 
       - name: Archive Artifacts
         uses: actions/upload-artifact@v7
