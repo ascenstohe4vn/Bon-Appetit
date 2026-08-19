@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-08T18:31:18.192511245	Recipes
+// 1.21.1	2026-08-19T12:52:58.260885	Recipes
 48e1e5b98507f7062bb0b6fdce6a50c70445a462 data/bonappetit/advancement/recipes/cooking/beetroot_soup_from_cooking.json
 2273cdba46498bd8fcfa4c973349762f7b2158a4 data/bonappetit/advancement/recipes/cooking/candied_lime_slices_from_cooking.json
 f5e7b3e6243eab87954570c5163847b47a83c67b data/bonappetit/advancement/recipes/cooking/caramel_from_cooking.json
@@ -25,6 +25,7 @@ acde8824bcf5c77a244b3bd960d2106995367bc3 data/bonappetit/advancement/recipes/foo
 e9628ba08881aa484b314c81f02cc5202c066baf data/bonappetit/advancement/recipes/food/cherry_pie_slice.json
 98699a921a43fda61f6725db06730fe014c8af48 data/bonappetit/advancement/recipes/food/cinnamon_dust.json
 ea2d1ecd62592ca300eda523f341503dc1215ad4 data/bonappetit/advancement/recipes/food/coconut_slice.json
+c367fec411c06e3df87c90d7ae3a3206d9fd3744 data/bonappetit/advancement/recipes/food/compat/atmospheric/cochineal_spongecake.json
 d01f944761ad05bd8a95399a40a33696eaa178d7 data/bonappetit/advancement/recipes/food/corn_kernels.json
 7fa9c69adac6fd8faab8fc059d4dfc13a061ece9 data/bonappetit/advancement/recipes/food/corn_on_a_cob.json
 f294ed64d4481b1e7fb24a3f13223c6057d85c36 data/bonappetit/advancement/recipes/food/cornbread.json
@@ -100,6 +101,7 @@ c407c78bdb33164b8e28a94d2e3d88a27da35d50 data/bonappetit/recipe/cherry_pie.json
 1ef04eaf2d2aafc9f0e59434d9e263ed33fb77c7 data/bonappetit/recipe/cherry_pie_slice.json
 affb625e622cf9ba12275894fcb0b539db01f576 data/bonappetit/recipe/cinnamon_dust.json
 3096db180b0212c366b9762306616e7643b3d589 data/bonappetit/recipe/coconut_slice.json
+3ba691a19be724903b97a4ddc4a141bc3110e59e data/bonappetit/recipe/compat/atmospheric/cochineal_spongecake.json
 b379fcdcd926ed6738fdd0fe3deb496bef387876 data/bonappetit/recipe/cooking/beetroot_soup_from_cooking.json
 3610952fe8a4942c99e7553ca4c3be44bdd9c8df data/bonappetit/recipe/cooking/candied_lime_slices_from_cooking.json
 846bdf1df7aead78eb09bc27e64aef77a5e40346 data/bonappetit/recipe/cooking/caramel_from_cooking.json

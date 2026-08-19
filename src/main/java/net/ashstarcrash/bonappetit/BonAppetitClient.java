@@ -1,13 +1,13 @@
 package net.ashstarcrash.bonappetit;
 
+import net.ashstarcrash.bonappetit.client.renderer.DryingRackRenderer;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.RecipeCategories;
+import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotScreen;
 import net.ashstarcrash.bonappetit.core.content.entity.*;
 import net.ashstarcrash.bonappetit.core.registry.BABlockEntities;
 import net.ashstarcrash.bonappetit.core.registry.BAEntities;
 import net.ashstarcrash.bonappetit.core.registry.BAMenuTypes;
 import net.ashstarcrash.bonappetit.core.registry.BAModelLayers;
-import net.ashstarcrash.bonappetit.core.common.data.recipe.RecipeCategories;
-import net.ashstarcrash.bonappetit.client.renderer.DryingRackRenderer;
-import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -20,7 +20,7 @@ import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
-@Mod(value = BonAppetit.ID, dist = Dist.CLIENT) @EventBusSubscriber(modid = BonAppetit.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+@Mod(value = BonAppetit.ID, dist = Dist.CLIENT) @EventBusSubscriber(modid = BonAppetit.ID, value = Dist.CLIENT)
 public class BonAppetitClient {
     public BonAppetitClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);

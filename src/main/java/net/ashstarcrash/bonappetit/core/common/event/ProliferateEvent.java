@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -42,7 +43,12 @@ public class ProliferateEvent {
                     victim.removeEffect(BAEffects.SEEDED);
                     victim.hurt(victim.level().damageSources().magic(), 4.0f + (pomegranateAmplifier * 1.5f));
                     victim.level().playSound(null, victim.getX(), victim.getY(), victim.getZ(), SoundEvents.CHERRY_WOOD_BREAK, SoundSource.HOSTILE, 1.5f, 0.8f);
-                    if (attacker instanceof ServerPlayer serverPlayer) BATriggers.SEEDED_RUPTURE.get().trigger(serverPlayer);
+
+                    if (!victim.isAlive() && attacker instanceof ServerPlayer sp) {
+                        BATriggers.SEEDED_RUPTURE.get().trigger(sp);
+                        if (victim instanceof AbstractPiglin) BATriggers.PIGLIN_SEEDED_RUPTURE.get().trigger(sp);
+                    }
+
                     if (victim.level() instanceof ServerLevel sl) {
                         sl.sendParticles(ParticleTypes.CRIMSON_SPORE, victim.getX(), victim.getY() + 1, victim.getZ(), 30, 0.3, 0.3, 0.3, 0.1);
                         sl.sendParticles(ParticleTypes.EXPLOSION, victim.getX(), victim.getY() + 1, victim.getZ(), 1, 0, 0, 0, 0);
@@ -58,11 +64,11 @@ public class ProliferateEvent {
     //Seeded
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) {
-            MobEffectInstance seeded = player.getEffect(BAEffects.SEEDED);
+        if (event.getEntity() instanceof ServerPlayer sp) {
+            MobEffectInstance seeded = sp.getEffect(BAEffects.SEEDED);
             if (seeded != null) {
-                Level level = player.level();
-                BlockPos startPos = player.blockPosition();
+                Level level = sp.level();
+                BlockPos startPos = sp.blockPosition();
                 BlockPos floorPos = startPos.below();
                 BlockState floorState = level.getBlockState(floorPos);
 

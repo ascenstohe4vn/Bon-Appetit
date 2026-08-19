@@ -1,0 +1,220 @@
+{
+  "values": {
+    "bonappetit:apple_cake_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:apple_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:apple_pie_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:apple_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:apricot": {
+      "chance": 0.65
+    },
+    "bonappetit:banana": {
+      "chance": 0.65
+    },
+    "bonappetit:banana_cake_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:black_raspberries": {
+      "chance": 0.3
+    },
+    "bonappetit:black_tea_leaves": {
+      "chance": 0.5
+    },
+    "bonappetit:blueberries": {
+      "chance": 0.3
+    },
+    "bonappetit:cake_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:cherries": {
+      "chance": 0.65
+    },
+    "bonappetit:cherry_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:cherry_pie_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:coconut": {
+      "chance": 0.65
+    },
+    "bonappetit:coconut_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:coffee_beans": {
+      "chance": 0.5
+    },
+    "bonappetit:coffee_cherries": {
+      "chance": 0.3
+    },
+    "bonappetit:corn": {
+      "chance": 0.65
+    },
+    "bonappetit:corn_kernels": {
+      "chance": 0.3
+    },
+    "bonappetit:cranberries": {
+      "chance": 0.3
+    },
+    "bonappetit:dragon_fruit": {
+      "chance": 0.65
+    },
+    "bonappetit:dragon_fruit_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:dragon_fruit_pie_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:dragon_fruit_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:grapefruit": {
+      "chance": 0.65
+    },
+    "bonappetit:grapefruit_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:grapefruit_pie_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:grapefruit_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:grapes": {
+      "chance": 0.65
+    },
+    "bonappetit:green_apple": {
+      "chance": 0.65
+    },
+    "bonappetit:green_tea_leaves": {
+      "chance": 0.5
+    },
+    "bonappetit:kiwi": {
+      "chance": 0.65
+    },
+    "bonappetit:lemon": {
+      "chance": 0.65
+    },
+    "bonappetit:lemon_cake": {
+      "chance": 1.0
+    },
+    "bonappetit:lemon_cake_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:lemon_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:lemon_tart": {
+      "chance": 1.0
+    },
+    "bonappetit:lemon_tart_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:lime": {
+      "chance": 0.65
+    },
+    "bonappetit:lime_cake": {
+      "chance": 1.0
+    },
+    "bonappetit:lime_cake_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:lime_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:mango": {
+      "chance": 0.65
+    },
+    "bonappetit:mango_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:mango_pie_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:mulberries": {
+      "chance": 0.3
+    },
+    "bonappetit:onion": {
+      "chance": 0.65
+    },
+    "bonappetit:onion_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:orange": {
+      "chance": 0.65
+    },
+    "bonappetit:orange_cake_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:orange_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:orange_pie_slice": {
+      "chance": 0.25
+    },
+    "bonappetit:orange_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:panettone": {
+      "chance": 1.0
+    },
+    "bonappetit:panettone_slice": {
+      "chance": 1.0
+    },
+    "bonappetit:peach": {
+      "chance": 0.65
+    },
+    "bonappetit:pear": {
+      "chance": 0.65
+    },
+    "bonappetit:pie_crust": {
+      "chance": 0.65
+    },
+    "bonappetit:pineapple": {
+      "chance": 0.65
+    },
+    "bonappetit:pomegranate": {
+      "chance": 0.65
+    },
+    "bonappetit:pomegranate_seeds": {
+      "chance": 0.3
+    },
+    "bonappetit:pomegranate_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:pumpkin_pie_slice": {
+      "chance": 0.2
+    },
+    "bonappetit:pumpkin_slice": {
+      "chance": 0.5
+    },
+    "bonappetit:raspberries": {
+      "chance": 0.3
+    },
+    "bonappetit:rice": {
+      "chance": 0.65
+    },
+    "bonappetit:salmonberries": {
+      "chance": 0.3
+    },
+    "bonappetit:stollen": {
+      "chance": 1.0
+    },
+    "bonappetit:stollen_slice": {
+      "chance": 1.0
+    },
+    "bonappetit:strawberries": {
+      "chance": 0.3
+    },
+    "bonappetit:yellow_tea_leaves": {
+      "chance": 0.5
+    }
+  }
+}

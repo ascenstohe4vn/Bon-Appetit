@@ -1,8 +1,24 @@
 {
   "values": [
-    "bonappetit:grapefruit",
-    "bonappetit:orange",
-    "bonappetit:lemon",
-    "bonappetit:lime"
+    {
+      "id": "#c:foods/grapefruit",
+      "required": false
+    },
+    {
+      "id": "#c:foods/orange",
+      "required": false
+    },
+    {
+      "id": "#c:foods/blood_orange",
+      "required": false
+    },
+    {
+      "id": "#c:foods/lemon",
+      "required": false
+    },
+    {
+      "id": "#c:foods/lime",
+      "required": false
+    }
   ]
 }

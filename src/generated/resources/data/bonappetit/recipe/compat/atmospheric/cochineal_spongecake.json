@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "atmospheric:blood_orange"
+    },
+    "C": {
+      "item": "atmospheric:carmine_husk"
+    },
+    "E": {
+      "tag": "c:eggs"
+    },
+    "H": {
+      "tag": "c:drinks/honey"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "#C#",
+    "EHE",
+    "#W#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "bonappetit:cochineal_spongecake"
+  }
+}

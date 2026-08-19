@@ -41,7 +41,7 @@ public class BABottleDrinkItem extends Item {
     }
 
     public int getUseDuration(ItemStack stack, LivingEntity entity) {
-        return 32;
+        return DRINK_DURATION;
     }
 
     public UseAnim getUseAnimation(ItemStack stack) {

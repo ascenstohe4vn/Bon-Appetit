@@ -41,6 +41,9 @@ public class BABlocks {
     public static final DeferredBlock<Block> STOLLEN = BLOCKS.register("stollen",
             () -> new BAFlavorCakeBlock(BAFoodProperties.STOLLEN, BlockBehaviour.Properties.ofFullCopy(CAKE)));
 
+    public static final DeferredBlock<Block> COCHINEAL_SPONGECAKE = registerBlockNoItem("cochineal_spongecake",
+            () -> new SpongecakeBlock(BAFoodProperties.Compat.COCHINEAL_SPONGECAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
+
     public static final DeferredBlock<BAFlavorCakeBlock> LEMON_CAKE = BLOCKS.register("lemon_cake",
             () -> new BAFlavorCakeBlock(BAFoodProperties.LEMON_CAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
     public static final DeferredBlock<BAFlavorCakeBlock> LIME_CAKE = BLOCKS.register("lime_cake",

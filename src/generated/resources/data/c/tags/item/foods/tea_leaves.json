@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "#c:foods/tea_leaves/green",
+      "required": false
+    },
+    {
+      "id": "#c:foods/tea_leaves/yellow",
+      "required": false
+    },
+    {
+      "id": "#c:foods/tea_leaves/black",
+      "required": false
+    },
+    {
+      "id": "#c:foods/tea_leaves/matcha",
+      "required": false
+    }
+  ]
+}

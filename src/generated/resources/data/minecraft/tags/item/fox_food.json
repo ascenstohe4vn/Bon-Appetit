@@ -1,13 +1,13 @@
 {
   "values": [
+    "bonappetit:coffee_cherries",
+    "bonappetit:cranberries",
     "bonappetit:strawberries",
     "bonappetit:golden_strawberries",
-    "bonappetit:cranberries",
     "bonappetit:salmonberries",
     "bonappetit:blueberries",
     "bonappetit:mulberries",
     "bonappetit:raspberries",
-    "bonappetit:black_raspberries",
-    "bonappetit:coffee_cherries"
+    "bonappetit:black_raspberries"
   ]
 }

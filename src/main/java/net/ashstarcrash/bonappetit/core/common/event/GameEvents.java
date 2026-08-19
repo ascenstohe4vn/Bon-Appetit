@@ -2,11 +2,13 @@ package net.ashstarcrash.bonappetit.core.common.event;
 
 import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.util.FoodRegenData;
 import net.ashstarcrash.bonappetit.core.content.entity.goal.BeeMoveToFruitBushGoal;
 import net.ashstarcrash.bonappetit.core.content.entity.goal.BeePollinateFruitGoal;
 import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
 import net.ashstarcrash.bonappetit.core.registry.BAEffects;
+import net.ashstarcrash.bonappetit.core.registry.BAFoodProperties;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -95,6 +97,11 @@ public class GameEvents {
         rare.add((entity, randomSource) -> new MerchantOffer(
                 new ItemCost(Items.EMERALD, 2),
                 new ItemStack(BAItems.POMEGRANATE_SEEDS.get(), 1), 12, 1, 0.05f));
+        if (ModUtil.AT.isLoaded()) {
+            rare.add((entity, randomSource) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 2),
+                    new ItemStack(BAItems.COCHINEAL_SPONGECAKE.get(), 4), 4, 1, 0.05f));
+        }
     }
 
     @SubscribeEvent
@@ -299,7 +306,7 @@ public class GameEvents {
     public static void vanillaFoodEffects(LivingEntityUseItemEvent.Finish event) {
         LivingEntity entity = event.getEntity();
         Item food = event.getItem().getItem();
-        FoodProperties vanillaFoodChanges = BAItems.VANILLA_EFFECTS.get(food);
+        FoodProperties vanillaFoodChanges = BAFoodProperties.Compat.VANILLA_EFFECTS.get(food);
         if (vanillaFoodChanges != null) {
             for (FoodProperties.PossibleEffect effect : vanillaFoodChanges.effects()) {
                 entity.addEffect(effect.effect());
@@ -310,7 +317,7 @@ public class GameEvents {
     @SubscribeEvent
     public static void addTooltipToVanillaFoods(ItemTooltipEvent event) {
         Item food = event.getItemStack().getItem();
-        FoodProperties vanillaFoodChanges = BAItems.VANILLA_EFFECTS.get(food);
+        FoodProperties vanillaFoodChanges = BAFoodProperties.Compat.VANILLA_EFFECTS.get(food);
         if (vanillaFoodChanges != null) {
             List<Component> tooltip = event.getToolTip();
             for (FoodProperties.PossibleEffect effect : vanillaFoodChanges.effects()) {

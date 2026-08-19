@@ -34,6 +34,7 @@ public class BABlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
         dropSelf(BABlocks.COPPER_TANK.get());
+        dropSelf(BABlocks.COCHINEAL_SPONGECAKE.get());
         dropCake(Blocks.CAKE, BAItems.CAKE_SLICE.get());
         dropCake(BABlocks.LEMON_CAKE.get(), BAItems.LEMON_CAKE_SLICE.get());
         dropCake(BABlocks.LIME_CAKE.get(), BAItems.LIME_CAKE_SLICE.get());

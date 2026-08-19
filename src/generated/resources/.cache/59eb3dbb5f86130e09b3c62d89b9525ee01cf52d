@@ -1,10 +1,11 @@
-// 1.21.1	2026-02-28T17:31:07.111755799	Loot Tables
+// 1.21.1	2026-08-19T15:05:43.073412349	Loot Tables
 43a86010b366a5b7c06274f9b78021bba2a03b24 data/bonappetit/loot_table/blocks/black_candle_lemon_cake.json
 d6e40b2163bd7ce06588f0f77ed6c6072d7d7bd4 data/bonappetit/loot_table/blocks/black_candle_lime_cake.json
 c1e5ba1523a914482a005979fde55fbc2cce7519 data/bonappetit/loot_table/blocks/blue_candle_lemon_cake.json
 b6380d6f6e1b355ea727a14a5ebb93e2bfbc6706 data/bonappetit/loot_table/blocks/blue_candle_lime_cake.json
 90fb2d5040eefa3852d850825ca0018afe8f8767 data/bonappetit/loot_table/blocks/brown_candle_lemon_cake.json
 3bd1f6f2c29733eed9f05a1b544435dcaccc8480 data/bonappetit/loot_table/blocks/brown_candle_lime_cake.json
+a455aa00b460bc3e2e6f1b14f77cb1109cb52d3e data/bonappetit/loot_table/blocks/cochineal_spongecake.json
 c36cbc5ae53c51919562cf0b17ec907578d45197 data/bonappetit/loot_table/blocks/copper_tank.json
 291bb56dfd82de47d9d2a90ffa52bc61c453d88b data/bonappetit/loot_table/blocks/cyan_candle_lemon_cake.json
 b33cc7c4b68926c1da07cdd5e8c3393fe44c7840 data/bonappetit/loot_table/blocks/cyan_candle_lime_cake.json

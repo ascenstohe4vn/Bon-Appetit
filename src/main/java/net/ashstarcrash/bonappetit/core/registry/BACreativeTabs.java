@@ -1,6 +1,7 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -34,14 +35,12 @@ public class BACreativeTabs {
                 output.accept(GLASS_COCKTAIL);
 
                 //seeds
-                output.accept(CORN_KERNELS);
                 output.accept(POMEGRANATE_SEEDS);
+                output.accept(CORN_KERNELS);
 
                 //fruits
                 output.accept(CHERRIES);
                 output.accept(GOLDEN_CHERRIES);
-
-                output.accept(COFFEE_CHERRIES);
 
                 output.accept(APPLE_SLICE);
                 output.accept(GREEN_APPLE);
@@ -84,6 +83,8 @@ public class BACreativeTabs {
                 output.accept(COCONUT_SLICE);
 
                 //berries
+                output.accept(COFFEE_CHERRIES);
+
                 output.accept(CRANBERRIES);
 
                 output.accept(STRAWBERRIES);
@@ -178,6 +179,9 @@ public class BACreativeTabs {
                 output.accept(LIME_POPSICLE);
                 output.accept(DOUBLE_LIME_POPSICLE);
 
+                output.accept(SPONGECAKE);
+                if (ModUtil.AT.isLoaded()) output.accept(Compat.COCHINEAL_SPONGECAKE);
+
                 //pies and cake
                 output.accept(CAKE_SLICE);
                 output.accept(CHERRY_PIE);
@@ -205,6 +209,16 @@ public class BACreativeTabs {
 
                 //drinks
                 output.accept(WATER_MUG);
+                output.accept(MILK_BOTTLE);
+                output.accept(COCONUT_MILK_BOTTLE);
+                output.accept(CHOCOLATE_MILK_BOTTLE);
+                output.accept(STRAWBERRY_MILK_BOTTLE);
+                output.accept(BLUEBERRY_MILK_BOTTLE);
+                output.accept(BANANA_MILK_BOTTLE);
+                output.accept(PEACH_MILK_BOTTLE);
+                output.accept(CARROT_MILK_BOTTLE);
+                output.accept(COFFEE_MILK_BOTTLE);
+                output.accept(HORCHATA);
                 output.accept(APPLE_JUICE);
                 output.accept(APPLE_CIDER);
                 output.accept(APPLEJACK);

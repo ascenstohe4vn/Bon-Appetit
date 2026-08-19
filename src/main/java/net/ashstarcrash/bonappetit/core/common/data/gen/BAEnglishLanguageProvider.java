@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class BAEnglishLanguageProvider extends LanguageProvider {
     String BA = BonAppetit.ID;
-    String MC = BonAppetit.MC;
+    String MC = ModUtil.MC.id();
     String C = ModUtil.COMMON.id();
 
     private static final Map<String, String> ITEM_OVERRIDES = Map.ofEntries(
@@ -88,7 +88,10 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
                 "Reflect a projectile using the power of grapefruits");
         add("advancements.adventure.wearing_the_inside_out.title", "Wearing the Inside Out");
         add("advancements.adventure.wearing_the_inside_out.description",
-                "Rend apart a mob from the inside out using the power of a pomegranate");
+                "Rend a mob apart from the inside out using the power of a pomegranate");
+        add("advancements.adventure.nothing_to_fear_but.title", "Nothing To Fear But...");
+        add("advancements.adventure.nothing_to_fear_but.description",
+                "Rend apart a piglin from the inside out and teach it there's nothing to be afraid of!");
 
         //tags
         add("tag.item." + BA + ".serving_containers", "Serving Containers");

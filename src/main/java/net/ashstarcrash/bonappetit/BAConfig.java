@@ -20,8 +20,7 @@ public class BAConfig {
     public static final ModConfigSpec.DoubleValue REGEN_PULSE_HEAL_AMOUNT;
 
     // --- REGISTRY CONFIG ---
-    //public static final ModConfigSpec.BooleanValue REGISTER_GRAPEFRUIT;
-    //public static final ModConfigSpec.BooleanValue REGISTER_COFFEE;
+
 
     // --- GAMEPLAY CONFIG ---
         public static final ModConfigSpec.DoubleValue TWIN_STRIKE_INITIAL_DAMAGE_MULTIPLIER;

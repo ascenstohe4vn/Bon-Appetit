@@ -17,6 +17,8 @@ public class BATriggers {
             TRIGGERS.register("reflected_projectile", ReflectedProjectileTrigger::new);
     public static final Supplier<SeededRuptureTrigger> SEEDED_RUPTURE =
             TRIGGERS.register("seeded_rupture", SeededRuptureTrigger::new);
+    public static final Supplier<SeededRuptureTrigger> PIGLIN_SEEDED_RUPTURE =
+            TRIGGERS.register("piglin_seeded_rupture", SeededRuptureTrigger::new);
 
     public static void register(IEventBus eventBus) {
         TRIGGERS.register(eventBus);

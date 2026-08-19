@@ -1,0 +1,28 @@
+{
+  "parent": "bonappetit:adventure/wearing_the_inside_out",
+  "criteria": {
+    "piglin_seeded_rupture": {
+      "trigger": "bonappetit:piglin_seeded_rupture"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.adventure.nothing_to_fear_but.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "bonappetit:pomegranate"
+    },
+    "title": {
+      "translate": "advancements.adventure.nothing_to_fear_but.title"
+    },
+    "frame": "goal",
+    "hidden": true
+  },
+  "requirements": [
+    [
+      "piglin_seeded_rupture"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

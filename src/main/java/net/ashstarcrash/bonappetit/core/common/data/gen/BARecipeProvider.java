@@ -1,19 +1,19 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
-import net.ashstarcrash.bonappetit.core.registry.BATags;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipeBuilder;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotRecipeBookTab;
+import net.ashstarcrash.bonappetit.core.registry.BAItems;
+import net.ashstarcrash.bonappetit.core.registry.BATags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.world.item.crafting.*;
-import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.common.crafting.DifferenceIngredient;
 
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static net.ashstarcrash.bonappetit.core.registry.BAItems.*;
@@ -236,6 +236,12 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
 
 
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, COCHINEAL_SPONGECAKE.get(), 4).pattern("#C#").pattern("EHE").pattern("#W#")
+                .define('#', ModUtil.AT.getItem("blood_orange")).define('C', ModUtil.AT.getItem("carmine_husk")).define('W', WHEAT).define('E', Tags.Items.EGGS).define('H', Tags.Items.DRINKS_HONEY)
+                .unlockedBy("has_blood_orange", has(ModUtil.AT.getItem("blood_orange"))).save(ModUtil.AT.output(recipeOutput), ModUtil.BA.asResource("compat/" + ModUtil.AT.id() + "/cochineal_spongecake"));
+
+
+
         CookingPotRecipeBuilder.cookingPotRecipe(MUSHROOM_STEW, 1, 200, 0.35f, BOWL)
                 .addIngredient(RED_MUSHROOM)
                 .addIngredient(BROWN_MUSHROOM)
@@ -257,11 +263,5 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .unlockedBy("has_rabbit", has(RABBIT))
                 .build(recipeOutput, "bonappetit:rabbit_stew_from_cooking");
-
-        //CookingRecipes.register(recipeOutput);
     }
-
-    protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {oreCooking(recipeOutput, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, pIngredients, pCategory, pResult, pExperience, pCookingTIme, pGroup, "_from_smelting");}
-    protected static void oreBlasting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {oreCooking(recipeOutput, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_blasting");}
-    protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {for(ItemLike itemlike : pIngredients) {SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(recipeOutput, BonAppetit.ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));}}
 }

@@ -1,6 +1,15 @@
 {
   "values": [
     "bonappetit:water_mug",
+    "bonappetit:milk_bottle",
+    "bonappetit:chocolate_milk_bottle",
+    "bonappetit:strawberry_milk_bottle",
+    "bonappetit:blueberry_milk_bottle",
+    "bonappetit:banana_milk_bottle",
+    "bonappetit:peach_milk_bottle",
+    "bonappetit:carrot_milk_bottle",
+    "bonappetit:coffee_milk_bottle",
+    "bonappetit:horchata",
     "bonappetit:apple_juice",
     "bonappetit:apple_cider",
     "bonappetit:applejack",

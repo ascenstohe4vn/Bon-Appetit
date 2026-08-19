@@ -33,9 +33,12 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), blockTagProvider); //BABlockTagProvider
         generator.addProvider(event.includeServer(),
                 new BATagProvider.BAItemTagProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
+        generator.addProvider(event.includeServer(),
+                new BATagProvider.BAMobEffectTagProvider(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(
                 BABlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
+        generator.addProvider(event.includeServer(), new BADataMapProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new BARecipeProvider(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new BAEnglishLanguageProvider(packOutput));
     }

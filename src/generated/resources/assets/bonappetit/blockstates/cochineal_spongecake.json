@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,waterlogged=false": {
+      "model": "bonappetit:block/cochineal_spongecake",
+      "y": 90
+    },
+    "facing=east,waterlogged=true": {
+      "model": "bonappetit:block/cochineal_spongecake",
+      "y": 90
+    },
+    "facing=north,waterlogged=false": {
+      "model": "bonappetit:block/cochineal_spongecake"
+    },
+    "facing=north,waterlogged=true": {
+      "model": "bonappetit:block/cochineal_spongecake"
+    },
+    "facing=south,waterlogged=false": {
+      "model": "bonappetit:block/cochineal_spongecake",
+      "y": 180
+    },
+    "facing=south,waterlogged=true": {
+      "model": "bonappetit:block/cochineal_spongecake",
+      "y": 180
+    },
+    "facing=west,waterlogged=false": {
+      "model": "bonappetit:block/cochineal_spongecake",
+      "y": 270
+    },
+    "facing=west,waterlogged=true": {
+      "model": "bonappetit:block/cochineal_spongecake",
+      "y": 270
+    }
+  }
+}

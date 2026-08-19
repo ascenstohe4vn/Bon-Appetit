@@ -31,6 +31,7 @@ public class BABlockStateProvider extends BlockStateProvider {
         pomegranateBlock(POMEGRANATE_BLOCK.get());
         simpleBlock(PANETTONE.get());
         simpleBlock(STOLLEN.get());
+        horizontalBlock(COCHINEAL_SPONGECAKE.get(), models().getExistingFile(modLoc("block/cochineal_spongecake")));
         cakeBlock(LEMON_CAKE.get());
         cakeBlock(LIME_CAKE.get());
     }
