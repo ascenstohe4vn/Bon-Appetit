@@ -180,7 +180,7 @@ public class BACreativeTabs {
                 output.accept(DOUBLE_LIME_POPSICLE);
 
                 output.accept(SPONGECAKE);
-                if (ModUtil.AT.isLoaded()) output.accept(Compat.COCHINEAL_SPONGECAKE);
+                if (ModUtil.AT.isLoaded()) output.accept(COCHINEAL_SPONGECAKE);
 
                 //pies and cake
                 output.accept(CAKE_SLICE);

@@ -199,6 +199,7 @@ public class BAItems {
     public static final DeferredItem<Item> DOUBLE_LIME_POPSICLE = ITEMS.register("double_lime_popsicle", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.425f)
             .effect(new MobEffectInstance(BAEffects.DISSONANCE, 600, 0), 1.0F).build())));
     public static final DeferredItem<Item> SPONGECAKE = ITEMS.register("spongecake", () -> new Item(new Item.Properties().food(BAFoodProperties.SPONGECAKE)));
+    public static final DeferredItem<Item> COCHINEAL_SPONGECAKE = ITEMS.register("cochineal_spongecake", () -> new SneakPlaceBlockItem(BABlocks.COCHINEAL_SPONGECAKE.get(), new Item.Properties().food(BAFoodProperties.Compat.COCHINEAL_SPONGECAKE), true));
 
     // pies and cake
     public static final DeferredItem<Item> CAKE_SLICE = ITEMS.register("cake_slice", () -> new Item(new Item.Properties().food(BAFoodProperties.CAKE_SLICE)));
@@ -268,11 +269,4 @@ public class BAItems {
 
     //other
     public static final DeferredItem<Item> DRAGON_SHARD = ITEMS.register("dragon_shard", () -> new Item(new Item.Properties()));
-
-
-
-    public static class Compat {
-        //sweets
-        public static final DeferredItem<Item> COCHINEAL_SPONGECAKE = ITEMS.register("cochineal_spongecake", () -> new SneakPlaceBlockItem(BABlocks.COCHINEAL_SPONGECAKE.get(), new Item.Properties().food(BAFoodProperties.Compat.COCHINEAL_SPONGECAKE), true));
-    }
 }
