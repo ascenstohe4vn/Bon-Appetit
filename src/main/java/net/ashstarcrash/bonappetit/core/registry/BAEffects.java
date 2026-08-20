@@ -16,6 +16,7 @@ public class BAEffects {
     public static final DeferredHolder<MobEffect, TwinStrikeEffect> TWIN_STRIKE = EFFECTS.register("twin_strike", TwinStrikeEffect::new);
     public static final DeferredHolder<MobEffect, ReflectionEffect> REFLECTION = EFFECTS.register("reflection", ReflectionEffect::new);
     public static final DeferredHolder<MobEffect, ConcentrationEffect> CONCENTRATION = EFFECTS.register("concentration", ConcentrationEffect::new);
+    public static final DeferredHolder<MobEffect, NuzlockeEffect> NUZLOCKE = EFFECTS.register("nuzlocke", () -> new NuzlockeEffect(MobEffectCategory.HARMFUL, 0x000000));
     public static final DeferredHolder<MobEffect, FervorEffect> FERVOR = EFFECTS.register("fervor", FervorEffect::new);
     public static final DeferredHolder<MobEffect, MobEffect> AGILITY = EFFECTS.register("agility", () -> new AgilityEffect(MobEffectCategory.BENEFICIAL, 0xFCF5CA)
             .addAttributeModifier(Attributes.MOVEMENT_SPEED, BonAppetit.asResource("effect.agility.movement_speed"), 0.025F, AttributeModifier.Operation.ADD_VALUE));
@@ -28,6 +29,7 @@ public class BAEffects {
     public static final DeferredHolder<MobEffect, FlakEffect> FLAK = EFFECTS.register("flak", FlakEffect::new);
     public static final DeferredHolder<MobEffect, ProliferateEffect> PROLIFERATE = EFFECTS.register("proliferate", ProliferateEffect::new);
     public static final DeferredHolder<MobEffect, SeededEffect> SEEDED = EFFECTS.register("seeded", SeededEffect::new);
+    public static final DeferredHolder<MobEffect, RampartEffect> RAMPART = EFFECTS.register("rampart", RampartEffect::new);
     public static final DeferredHolder<MobEffect, DischargeEffect> DISCHARGE = EFFECTS.register("discharge", DischargeEffect::new);
 
     public static final DeferredHolder<MobEffect, MobEffect> ROOTED = EFFECTS.register("rooted", () -> new RootedEffect(MobEffectCategory.BENEFICIAL, 0xA4272C)

@@ -12,8 +12,10 @@
     "BoatMixin"
   ],
   "client": [
+    "GuiMixin",
     "GuiGraphicsTooltipMixin",
-    "GuiSeededOverlayMixin"
+    "MouseHandlerMixin",
+    "EffectRenderingInventoryScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -5,12 +5,14 @@ import net.ashstarcrash.bonappetit.core.common.template.BABottleDrinkItem;
 import net.ashstarcrash.bonappetit.core.common.template.BACocktailDrinkItem;
 import net.ashstarcrash.bonappetit.core.common.template.BAMugDrinkItem;
 import net.ashstarcrash.bonappetit.core.content.item.*;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -194,6 +196,7 @@ public class BAItems {
     public static final DeferredItem<Item> MACARON = ITEMS.register("macaron", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().fast()
             .nutrition(4)
             .saturationModifier(0.225f).build())));
+    public static final DeferredItem<Item> ORANGE_JAWBREAKER = ITEMS.register("orange_jawbreaker", () -> new OrangeJawbreakerItem(new Item.Properties().stacksTo(1).durability(4).food(new FoodProperties.Builder().alwaysEdible().build())));
     public static final DeferredItem<Item> LIME_POPSICLE = ITEMS.register("lime_popsicle", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.4f)
             .effect(new MobEffectInstance(BAEffects.DISSONANCE, 300, 0), 1.0F).build())));
     public static final DeferredItem<Item> DOUBLE_LIME_POPSICLE = ITEMS.register("double_lime_popsicle", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.425f)
@@ -229,6 +232,7 @@ public class BAItems {
 
     //drinks
     public static final DeferredItem<Item> WATER_MUG = ITEMS.register("water_mug", () -> new BAMugDrinkItem(new Item.Properties()));
+    public static final DeferredItem<Item> TISANE = ITEMS.register("tisane", () -> new TisaneItem(new Item.Properties().food(BAFoodProperties.TISANE).component(DataComponents.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffects.EMPTY)));
 
     public static final DeferredItem<Item> MILK_BOTTLE = ITEMS.register("milk_bottle", () -> new MilkBottleItem(new Item.Properties()));
     public static final DeferredItem<Item> COCONUT_MILK_BOTTLE = ITEMS.register("coconut_milk_bottle", () -> new MilkBottleItem(new Item.Properties().food(BAFoodProperties.COCONUT_MILK_BOTTLE)));

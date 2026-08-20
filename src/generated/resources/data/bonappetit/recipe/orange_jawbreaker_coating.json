@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:orange_jawbreaker"
+    },
+    {
+      "item": "bonappetit:orange"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:orange_jawbreaker"
+  }
+}

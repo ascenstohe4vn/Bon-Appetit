@@ -10,6 +10,10 @@ import java.util.List;
 public class BAConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    // --- CLIENT CONFIG ---
+    public static final ModConfigSpec.BooleanValue SCROLLABLE_EFFECTS_DISPLAY;
+    public static final ModConfigSpec.BooleanValue VERTICAL_EFFECTS_SCROLLING;
+
     // --- HUNGER CONFIG ---
     public static final ModConfigSpec.BooleanValue VANILLA_HUNGER_BAR;
     public static final ModConfigSpec.DoubleValue HEAL_PER_NUTRITION;
@@ -54,6 +58,21 @@ public class BAConfig {
         public static final ModConfigSpec.EnumValue<ChanceDisplayMode> EFFECT_CHANCE_DISPLAY;
 
     static {
+        // --- Client ---
+        BUILDER.comment("Client-side rendering and UI behavior").push("client");
+
+        SCROLLABLE_EFFECTS_DISPLAY = BUILDER
+                .comment("If true, effects get rendered entirely differently in the inventory, using a new system where effects can be scrolled through instead of getting squished together")
+                .define("scrollable_effects_display", true);
+        VERTICAL_EFFECTS_SCROLLING = BUILDER
+                .comment("If true, the active effects list scrolls vertically when it exceeds the inventory's height. ",
+                        "This may overlap recipe viewer mods (JEI/EMI/REI) that render in the same screen area. ",
+                        "If false (default), effects scroll horizontally within their own space instead, which avoids that overlap. ",
+                        "Requires 'Scrollable Effects Display' to be true")
+                .define("vertical_effects_scrolling", false);
+
+        BUILDER.pop(); // client end
+
         // --- Hunger ---
         BUILDER.comment("Controls for disabling vanilla hunger and replacing it with instant-heal-on-eat").push("hunger");
         VANILLA_HUNGER_BAR = BUILDER

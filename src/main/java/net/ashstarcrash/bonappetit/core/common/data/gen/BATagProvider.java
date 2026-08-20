@@ -318,6 +318,7 @@ public class BATagProvider {
 
             this.tag(DRINKS)
                     .add(WATER_MUG.get())
+                    .add(TISANE.get())
                     .add(MILK_BOTTLE.get())
                     .add(CHOCOLATE_MILK_BOTTLE.get())
                     .add(STRAWBERRY_MILK_BOTTLE.get())
@@ -396,6 +397,9 @@ public class BATagProvider {
 
         @Override
         protected void addTags(HolderLookup.@NotNull Provider provider) {
+            this.tag(LETHAL)
+                    .add(NUZLOCKE.getKey());
+
             this.tag(CHOCOLATE_MILK_CURABLES)
                     .add(MOVEMENT_SLOWDOWN.getKey())
                     .add(WEAKNESS.getKey());

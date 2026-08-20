@@ -49,6 +49,7 @@ public class BATags {
         public static final TagKey<Item> FOODS_STONE_FRUIT = c(Registries.ITEM, "foods/stone_fruit");
     }
     public static class MobEffects {
+        public static final TagKey<MobEffect> LETHAL = c(Registries.MOB_EFFECT, "categories/lethal");
         public static final TagKey<MobEffect> CHOCOLATE_MILK_CURABLES = ba(Registries.MOB_EFFECT, "cures/chocolate_milk");
         public static final TagKey<MobEffect> STRAWBERRY_MILK_CURABLES = ba(Registries.MOB_EFFECT, "cures/strawberry_milk");
         public static final TagKey<MobEffect> BLUEBERRY_MILK_CURABLES = ba(Registries.MOB_EFFECT, "cures/blueberry_milk");

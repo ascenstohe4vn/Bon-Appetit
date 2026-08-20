@@ -10,6 +10,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
+import java.util.function.Supplier;
+
 public class BAAttachments {
     public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, BonAppetit.ID);
 
@@ -19,14 +21,18 @@ public class BAAttachments {
                     data -> new java.util.ArrayList<>(data.getEatenFoodIds())
             );
 
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<FoodDiscoveryData>> FOOD_DISCOVERY =
-            ATTACHMENTS.register("food_discovery",
-                    () -> AttachmentType.builder(FoodDiscoveryData::new)
-                            .serialize(FOOD_DISCOVERY_CODEC)
-                            .sync(ByteBufCodecs.fromCodec(FOOD_DISCOVERY_CODEC))
-                            .build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<FoodDiscoveryData>> FOOD_DISCOVERY = ATTACHMENTS.register("food_discovery",
+            () -> AttachmentType.builder(FoodDiscoveryData::new)
+                    .serialize(FOOD_DISCOVERY_CODEC)
+                    .sync(ByteBufCodecs.fromCodec(FOOD_DISCOVERY_CODEC))
+                    .build());
 
-    public static final DeferredHolder<AttachmentType<?>, AttachmentType<FoodRegenData>> FOOD_REGEN =
-            ATTACHMENTS.register("food_regen",
-                    () -> AttachmentType.builder(FoodRegenData::new).build());
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<FoodRegenData>> FOOD_REGEN = ATTACHMENTS.register("food_regen",
+            () -> AttachmentType.builder(FoodRegenData::new).build());
+
+    public static final Supplier<AttachmentType<Integer>> NUZLOCKE_KILLS = ATTACHMENTS.register("nuzlocke_kills", () ->
+            AttachmentType.builder(() -> 0)
+                    .serialize(Codec.INT)
+                    .sync(ByteBufCodecs.VAR_INT)
+                    .build());
 }

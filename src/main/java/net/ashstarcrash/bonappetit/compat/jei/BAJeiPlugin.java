@@ -6,7 +6,7 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
-import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotMenu;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
@@ -21,9 +21,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @JeiPlugin
-public class CookingPotJEIPlugin implements IModPlugin {
+public class BAJeiPlugin implements IModPlugin {
     private static final ResourceLocation PLUGIN_ID =
-            ResourceLocation.fromNamespaceAndPath(BonAppetit.ID, "jei_plugin");
+            ModUtil.BA.asResource("jei_plugin");
 
     @Override
     public @NotNull ResourceLocation getPluginUid() {

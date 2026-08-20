@@ -1,8 +1,8 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
-import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipeBuilder;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.TisaneRecipe;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotRecipeBookTab;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.ashstarcrash.bonappetit.core.registry.BATags;
@@ -235,6 +235,10 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .build(recipeOutput, "bonappetit:jeweled_rice_bowl_from_cooking");
 
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, BAItems.ORANGE_JAWBREAKER.get()).requires(ORANGE_JAWBREAKER.get()).requires(ORANGE)
+                .unlockedBy("has_jawbreaker", has(BAItems.ORANGE_JAWBREAKER.get())).save(recipeOutput, ModUtil.BA.asResource("orange_jawbreaker_coating"));
+
+        SpecialRecipeBuilder.special(TisaneRecipe::new).save(recipeOutput, ModUtil.BA.asResource("tisane"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, COCHINEAL_SPONGECAKE.get(), 4).pattern("#C#").pattern("EHE").pattern("#W#")
                 .define('#', ModUtil.AT.getItem("blood_orange")).define('C', ModUtil.AT.getItem("carmine_husk")).define('W', WHEAT).define('E', Tags.Items.EGGS).define('H', Tags.Items.DRINKS_HONEY)

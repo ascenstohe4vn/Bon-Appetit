@@ -1,4 +1,4 @@
-package net.ashstarcrash.bonappetit.client.renderer;
+package net.ashstarcrash.bonappetit.client.render;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

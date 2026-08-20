@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_jawbreaker": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bonappetit:orange_jawbreaker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:orange_jawbreaker_coating"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_jawbreaker"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:orange_jawbreaker_coating"
+    ]
+  }
+}

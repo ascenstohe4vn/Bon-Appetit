@@ -1,13 +1,11 @@
 package net.ashstarcrash.bonappetit;
 
-import net.ashstarcrash.bonappetit.client.renderer.DryingRackRenderer;
+import net.ashstarcrash.bonappetit.client.render.DryingRackRenderer;
+import net.ashstarcrash.bonappetit.client.render.NuzlockeEffectClientExtensions;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.RecipeCategories;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CookingPotScreen;
 import net.ashstarcrash.bonappetit.core.content.entity.*;
-import net.ashstarcrash.bonappetit.core.registry.BABlockEntities;
-import net.ashstarcrash.bonappetit.core.registry.BAEntities;
-import net.ashstarcrash.bonappetit.core.registry.BAMenuTypes;
-import net.ashstarcrash.bonappetit.core.registry.BAModelLayers;
+import net.ashstarcrash.bonappetit.core.registry.*;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -17,6 +15,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterRecipeBookCategoriesEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
@@ -24,6 +23,11 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 public class BonAppetitClient {
     public BonAppetitClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+    }
+
+    @SubscribeEvent
+    public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
+        event.registerMobEffect(new NuzlockeEffectClientExtensions(), BAEffects.NUZLOCKE.get());
     }
 
     @SubscribeEvent

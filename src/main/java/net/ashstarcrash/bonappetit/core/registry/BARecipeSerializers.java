@@ -3,9 +3,11 @@ package net.ashstarcrash.bonappetit.core.registry;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.CookingPotRecipe;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.FoodServingRecipe;
+import net.ashstarcrash.bonappetit.core.common.data.recipe.TisaneRecipe;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
+import net.minecraft.world.item.crafting.SuspiciousStewRecipe;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -17,6 +19,9 @@ public class BARecipeSerializers {
 
     public static final Supplier<SimpleCraftingRecipeSerializer<?>> FOOD_SERVING =
             RECIPE_SERIALIZERS.register("food_serving", () -> new SimpleCraftingRecipeSerializer<>(FoodServingRecipe::new));
+    public static final Supplier<SimpleCraftingRecipeSerializer<?>> TISANE =
+            RECIPE_SERIALIZERS.register("crafting_special_tisane", () -> new SimpleCraftingRecipeSerializer<>(TisaneRecipe::new)
+    );
     //public static final Supplier<SimpleCraftingRecipeSerializer<?>> DOUGH =
     //        RECIPE_SERIALIZERS.register("dough", () -> new SimpleCraftingRecipeSerializer<>(DoughRecipe::new));
 }

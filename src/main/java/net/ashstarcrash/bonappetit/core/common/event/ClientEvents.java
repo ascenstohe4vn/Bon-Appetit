@@ -4,6 +4,7 @@ import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.core.common.util.RandomMobEffectInstance;
 import net.ashstarcrash.bonappetit.core.registry.BAAttachments;
+import net.ashstarcrash.bonappetit.core.registry.BATags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -125,9 +126,7 @@ public class ClientEvents {
 
                 MobEffectCategory category = effectInstance.getEffect().value().getCategory();
                 boolean isHarmful = (category == MobEffectCategory.HARMFUL);
-                if (isHarmful && !BAConfig.NEGATIVE_EFFECT_TOOLTIPS.get()) {
-                    continue;
-                }
+                if (isHarmful && !BAConfig.NEGATIVE_EFFECT_TOOLTIPS.get()) continue;
 
                 MutableComponent effectText = Component.translatable(effectInstance.getDescriptionId());
                 float probability = possibleEffect.probability();
@@ -138,7 +137,11 @@ public class ClientEvents {
                 if (!effectInstance.endsWithin(20)) {
                     effectText = Component.translatable("potion.withDuration", effectText, MobEffectUtil.formatDuration(effectInstance, 1.0F, tickRate));
                 }
-                effectText.withStyle(category.getTooltipFormatting());
+                if (effectInstance.getEffect().is(BATags.MobEffects.LETHAL)) {
+                    effectText.withStyle(ChatFormatting.DARK_RED);
+                } else {
+                    effectText.withStyle(category.getTooltipFormatting());
+                }
 
                 if (probability < 1.0F) {
                     BAConfig.ChanceDisplayMode mode = BAConfig.EFFECT_CHANCE_DISPLAY.get();

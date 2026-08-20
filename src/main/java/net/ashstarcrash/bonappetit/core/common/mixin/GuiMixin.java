@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Gui.class)
-public abstract class GuiSeededOverlayMixin {
+public abstract class GuiMixin {
     @Inject(method = "renderHearts", at = @At("RETURN"))
     private void bonappetit$renderSeededOverlay(GuiGraphics guiGraphics, Player player, int x, int y, int height, int offsetHeartIndex, float maxHealth, int currentHealth, int displayHealth, int absorptionAmount, boolean renderHighlight, CallbackInfo ci) {
         MobEffectInstance seeded = player.getEffect(BAEffects.SEEDED);
@@ -48,6 +48,30 @@ public abstract class GuiSeededOverlayMixin {
             } else if (isHalfInfected) {
                 guiGraphics.blitSprite(ModUtil.BA.asResource("hud/heart/seeded_vine_half"), drawX, drawY, 9, 9);
             }
+        }
+        RenderSystem.disableBlend();
+    }
+
+    @Inject(method = "renderHearts", at = @At("RETURN"))
+    private void bonappetit$renderRampartOverlay(GuiGraphics guiGraphics, Player player, int x, int y, int height, int offsetHeartIndex, float maxHealth, int currentHealth, int displayHealth, int absorptionAmount, boolean renderHighlight, CallbackInfo ci) {
+        MobEffectInstance rampart = player.getEffect(BAEffects.RAMPART);
+        if (rampart == null) return;
+
+        int totalHearts = Mth.ceil(currentHealth / 2.0f);
+        if (totalHearts <= 0) return;
+
+        int protectedHeartsCount = Math.min(rampart.getAmplifier() + 1, totalHearts);
+
+        RenderSystem.enableBlend();
+
+        for (int i = 0; i < protectedHeartsCount; i++) {
+            int row = i / 10;
+            int col = i % 10;
+
+            int drawX = x + col * 8;
+            int drawY = y - row * height;
+
+            guiGraphics.blitSprite(ModUtil.BA.asResource("hud/heart/coconut_rampart"), drawX, drawY, 9, 9);
         }
         RenderSystem.disableBlend();
     }

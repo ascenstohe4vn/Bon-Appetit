@@ -2,13 +2,18 @@ package net.ashstarcrash.bonappetit.core.registry;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackLinkedSet;
+import net.minecraft.world.level.block.SuspiciousEffectHolder;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.List;
+import java.util.Set;
 import java.util.function.Supplier;
 
 import static net.ashstarcrash.bonappetit.core.registry.BAItems.*;
@@ -176,6 +181,8 @@ public class BACreativeTabs {
                 output.accept(GOLDEN_COOKIE);
                 output.accept(MACARON);
 
+                output.accept(ORANGE_JAWBREAKER);
+
                 output.accept(LIME_POPSICLE);
                 output.accept(DOUBLE_LIME_POPSICLE);
 
@@ -209,6 +216,7 @@ public class BACreativeTabs {
 
                 //drinks
                 output.accept(WATER_MUG);
+                generateTisanes(output, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
                 output.accept(MILK_BOTTLE);
                 output.accept(COCONUT_MILK_BOTTLE);
                 output.accept(CHOCOLATE_MILK_BOTTLE);
@@ -236,6 +244,19 @@ public class BACreativeTabs {
                 output.accept(PINK_LADY);
                 output.accept(CHERRY_LIME_REFRESHER);
             }).build());
+
+    private static void generateTisanes(CreativeModeTab.Output output, CreativeModeTab.TabVisibility tabVisibility) {
+        List<SuspiciousEffectHolder> list = SuspiciousEffectHolder.getAllEffectHolders();
+        Set<ItemStack> set = ItemStackLinkedSet.createTypeAndComponentsSet();
+
+        for(SuspiciousEffectHolder suspiciouseffectholder : list) {
+            ItemStack itemstack = new ItemStack(TISANE.get());
+            itemstack.set(DataComponents.SUSPICIOUS_STEW_EFFECTS, suspiciouseffectholder.getSuspiciousEffects());
+            set.add(itemstack);
+        }
+
+        output.acceptAll(set, tabVisibility);
+    }
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TAB.register(eventBus);
