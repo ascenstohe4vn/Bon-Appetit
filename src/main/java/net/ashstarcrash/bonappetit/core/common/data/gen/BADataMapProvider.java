@@ -52,9 +52,7 @@ public class BADataMapProvider extends DataMapProvider {
         compostables.add(COFFEE_CHERRIES.getId(), new Compostable(0.3F), false);
         compostables.add(CRANBERRIES.getId(), new Compostable(0.3F), false);
         compostables.add(STRAWBERRIES.getId(), new Compostable(0.3F), false);
-        compostables.add(SALMONBERRIES.getId(), new Compostable(0.3F), false);
         compostables.add(BLUEBERRIES.getId(), new Compostable(0.3F), false);
-        compostables.add(MULBERRIES.getId(), new Compostable(0.3F), false);
         compostables.add(RASPBERRIES.getId(), new Compostable(0.3F), false);
         compostables.add(BLACK_RASPBERRIES.getId(), new Compostable(0.3F), false);
 

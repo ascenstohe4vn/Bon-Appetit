@@ -34,6 +34,7 @@ public class BAEnglishLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("tab." + BA, "Bon Appétit");
+        add("tab.cooking", "Cooking");
 
         //recipe viewers
         add("jei." + BA + ".category.cooking_pot", "Pot Cooking");

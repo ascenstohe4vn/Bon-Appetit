@@ -1,4 +1,4 @@
-// 1.21.1	2026-09-06T00:45:13.706712136	Item Models: bonappetit
+// 1.21.1	2026-09-06T17:57:10.411253166	Item Models: bonappetit
 ec3c3ea6a4c300bc3d777f48d375957a22f30006 assets/bonappetit/models/item/acorn.json
 5953bac818e0925ab2b3cb45857599a494346edf assets/bonappetit/models/item/ambrosia_salad.json
 26d3d8ac0355e8f17e487599b50438337f53a7e1 assets/bonappetit/models/item/apple_cake.json
@@ -43,6 +43,9 @@ a6e280a10ccc4a670158adbbf17999fb213aac63 assets/bonappetit/models/item/cherries.
 6f6b17925171cad11356be7bae9e1f5e9283ab9d assets/bonappetit/models/item/chicken_quesadilla.json
 c317206664eed46644b5b0e29003f4d50b638e8e assets/bonappetit/models/item/chocolate_bar.json
 78bae5ff6c3217152dd547c369071dc16f25b828 assets/bonappetit/models/item/chocolate_milk_bottle.json
+89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/chorus_fruit_gummy.json
+89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/chorus_fruit_pie.json
+89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/chorus_fruit_pie_slice.json
 f211eb9befe6416a7d9f830f952b343e7a8cfd68 assets/bonappetit/models/item/cinnamon_dust.json
 b7cc6cb7c0639b6b1c9b7bb6dccaacb289804e26 assets/bonappetit/models/item/cinnamon_sticks.json
 cfadb3083945f89a75507018af7ec3f867812846 assets/bonappetit/models/item/cochineal_spongecake.json
@@ -81,6 +84,7 @@ d11163c937917a40406ebc9af63621881e47fd70 assets/bonappetit/models/item/golden_ch
 c672733afb4772f14a01cb37eea9bb4c1cdfe000 assets/bonappetit/models/item/golden_cookie.json
 097fac453e5b38103ceedf6a7ee903402376cdb6 assets/bonappetit/models/item/golden_orange.json
 83da0ccc84437faa6212dbaa65db0f7c90a8f75e assets/bonappetit/models/item/golden_strawberries.json
+89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/grape_gummy.json
 3c735ba1e9ef8895eacd66015bd463af60903ac3 assets/bonappetit/models/item/grapefruit.json
 89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/grapefruit_gummy.json
 9c0a318214f98e0da7783aaa3293ca1b19c36521 assets/bonappetit/models/item/grapefruit_pie.json
@@ -121,8 +125,8 @@ e00d01738683289f4a421c1477ae0f99456a1e7d assets/bonappetit/models/item/mango.jso
 89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/mango_gummy.json
 a3fc04cb12afef5a20c5d422512ff078405108a8 assets/bonappetit/models/item/mango_pie.json
 f59cc41ce6754af7a9eacf143321280e89811f3f assets/bonappetit/models/item/mango_pie_slice.json
+89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/melon_gummy.json
 3add272002d32aa1e657d12cc91c8470bfd444d1 assets/bonappetit/models/item/milk_bottle.json
-51733e1c3d3777aa5f3daa908d96808d13e52431 assets/bonappetit/models/item/mulberries.json
 8362d85fb03c05a1294e92026c5e01e8f98b1595 assets/bonappetit/models/item/onion.json
 a0f357ffd209d50377208175d1d09fc2943e8bf8 assets/bonappetit/models/item/onion_rings.json
 a4eefd7c1e7b034c96e2439a29c483b52819a12b assets/bonappetit/models/item/onion_slice.json
@@ -169,7 +173,6 @@ cb88b9f8a1c6fd1cda56f8dc6df5bb74eaf0186b assets/bonappetit/models/item/raisins.j
 5ce9a4a9f3e6d22ce5503f4858d84f6c62cfce4d assets/bonappetit/models/item/raw_corn_tortilla.json
 f8d8e57bbb499f6d8c60a30860b6bf94a76105d7 assets/bonappetit/models/item/rice.json
 8663a1925dc1375d3a2bf1e0031b00231f4e6871 assets/bonappetit/models/item/roasted_acorn.json
-45aaac85d59fad8605967bda85b8532b2b65f66c assets/bonappetit/models/item/salmonberries.json
 f1486aebe345511d648a87f836711568cf7c7009 assets/bonappetit/models/item/snickerdoodle.json
 3b63e2edbe7daba103dd6a7dae8c6fe814bc76e9 assets/bonappetit/models/item/spongecake.json
 2da4d84390afaec4801d310c410e570c6c404138 assets/bonappetit/models/item/stollen.json

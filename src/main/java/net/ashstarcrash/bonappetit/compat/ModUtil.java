@@ -39,6 +39,7 @@ public enum ModUtil {
     NV("nirvana"),
     S("salt"),
     SS("snowyspirit"),
+    SUP("supplementaries"),
     UA("upgrade_aquatic"),
     WS("windswept"),
     WW("woodworks");

@@ -1,13 +1,13 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
+import net.ashstarcrash.bonappetit.BAConfig;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackLinkedSet;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.SuspiciousEffectHolder;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,113 +17,155 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 import static net.ashstarcrash.bonappetit.core.registry.BAItems.*;
+import static net.minecraft.world.item.Items.*;
 
 public class BACreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, BonAppetit.ID);
 
-    public static final Supplier<CreativeModeTab> BA_TAB = CREATIVE_MODE_TAB.register("bonappetit_tab", () -> CreativeModeTab.builder().icon(() -> new ItemStack(DRAGON_FRUIT.get()))
-            .title(Component.translatable("tab.bonappetit"))
+    public static final Supplier<CreativeModeTab> BA_TAB = CREATIVE_MODE_TAB.register("bonappetit_tab", () -> CreativeModeTab.builder().withSearchBar().withTabsBefore(CreativeModeTabs.FOOD_AND_DRINKS)
+            .icon(() -> new ItemStack(/*BAConfig.GENERALIZED_CREATIVE_TAB.get() ? */SMOKER/* : DRAGON_FRUIT.get()*/))
+            .title(Component.translatable(/*BAConfig.GENERALIZED_CREATIVE_TAB.get() ? */"tab.cooking"/* : "tab.bonappetit"*/))
             .displayItems((itemDisplayParameters, output) -> {
                 //woods
                 //tools
                 output.accept(PITCHFORK);
 
                 //workstations
+                altTabAccept(output, FURNACE);
+                altTabAccept(output, SMOKER);
+                altTabAccept(output, CAULDRON);
                 output.accept(BABlocks.COOKING_POT);
                 output.accept(BABlocks.DRYING_RACK);
                 output.accept(BABlocks.COPPER_TANK);
 
                 //cabinets
                 //serving items
+                altTabAccept(output, BOWL);
                 output.accept(PAPER_PLATE);
+                altTabAccept(output, GLASS_BOTTLE);
                 output.accept(GLASS_MUG);
                 output.accept(GLASS_COCKTAIL);
 
                 //seeds
-                output.accept(POMEGRANATE_SEEDS);
+                altTabAccept(output, BEETROOT_SEEDS);
+                altTabAccept(output, COCOA_BEANS);
                 output.accept(CORN_KERNELS);
+                if (ModUtil.SUP.isLoaded()) output.accept(ModUtil.SUP.getItem("flax_seeds"));
+                altTabAccept(output, MELON_SEEDS);
+                altTabAccept(output, PITCHER_POD);
+                output.accept(POMEGRANATE_SEEDS);
+                altTabAccept(output, PUMPKIN_SEEDS);
+                altTabAccept(output, TORCHFLOWER_SEEDS);
+                altTabAccept(output, WHEAT_SEEDS);
+
+                //grains
+                output.accept(CORN);
+                if (ModUtil.SUP.isLoaded()) output.accept(ModUtil.SUP.getItem("flax"));
+                output.accept(RICE);
+                altTabAccept(output, WHEAT);
 
                 //fruits
-                output.accept(CHERRIES);
-                output.accept(GOLDEN_CHERRIES);
-
+                altTabAccept(output, APPLE);
                 output.accept(APPLE_SLICE);
                 output.accept(GREEN_APPLE);
-
-                output.accept(GRAPEFRUIT);
-                output.accept(GRAPEFRUIT_SLICE);
-
-                output.accept(ORANGE);
-                output.accept(ORANGE_SLICE);
-
-                output.accept(MANGO);
-
+                altTabAccept(output, GOLDEN_APPLE);
+                altTabAccept(output, ENCHANTED_GOLDEN_APPLE);
                 output.accept(APRICOT);
-
-                output.accept(PINEAPPLE);
-
                 output.accept(BANANA);
-
-                output.accept(LEMON);
-                output.accept(LEMON_SLICE);
-
-                output.accept(LIME);
-                output.accept(LIME_SLICE);
-
-                output.accept(KIWI);
-
-                output.accept(PEAR);
-
-                output.accept(GRAPES);
-
-                output.accept(PEACH);
-
-                output.accept(DRAGON_FRUIT);
-                output.accept(DRAGON_FRUIT_SLICE);
-
-                output.accept(POMEGRANATE);
-                output.accept(POMEGRANATE_SLICE);
-
+                output.accept(CHERRIES);
+                output.accept(GOLDEN_CHERRIES);
+                altTabAccept(output, CHORUS_FRUIT);
                 output.accept(COCONUT);
                 output.accept(COCONUT_SLICE);
+                output.accept(DRAGON_FRUIT);
+                output.accept(DRAGON_FRUIT_SLICE);
+                output.accept(GRAPEFRUIT);
+                output.accept(GRAPEFRUIT_SLICE);
+                output.accept(GRAPES);
+                output.accept(KIWI);
+                output.accept(LEMON);
+                output.accept(LEMON_SLICE);
+                output.accept(LIME);
+                output.accept(LIME_SLICE);
+                output.accept(MANGO);
+                altTabAccept(output, MELON);
+                altTabAccept(output, MELON_SLICE);
+                altTabAccept(output, GLISTERING_MELON_SLICE);
+                output.accept(ORANGE);
+                output.accept(ORANGE_SLICE);
+                if (ModUtil.AT.isLoaded()) output.accept(ModUtil.AT.getItem("blood_orange"));
+                if (ModUtil.AT.isLoaded()) output.accept(ModUtil.AT.getItem("passion_fruit"));
+                if (ModUtil.AT.isLoaded()) output.accept(ModUtil.AT.getItem("shimmering_passion_fruit"));
+                output.accept(PEACH);
+                output.accept(PEAR);
+                output.accept(PINEAPPLE);
+                output.accept(POMEGRANATE);
+                output.accept(POMEGRANATE_SLICE);
+                if (ModUtil.AT.isLoaded()) output.accept(ModUtil.AT.getItem("yucca_fruit"));
 
                 //berries
-                output.accept(COFFEE_CHERRIES);
-
+                output.accept(BLUEBERRIES);
                 output.accept(CRANBERRIES);
-
+                if (ModUtil.AT.isLoaded()) output.accept(ModUtil.AT.getItem("currant"));
+                altTabAccept(output, GLOW_BERRIES);
+                if (ModUtil.UA.isLoaded()) output.accept(ModUtil.UA.getItem("mulberries"));
+                output.accept(RASPBERRIES);
+                output.accept(BLACK_RASPBERRIES);
                 output.accept(STRAWBERRIES);
                 output.accept(GOLDEN_STRAWBERRIES);
                 output.accept(WINGED_STRAWBERRY);
                 output.accept(WINGED_GOLDEN_STRAWBERRY);
-
-                output.accept(SALMONBERRIES);
-
-                output.accept(BLUEBERRIES);
-
-                output.accept(MULBERRIES);
-
-                output.accept(RASPBERRIES);
-                output.accept(BLACK_RASPBERRIES);
+                altTabAccept(output, SWEET_BERRIES);
 
                 //veggies
-                output.accept(CORN);
-
+                altTabAccept(output, BEETROOT);
+                altTabAccept(output, CARROT);
+                altTabAccept(output, GOLDEN_CARROT);
                 output.accept(ONION);
                 output.accept(ONION_SLICE);
-
+                altTabAccept(output, PITCHER_PLANT);
+                altTabAccept(output, POTATO);
+                altTabAccept(output, PUMPKIN);
                 output.accept(PUMPKIN_SLICE);
 
-                //grains
-                output.accept(RICE);
+                //forages
+                altTabAccept(output, RED_MUSHROOM);
+                altTabAccept(output, BROWN_MUSHROOM);
+                altTabAccept(output, CRIMSON_FUNGUS);
+                altTabAccept(output, WARPED_FUNGUS);
 
-                //tea and coffee
+                altTabAccept(output, SUNFLOWER);
+                altTabAccept(output, TORCHFLOWER);
+
+                if (ModUtil.AT.isLoaded()) output.accept(ModUtil.AT.getItem("aloe_leaves"));
                 output.accept(GREEN_TEA_LEAVES);
                 output.accept(YELLOW_TEA_LEAVES);
                 output.accept(BLACK_TEA_LEAVES);
+                output.accept(COFFEE_CHERRIES);
                 output.accept(COFFEE_BEANS);
 
-                //meats
+                //produce
+                altTabAccept(output, EGG);
+                altTabAccept(output, SNIFFER_EGG);
+
+                altTabAccept(output, BEEF);
+                altTabAccept(output, CHICKEN);
+                altTabAccept(output, PORKCHOP);
+                altTabAccept(output, MUTTON);
+                altTabAccept(output, RABBIT);
+                altTabAccept(output, COD);
+                altTabAccept(output, SALMON);
+                altTabAccept(output, TROPICAL_FISH);
+                altTabAccept(output, PUFFERFISH);
+
+                altTabAccept(output, COOKED_BEEF);
+                altTabAccept(output, COOKED_CHICKEN);
+                altTabAccept(output, COOKED_PORKCHOP);
+                altTabAccept(output, COOKED_MUTTON);
+                altTabAccept(output, COOKED_RABBIT);
+                altTabAccept(output, COOKED_COD);
+                altTabAccept(output, COOKED_SALMON);
+
                 //spices
                 output.accept(CINNAMON_STICKS);
                 output.accept(CINNAMON_DUST);
@@ -132,7 +174,18 @@ public class BACreativeTabs {
                 output.accept(ACORN);
                 output.accept(ROASTED_ACORN);
 
-                //basic ingredients/meals (<1 fruit)
+                //baking & cooking ingredients
+                output.accept(DOUGH);
+                output.accept(RAW_CORN_TORTILLA);
+                output.accept(PIE_CRUST);
+
+                altTabAccept(output, SUGAR_CANE);
+                altTabAccept(output, SUGAR);
+                //output.accept(MOLASSES);
+                altTabAccept(output, HONEY_BOTTLE);
+                if (ModUtil.AUT.isLoaded()) output.accept(ModUtil.AUT.getItem("maple_syrup"));
+
+                //basic meals (<1 fruit)
                 output.accept(DOUGH);
                 output.accept(PIE_CRUST);
                 output.accept(WAFER);
@@ -229,6 +282,10 @@ public class BACreativeTabs {
                 output.accept(PINK_LADY);
                 output.accept(CHERRY_LIME_REFRESHER);
             }).build());
+
+    private static void altTabAccept(CreativeModeTab.Output output, ItemLike item) {
+        if (BAConfig.GENERALIZED_CREATIVE_TAB.get()) output.accept(item);
+    }
 
     private static void generateTisanes(CreativeModeTab.Output output, CreativeModeTab.TabVisibility tabVisibility) {
         List<SuspiciousEffectHolder> list = SuspiciousEffectHolder.getAllEffectHolders();

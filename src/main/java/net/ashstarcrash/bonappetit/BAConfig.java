@@ -11,6 +11,7 @@ public class BAConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     // --- CLIENT CONFIG ---
+    public static final ModConfigSpec.BooleanValue GENERALIZED_CREATIVE_TAB;
     public static final ModConfigSpec.BooleanValue SCROLLABLE_EFFECTS_DISPLAY;
     public static final ModConfigSpec.BooleanValue VERTICAL_EFFECTS_SCROLLING;
 
@@ -61,6 +62,10 @@ public class BAConfig {
         // --- Client ---
         BUILDER.comment("Client-side rendering and UI behavior").push("client");
 
+        GENERALIZED_CREATIVE_TAB = BUILDER
+                .comment("If true, the 'Bon Appétit' tab gets replaced with a general 'Cooking' tab, ",
+                        "which includes vanilla ingredients to make it easier to experiment with foods in creative mode.")
+                .define("generalized_creative_tab", true);
         SCROLLABLE_EFFECTS_DISPLAY = BUILDER
                 .comment("If true, effects get rendered entirely differently in the inventory, using a new system where effects can be scrolled through instead of getting squished together")
                 .define("scrollable_effects_display", true);

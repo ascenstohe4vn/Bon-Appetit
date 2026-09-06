@@ -51,6 +51,12 @@
     "bonappetit:cherry_pie_slice": {
       "chance": 0.25
     },
+    "bonappetit:chorus_fruit_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:chorus_fruit_pie_slice": {
+      "chance": 0.25
+    },
     "bonappetit:coconut": {
       "chance": 0.65
     },
@@ -153,9 +159,6 @@
     "bonappetit:mango_pie_slice": {
       "chance": 0.25
     },
-    "bonappetit:mulberries": {
-      "chance": 0.3
-    },
     "bonappetit:onion": {
       "chance": 0.65
     },
@@ -227,9 +230,6 @@
     },
     "bonappetit:rice": {
       "chance": 0.65
-    },
-    "bonappetit:salmonberries": {
-      "chance": 0.3
     },
     "bonappetit:stollen": {
       "chance": 1.0

@@ -192,26 +192,26 @@ public class BAFoodProperties {
 
     public static final FoodProperties LEMONADE = (new FoodProperties.Builder())
             .nutrition(5).saturationModifier(0.55F)
-            .effect(() -> new MobEffectInstance(RESONANCE, 300, 0), 1f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(RESONANCE, 300, 0), 1F).alwaysEdible().build();
     public static final FoodProperties LIMEADE = (new FoodProperties.Builder())
             .nutrition(5).saturationModifier(0.575F)
-            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1F).alwaysEdible().build();
     public static final FoodProperties PINK_LEMONADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.8F)
-            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 600, 0), 1f)
-            .effect(() -> new MobEffectInstance(RESONANCE, 300, 0), 1f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 600, 0), 1F)
+            .effect(() -> new MobEffectInstance(RESONANCE, 300, 0), 1F).alwaysEdible().build();
     public static final FoodProperties PINK_LIMEADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.815F)
-            .effect(() -> new MobEffectInstance(PROLIFERATE, 800, 0), 1f)
-            .effect(() -> new MobEffectInstance(SEEDED, 100, 0), 1f)
-            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(PROLIFERATE, 800, 0), 1F)
+            .effect(() -> new MobEffectInstance(SEEDED, 100, 0), 1F)
+            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1F).alwaysEdible().build();
     public static final FoodProperties BLUEBERRY_LIMEADE = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.8F)
-            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1F).alwaysEdible().build();
     public static final FoodProperties LIME_GREEN_TEA = (new FoodProperties.Builder())
             .nutrition(6).saturationModifier(0.775F)
-            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1f)
-            .effect(() -> new MobEffectInstance(CAFFEINATED, 300, 0 /* temp until the tea effects are implemented */), 0.8f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1F)
+            .effect(() -> new MobEffectInstance(CAFFEINATED, 300, 0 /* temp until the tea effects are implemented */), 0.8F).alwaysEdible().build();
     public static final FoodProperties DRAGON_FRUIT_LATTE = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.625F)
             .effect(() -> new MobEffectInstance(FLAK, 750, 1), 1F).build();
@@ -223,13 +223,16 @@ public class BAFoodProperties {
             .effect(() -> new MobEffectInstance(TWIN_STRIKE, 200, 0), 0.75F).build();
     public static final FoodProperties CHERRY_LIME_REFRESHER = (new FoodProperties.Builder())
             .nutrition(8).saturationModifier(0.7F)
-            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 600, 1), 1f)
-            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1f)
-            .effect(() -> new MobEffectInstance(CAFFEINATED, 200, 0 /* temp until the tea effects are implemented */), 0.8f).alwaysEdible().build();
+            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 600, 1), 1F)
+            .effect(() -> new MobEffectInstance(DISSONANCE, 300, 0), 1F)
+            .effect(() -> new MobEffectInstance(CAFFEINATED, 200, 0 /* temp until the tea effects are implemented */), 0.8F).alwaysEdible().build();
 
     public static class Compat {
         public static final Map<Item, FoodProperties> VANILLA_EFFECTS = (new ImmutableMap.Builder<Item, FoodProperties>())
-                .put(Items.BEETROOT_SOUP, new FoodProperties.Builder().effect(() -> new MobEffectInstance(ROOTED, 600), 1.0F).build()).build();
+                //.put(GLISTERING_MELON_SLICE, new FoodProperties.Builder()
+                //        .nutrition(4).saturationModifier(0.4F)
+                //        .effect(() -> new MobEffectInstance(REGENERATION, 100), 1F).build())
+                .put(BEETROOT_SOUP, new FoodProperties.Builder().effect(() -> new MobEffectInstance(ROOTED, 600), 1F).build()).build();
         public static final FoodProperties COCHINEAL_SPONGECAKE = (new FoodProperties.Builder())
                 .nutrition(6).saturationModifier(0.65F)
                 .effect(() -> new MobEffectInstance(NUZLOCKE, 12000, 1), 1F)

@@ -3,11 +3,11 @@
     "bonappetit:panettone",
     "bonappetit:stollen",
     "bonappetit:apple_cake",
-    "bonappetit:cherry_cake",
-    "bonappetit:orange_cake",
-    "bonappetit:pineapple_cake",
     "bonappetit:banana_cake",
+    "bonappetit:cherry_cake",
     "bonappetit:lemon_cake",
-    "bonappetit:lime_cake"
+    "bonappetit:lime_cake",
+    "bonappetit:orange_cake",
+    "bonappetit:pineapple_cake"
   ]
 }

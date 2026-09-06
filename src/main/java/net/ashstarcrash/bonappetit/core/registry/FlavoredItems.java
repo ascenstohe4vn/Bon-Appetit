@@ -11,6 +11,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -225,34 +226,32 @@ public class FlavoredItems {
                 ItemType.CAKE, Variant.effect(() -> ABSORPTION, 0, 200).sliceEffect(() -> ABSORPTION, 0, 200),
                 ItemType.GUMMY, Variant.effect(() -> ABSORPTION, 4, 100)
         )),
+        BANANA("banana", FlavorIngredient.of(TagOrItem.tag(FOODS_BANANA)), Map.of(
+                ItemType.CAKE, Variant.plain().sliceNutrition(2).sliceSaturation(0.125F),
+                ItemType.GUMMY, Variant.effect(() -> AGILITY, 0, 100)
+        )),
         CHERRY("cherry", FlavorIngredient.of(TagOrItem.tag(FOODS_CHERRY)), Map.of(
                 ItemType.PIE, Variant.effect(() -> TWIN_STRIKE, 1, 900).sliceEffect(() -> TWIN_STRIKE, 1, 200),
                 ItemType.CAKE, Variant.effect(() -> TWIN_STRIKE, 0, 200).sliceEffect(() -> TWIN_STRIKE, 0, 200),
                 ItemType.GUMMY, Variant.effect(() -> TWIN_STRIKE, 3, 200)
         )),
+        CHORUS_FRUIT("chorus_fruit", FlavorIngredient.of(TagOrItem.item(() -> Items.CHORUS_FRUIT), TagOrItem.item(() -> GRAPEFRUIT_SLICE)), Map.of(
+                ItemType.PIE, Variant.effect(() -> REFLECTION, 1, 900).sliceEffect(() -> REFLECTION, 1, 200),
+                ItemType.GUMMY, Variant.plain()
+        )),
+        COCONUT("coconut", FlavorIngredient.of(TagOrItem.tag(FOODS_COCONUT)), Map.of(
+                ItemType.GUMMY, Variant.effect(() -> RAMPART, 2, 200)
+        )),
+        DRAGON_FRUIT("dragon_fruit", FlavorIngredient.of(TagOrItem.tag(FOODS_DRAGON_FRUIT), TagOrItem.item(() -> DRAGON_FRUIT_SLICE)), Map.of(
+                ItemType.PIE, Variant.effect(() -> FLAK, 1, 900).sliceEffect(() -> FLAK, 1, 200),
+                ItemType.GUMMY, Variant.effect(() -> FLAK, 4, 150)
+        )),
         GRAPEFRUIT("grapefruit", FlavorIngredient.of(TagOrItem.tag(FOODS_GRAPEFRUIT), TagOrItem.item(() -> GRAPEFRUIT_SLICE)), Map.of(
                 ItemType.PIE, Variant.effect(() -> REFLECTION, 1, 900).sliceEffect(() -> REFLECTION, 1, 200),
                 ItemType.GUMMY, Variant.plain()
         )),
-        ORANGE("orange", FlavorIngredient.of(TagOrItem.tag(FOODS_ORANGE), TagOrItem.item(() -> ORANGE_SLICE)), Map.of(
-                ItemType.PIE, Variant.effect(() -> CONCENTRATION, 1, 900).sliceEffect(() -> CONCENTRATION, 1, 200),
-                ItemType.CAKE, Variant.effect(() -> CONCENTRATION, 0, 200).sliceEffect(() -> CONCENTRATION, 0, 150),
-                ItemType.GUMMY, Variant.effect(() -> CONCENTRATION, 0, 100)
-        )),
-        BLOOD_ORANGE("blood_orange", FlavorIngredient.of(TagOrItem.tag(FOODS_BLOOD_ORANGE)), Map.of(
-                ItemType.GUMMY, Variant.effect(() -> NUZLOCKE, 4, 6000)
-        )),
-        MANGO("mango", FlavorIngredient.of(TagOrItem.tag(FOODS_MANGO)), Map.of(
-                ItemType.PIE, Variant.plain().sliceNutrition(2).sliceSaturation(0.5F),
-                ItemType.GUMMY, Variant.plain()
-        )),
-        PINEAPPLE("pineapple", FlavorIngredient.of(TagOrItem.tag(FOODS_PINEAPPLE)), Map.of(
-                ItemType.CAKE, Variant.plain().sliceNutrition(2).sliceSaturation(0.125F),
-                ItemType.GUMMY, Variant.effect(() -> AGILITY, 0, 100)
-        )),
-        BANANA("banana", FlavorIngredient.of(TagOrItem.tag(FOODS_BANANA)), Map.of(
-                ItemType.CAKE, Variant.plain().sliceNutrition(2).sliceSaturation(0.125F),
-                ItemType.GUMMY, Variant.effect(() -> AGILITY, 0, 100)
+        GRAPE("grape", FlavorIngredient.of(TagOrItem.tag(FOODS_GRAPE)), Map.of(
+                ItemType.GUMMY, Variant.effect(() -> DISCHARGE/* temp effect */, 2, 200)
         )),
         LEMON("lemon", FlavorIngredient.of(TagOrItem.tag(FOODS_LEMON), TagOrItem.item(() -> LEMON_SLICE)), Map.of(
                 ItemType.COOKIE, Variant.effect(() -> RESONANCE, 0, 100),
@@ -267,29 +266,41 @@ public class FlavoredItems {
                 ItemType.CAKE, Variant.effect(() -> DISSONANCE, 0, 200).sliceEffect(() -> DISSONANCE, 0, 200),
                 ItemType.GUMMY, Variant.effect(() -> DISSONANCE, 9, 20)
         )),
+        MANGO("mango", FlavorIngredient.of(TagOrItem.tag(FOODS_MANGO)), Map.of(
+                ItemType.PIE, Variant.plain().sliceNutrition(2).sliceSaturation(0.5F),
+                ItemType.GUMMY, Variant.plain()
+        )),
+        MELON("melon", FlavorIngredient.of(TagOrItem.item(() -> Items.MELON_SLICE)), Map.of(
+                ItemType.GUMMY, Variant.effect(() -> HEAL, 0, 1)
+        )),
+        ORANGE("orange", FlavorIngredient.of(TagOrItem.tag(FOODS_ORANGE), TagOrItem.item(() -> ORANGE_SLICE)), Map.of(
+                ItemType.PIE, Variant.effect(() -> CONCENTRATION, 1, 900).sliceEffect(() -> CONCENTRATION, 1, 200),
+                ItemType.CAKE, Variant.effect(() -> CONCENTRATION, 0, 200).sliceEffect(() -> CONCENTRATION, 0, 150),
+                ItemType.GUMMY, Variant.effect(() -> CONCENTRATION, 0, 100)
+        )),
+        BLOOD_ORANGE("blood_orange", FlavorIngredient.of(TagOrItem.tag(FOODS_BLOOD_ORANGE)), Map.of(
+                ItemType.GUMMY, Variant.effect(() -> NUZLOCKE, 4, 6000)
+        )),
+        PASSION_FRUIT("passion_fruit", FlavorIngredient.of(
+                TagOrItem.tag(ModUtil.COMMON.tag(Registries.ITEM, "foods/passion_fruit"))
+        ), Map.of(
+                ItemType.GUMMY, Variant.effect(() -> ModUtil.AT.getEffect("spitting", null), 4, 75)
+        ), ModRequirement.of(ModUtil.AT)),
         PEACH("peach", FlavorIngredient.of(TagOrItem.tag(FOODS_PEACH)), Map.of(
                 ItemType.GUMMY, Variant.effect(() -> VITALITY, 4, 200)
         )),
-        DRAGON_FRUIT("dragon_fruit", FlavorIngredient.of(TagOrItem.tag(FOODS_DRAGON_FRUIT), TagOrItem.item(() -> DRAGON_FRUIT_SLICE)), Map.of(
-                ItemType.PIE, Variant.plain(),
-                ItemType.GUMMY, Variant.plain()
+        PINEAPPLE("pineapple", FlavorIngredient.of(TagOrItem.tag(FOODS_PINEAPPLE)), Map.of(
+                ItemType.CAKE, Variant.plain().sliceNutrition(2).sliceSaturation(0.125F),
+                ItemType.GUMMY, Variant.effect(() -> AGILITY, 0, 100)
         )),
         POMEGRANATE("pomegranate", FlavorIngredient.of(TagOrItem.tag(FOODS_POMEGRANATE), TagOrItem.item(() -> POMEGRANATE_SLICE)), Map.of(
                 ItemType.PIE, Variant.effect(() -> PROLIFERATE, 1, 900).sliceEffect(() -> PROLIFERATE, 1, 200),
                 ItemType.GUMMY, Variant.effect(() -> PROLIFERATE, 4, 100)
         )),
-        COCONUT("coconut", FlavorIngredient.of(TagOrItem.tag(FOODS_COCONUT)), Map.of(
-                ItemType.GUMMY, Variant.effect(() -> RAMPART, 2, 200)
-        )),
+
         COFFEE_CHERRY("coffee_cherry", FlavorIngredient.of(TagOrItem.tag(CROPS_COFFEE)), Map.of(
                 ItemType.GUMMY, Variant.effect(() -> CAFFEINATED, 2, 100)
-        )),
-
-        PASSION_FRUIT("passion_fruit", FlavorIngredient.of(
-                TagOrItem.tag(ModUtil.COMMON.tag(Registries.ITEM, "foods/passion_fruit"))
-        ), Map.of(
-                ItemType.GUMMY, Variant.effect(() -> ModUtil.AT.getEffect("spitting", null), 4, 75)
-        ), ModRequirement.of(ModUtil.AT));
+        ));
 
         public final String id;
         public final FlavorIngredient ingredient;

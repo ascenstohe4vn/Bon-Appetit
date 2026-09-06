@@ -135,9 +135,7 @@ public class BATagProvider {
                     .add(GOLDEN_STRAWBERRIES.get())
                     .add(WINGED_STRAWBERRY.get())
                     .add(WINGED_GOLDEN_STRAWBERRY.get())
-                    .add(SALMONBERRIES.get())
                     .add(BLUEBERRIES.get())
-                    .add(MULBERRIES.get())
                     .add(RASPBERRIES.get())
                     .add(BLACK_RASPBERRIES.get())
                     .add(ACORN.get())
@@ -231,9 +229,7 @@ public class BATagProvider {
                     .add(WINGED_STRAWBERRY.get())
                     .add(WINGED_GOLDEN_STRAWBERRY.get())
                     .add(CRANBERRIES.get())
-                    .add(SALMONBERRIES.get())
                     .add(BLUEBERRIES.get())
-                    .add(MULBERRIES.get())
                     .add(RASPBERRIES.get())
                     .add(BLACK_RASPBERRIES.get())
                     .addOptional(ModUtil.AT.asResource("blood_orange"));
@@ -244,9 +240,7 @@ public class BATagProvider {
                     .add(WINGED_STRAWBERRY.get())
                     .add(WINGED_GOLDEN_STRAWBERRY.get())
                     .add(CRANBERRIES.get())
-                    .add(SALMONBERRIES.get())
                     .add(BLUEBERRIES.get())
-                    .add(MULBERRIES.get())
                     .add(RASPBERRIES.get())
                     .add(BLACK_RASPBERRIES.get())
                     .add(COFFEE_CHERRIES.get());
@@ -344,9 +338,7 @@ public class BATagProvider {
                     .add(CRANBERRIES.get())
                     .add(STRAWBERRIES.get())
                     .add(GOLDEN_STRAWBERRIES.get())
-                    .add(SALMONBERRIES.get())
                     .add(BLUEBERRIES.get())
-                    .add(MULBERRIES.get())
                     .add(RASPBERRIES.get())
                     .add(BLACK_RASPBERRIES.get());
 
