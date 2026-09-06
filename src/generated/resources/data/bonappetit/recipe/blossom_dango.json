@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/cherry"
+    },
+    {
+      "tag": "c:foods/tea_leaves/matcha"
+    },
+    {
+      "item": "bonappetit:rice"
+    },
+    {
+      "item": "bonappetit:rice"
+    },
+    {
+      "item": "bonappetit:rice"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:blossom_dango"
+  }
+}

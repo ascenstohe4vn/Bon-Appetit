@@ -196,6 +196,10 @@ public class BAItems {
             .nutrition(4)
             .saturationModifier(0.225f).build())));
     public static final DeferredItem<Item> ORANGE_JAWBREAKER = ITEMS.register("orange_jawbreaker", () -> new OrangeJawbreakerItem(new Item.Properties().stacksTo(1).durability(4).food(new FoodProperties.Builder().alwaysEdible().build())));
+    public static final DeferredItem<Item> BLOSSOM_DANGO = ITEMS.register("blossom_dango", () -> new Item(new Item.Properties().stacksTo(16).food(BAFoodProperties.BLOSSOM_DANGO)));
+    public static final DeferredItem<Item> GROVE_DANGO = ITEMS.register("grove_dango", () -> new Item(new Item.Properties().stacksTo(16).food(BAFoodProperties.GROVE_DANGO)));
+    public static final DeferredItem<Item> TWILIGHT_DANGO = ITEMS.register("twilight_dango", () -> new Item(new Item.Properties().stacksTo(16).food(BAFoodProperties.TWILIGHT_DANGO)));
+    public static final DeferredItem<Item> SUNRISE_DANGO = ITEMS.register("sunrise_dango", () -> new Item(new Item.Properties().stacksTo(16).food(BAFoodProperties.SUNRISE_DANGO)));
     public static final DeferredItem<Item> SPONGECAKE = ITEMS.register("spongecake", () -> new Item(new Item.Properties().food(BAFoodProperties.SPONGECAKE)));
     public static final DeferredItem<Item> COCHINEAL_SPONGECAKE = ITEMS.register("cochineal_spongecake", () -> new SneakPlaceBlockItem(BABlocks.COCHINEAL_SPONGECAKE.get(), new Item.Properties().food(BAFoodProperties.Compat.COCHINEAL_SPONGECAKE), true));
 

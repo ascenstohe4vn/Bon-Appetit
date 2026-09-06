@@ -185,6 +185,11 @@ public class BACreativeTabs {
 
                 FlavoredItems.addPopsicles(output);
 
+                output.accept(BLOSSOM_DANGO);
+                output.accept(GROVE_DANGO);
+                output.accept(TWILIGHT_DANGO);
+                output.accept(SUNRISE_DANGO);
+
                 output.accept(SPONGECAKE);
                 if (ModUtil.AT.isLoaded()) output.accept(COCHINEAL_SPONGECAKE);
 

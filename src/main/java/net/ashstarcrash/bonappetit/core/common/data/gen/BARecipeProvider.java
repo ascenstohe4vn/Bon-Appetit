@@ -240,6 +240,23 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
 
         SpecialRecipeBuilder.special(TisaneRecipe::new).save(recipeOutput, ModUtil.BA.asResource("tisane"));
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, BLOSSOM_DANGO.get())
+                .requires(BATags.Items.FOODS_CHERRY).requires(BATags.Items.FOODS_TEA_LEAVES_MATCHA)
+                .requires(RICE.get()).requires(RICE.get()).requires(RICE.get()).requires(STICK)
+                .unlockedBy("has_rice", has(RICE.get())).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GROVE_DANGO.get())
+                .requires(BATags.Items.FOODS_POMEGRANATE).requires(BATags.Items.FOODS_LEMON).requires(GREEN_APPLE.get())
+                .requires(RICE.get()).requires(RICE.get()).requires(RICE.get()).requires(STICK)
+                .unlockedBy("has_rice", has(RICE.get())).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TWILIGHT_DANGO.get())
+                .requires(BATags.Items.FOODS_GRAPE).requires(BATags.Items.FOODS_TEA_LEAVES_GREEN)
+                .requires(RICE.get()).requires(RICE.get()).requires(RICE.get()).requires(STICK)
+                .unlockedBy("has_rice", has(RICE.get())).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, SUNRISE_DANGO.get())
+                .requires(BATags.Items.FOODS_DRAGON_FRUIT).requires(BATags.Items.FOODS_LEMON).requires(BATags.Items.FOODS_ORANGE)
+                .requires(RICE.get()).requires(RICE.get()).requires(RICE.get()).requires(STICK)
+                .unlockedBy("has_rice", has(RICE.get())).save(recipeOutput);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, COCHINEAL_SPONGECAKE.get(), 4).pattern("#C#").pattern("EHE").pattern("#W#")
                 .define('#', ModUtil.AT.getItem("blood_orange")).define('C', ModUtil.AT.getItem("carmine_husk")).define('W', WHEAT).define('E', Tags.Items.EGGS).define('H', Tags.Items.DRINKS_HONEY)
                 .unlockedBy("has_blood_orange", has(ModUtil.AT.getItem("blood_orange"))).save(ModUtil.AT.output(recipeOutput), ModUtil.BA.asResource("compat/" + ModUtil.AT.id() + "/cochineal_spongecake"));

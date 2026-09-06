@@ -1,4 +1,4 @@
-// 1.21.1	2026-09-06T00:27:51.462982385	Item Models: bonappetit
+// 1.21.1	2026-09-06T00:45:13.706712136	Item Models: bonappetit
 ec3c3ea6a4c300bc3d777f48d375957a22f30006 assets/bonappetit/models/item/acorn.json
 5953bac818e0925ab2b3cb45857599a494346edf assets/bonappetit/models/item/ambrosia_salad.json
 26d3d8ac0355e8f17e487599b50438337f53a7e1 assets/bonappetit/models/item/apple_cake.json
@@ -21,6 +21,7 @@ c7dbf4f2e90073b3fb6f3c197e6d14073fe869be assets/bonappetit/models/item/banana_br
 aa023740ca93b0df0bf8e1046aadd96d814dba51 assets/bonappetit/models/item/black_raspberries.json
 c2dcab64d245688529698264c3369795f90fdf70 assets/bonappetit/models/item/black_tea_leaves.json
 89d849f8402808fb338ba625700532098be6eb45 assets/bonappetit/models/item/blood_orange_gummy.json
+f3d1be6ec5bcd5edc0d6c5f525dbf1bb68565d3b assets/bonappetit/models/item/blossom_dango.json
 731c08575605e9d52dc4548685f7bc1614073756 assets/bonappetit/models/item/blueberries.json
 586681e52060a3c214b9ac40eaaaf3ca70439b45 assets/bonappetit/models/item/blueberry_limeade.json
 f7e0bb954c1fb64d261f6c85d8399a026f50afea assets/bonappetit/models/item/blueberry_milk_bottle.json
@@ -88,6 +89,7 @@ ed970983ef77786451a10f03178834203a90442d assets/bonappetit/models/item/grapefrui
 cf97728fec83171bf8e3602f82bb51ce813d2880 assets/bonappetit/models/item/grapes.json
 ec50d3e876f8c0e6e9e1ab12266bec894e26e0b4 assets/bonappetit/models/item/green_apple.json
 e0880d68e545f353c867792fab397a024324314d assets/bonappetit/models/item/green_tea_leaves.json
+351b976f224460749025bb3396311e7e0038fe9b assets/bonappetit/models/item/grove_dango.json
 bbbb321e5ee0d7c9fb94ff9f6d402c0d81061daf assets/bonappetit/models/item/honey_apple.json
 c0673d4666a2ac4794a22632ea95cb1f90e45a63 assets/bonappetit/models/item/horchata.json
 456762ee53bf06cf9b9fff10df4d15e6807f6a4d assets/bonappetit/models/item/jerky.json
@@ -175,7 +177,9 @@ f1486aebe345511d648a87f836711568cf7c7009 assets/bonappetit/models/item/snickerdo
 641169b810df31f312a016483902b936a2443ee6 assets/bonappetit/models/item/strawberries.json
 77bc7f91fc4df49f975fdc352abdc63790e5a638 assets/bonappetit/models/item/strawberry_banana_smoothie.json
 777064260fb5fe94eb14103b59335e45319f0451 assets/bonappetit/models/item/strawberry_milk_bottle.json
+2442b8ba01689f5af325307dcd3dcdb875439d4b assets/bonappetit/models/item/sunrise_dango.json
 d35b9205fb6ba9b80eab51d7b0e07f242467e2f5 assets/bonappetit/models/item/tisane.json
+a7940b93b67e59ee36769440f58d3563487c3297 assets/bonappetit/models/item/twilight_dango.json
 050b60b264fdbd758d07b972c5f514c4c3cf5966 assets/bonappetit/models/item/wafer.json
 a7991f09ebcbcde65fa6ed038110455dd16c19c2 assets/bonappetit/models/item/water_mug.json
 784638f0f08bfd4072e031cb116b5e6d34367403 assets/bonappetit/models/item/winged_golden_strawberry.json

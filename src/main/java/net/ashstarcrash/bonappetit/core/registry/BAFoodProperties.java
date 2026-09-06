@@ -127,6 +127,28 @@ public class BAFoodProperties {
                     new RandomMobEffectInstance.EffectEntry(DISSONANCE, 300, 0, 1.0F)), 1.0F).build();
 
     //sweets
+    public static final FoodProperties BLOSSOM_DANGO = (new FoodProperties.Builder())
+            .nutrition(10).saturationModifier(0.6F)
+            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(CAFFEINATED, 450, 0 /* temp until the matcha effect is implemented */), 1F)
+            .effect(() -> new MobEffectInstance(VIGOR, 300, 0), 1F).build();
+    public static final FoodProperties GROVE_DANGO = (new FoodProperties.Builder())
+            .nutrition(10).saturationModifier(0.6F)
+            .effect(() -> new MobEffectInstance(PROLIFERATE, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(RESONANCE, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(ABSORPTION, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(VIGOR, 300, 0), 1F).build();
+    public static final FoodProperties TWILIGHT_DANGO = (new FoodProperties.Builder())
+            .nutrition(10).saturationModifier(0.6F)
+            .effect(() -> new MobEffectInstance(DISCHARGE, 450, 0 /* temp until the grape effect is implemented */), 1F)
+            .effect(() -> new MobEffectInstance(CAFFEINATED, 450, 0 /* temp until the tea effects are implemented */), 1F)
+            .effect(() -> new MobEffectInstance(VIGOR, 300, 0), 1F).build();
+    public static final FoodProperties SUNRISE_DANGO = (new FoodProperties.Builder())
+            .nutrition(10).saturationModifier(0.6F)
+            .effect(() -> new MobEffectInstance(FLAK, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(RESONANCE, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(CONCENTRATION, 450, 0), 1F)
+            .effect(() -> new MobEffectInstance(VIGOR, 300, 0), 1F).build();
     public static final FoodProperties SPONGECAKE = (new FoodProperties.Builder())
             .nutrition(5).saturationModifier(0.6F)
             .effect(() -> new MobEffectInstance(VIGOR, 300, 0), 1F).build();
@@ -135,55 +157,8 @@ public class BAFoodProperties {
     public static final FoodProperties CAKE_SLICE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.1F).fast()
             .effect(() -> new MobEffectInstance(VIGOR, BAConfig.VANILLA_CAKE_EFFECT.get() ? 200 : 0, 0), 1f).build();
-    public static final FoodProperties CHERRY_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 900, 1), 1f).build();
-    public static final FoodProperties CHERRY_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(TWIN_STRIKE, 200, 1), 1f).fast().build();
-    public static final FoodProperties APPLE_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(ABSORPTION, 900, 1), 1f).build();
-    public static final FoodProperties APPLE_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(ABSORPTION, 200, 1), 1f).fast().build();
-    public static final FoodProperties GRAPEFRUIT_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(REFLECTION, 900, 1), 1f).build();
-    public static final FoodProperties GRAPEFRUIT_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(REFLECTION, 200, 1), 1f).fast().build();
-    public static final FoodProperties ORANGE_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(CONCENTRATION, 900, 1), 1f).build();
-    public static final FoodProperties ORANGE_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(CONCENTRATION, 200, 1), 1f).fast().build();
-    public static final FoodProperties MANGO_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F).build();
-    public static final FoodProperties MANGO_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F).fast().build();
-    public static final FoodProperties LEMON_TART = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(RESONANCE, 900, 1), 1f).build();
-    public static final FoodProperties LEMON_TART_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(RESONANCE, 200, 0), 1f).fast().build();
-    public static final FoodProperties LEMON_CAKE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.1F)
-            .effect(() -> new MobEffectInstance(RESONANCE, 200, 0), 1f).fast().build();
-    public static final FoodProperties LIME_CAKE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.1F)
-            .effect(() -> new MobEffectInstance(DISSONANCE, 200, 0), 1f).fast().build();
-    public static final FoodProperties DRAGON_FRUIT_PIE = (new FoodProperties.Builder())
-            .nutrition(8).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(FLAK, 900, 1), 1f).build();
-    public static final FoodProperties DRAGON_FRUIT_PIE_SLICE = (new FoodProperties.Builder())
-            .nutrition(2).saturationModifier(0.35F)
-            .effect(() -> new MobEffectInstance(FLAK, 200, 1), 1f).fast().build();
     public static final FoodProperties PUMPKIN_PIE_SLICE = (new FoodProperties.Builder())
             .nutrition(2).saturationModifier(0.35F).fast().build();
-
 
     //drinks
     public static final FoodProperties TISANE = (new FoodProperties.Builder())

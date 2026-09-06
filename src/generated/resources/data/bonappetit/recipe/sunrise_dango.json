@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:foods/dragon_fruit"
+    },
+    {
+      "tag": "c:foods/lemon"
+    },
+    {
+      "tag": "c:foods/orange"
+    },
+    {
+      "item": "bonappetit:rice"
+    },
+    {
+      "item": "bonappetit:rice"
+    },
+    {
+      "item": "bonappetit:rice"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:sunrise_dango"
+  }
+}

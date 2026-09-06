@@ -185,6 +185,10 @@ public class BATagProvider {
                     .add(ECLIPSE_COOKIE.get())
                     .add(GOLDEN_COOKIE.get())
                     .add(MACARON.get())
+                    .add(BLOSSOM_DANGO.get())
+                    .add(GROVE_DANGO.get())
+                    .add(TWILIGHT_DANGO.get())
+                    .add(SUNRISE_DANGO.get())
                     .add(CAKE_SLICE.get())
                     .add(PUMPKIN_PIE_SLICE.get());
             FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, item) -> this.tag(FOODS).add(item.get()));
