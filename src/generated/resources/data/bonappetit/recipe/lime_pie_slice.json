@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:lime_pie"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "bonappetit:lime_pie_slice"
+  }
+}

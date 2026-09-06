@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dragon_fruit": {
+    "has_dragon_fruit_pie": {
       "conditions": {
         "items": [
           {
-            "items": "bonappetit:dragon_fruit"
+            "items": "#c:foods/dragon_fruit"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dragon_fruit"
+      "has_dragon_fruit_pie"
     ]
   ],
   "rewards": {

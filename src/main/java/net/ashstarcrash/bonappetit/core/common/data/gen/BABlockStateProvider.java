@@ -1,12 +1,15 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.registry.BABlocks;
 import net.ashstarcrash.bonappetit.core.common.template.BAFlavorCandleCakeBlock;
+import net.ashstarcrash.bonappetit.core.registry.FlavoredItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.SaplingBlock;
@@ -24,7 +27,11 @@ import java.util.function.Function;
 import static net.ashstarcrash.bonappetit.core.registry.BABlocks.*;
 
 public class BABlockStateProvider extends BlockStateProvider {
-    public BABlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {super(output, BonAppetit.ID, exFileHelper);}
+    private final ExistingFileHelper exFileHelper;
+    public BABlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, BonAppetit.ID, exFileHelper);
+        this.exFileHelper = exFileHelper;
+    }
 
     @Override
     protected void registerStatesAndModels() {
@@ -32,8 +39,7 @@ public class BABlockStateProvider extends BlockStateProvider {
         simpleBlock(PANETTONE.get());
         simpleBlock(STOLLEN.get());
         horizontalBlock(COCHINEAL_SPONGECAKE.get(), models().getExistingFile(modLoc("block/cochineal_spongecake")));
-        cakeBlock(LEMON_CAKE.get());
-        cakeBlock(LIME_CAKE.get());
+        for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) cakeBlock(entry.getValue().get());
     }
 
     private String name(Block block) {
@@ -64,27 +70,27 @@ public class BABlockStateProvider extends BlockStateProvider {
     }
     public ModelFile cakeModel(Block block, String suffix, String parent) {
         return models().withExistingParent(name(block) + suffix, mcLoc(parent))
-                .texture("bottom", blockTexture(block).withSuffix("_bottom"))
-                .texture("side", blockTexture(block).withSuffix("_side"))
-                .texture("top", blockTexture(block).withSuffix("_top"))
-                .texture("inside", blockTexture(block).withSuffix("_inner"))
-                .texture("particle", blockTexture(block).withSuffix("_side"));
+                .texture("bottom", safeBlockTexture(block, "_bottom"))
+                .texture("side", safeBlockTexture(block, "_side"))
+                .texture("top", safeBlockTexture(block, "_top"))
+                .texture("inside", safeBlockTexture(block, "_inner"))
+                .texture("particle", safeBlockTexture(block, "_side"));
     }
 
     private void generateCandleCakeModels(Block candleCake, Block baseCake, Block candle) {
         ModelFile unlit = models().withExistingParent(name(candleCake), mcLoc("template_cake_with_candle"))
-                .texture("candle", blockTexture(candle))
-                .texture("bottom", blockTexture(baseCake).withSuffix("_bottom"))
-                .texture("side", blockTexture(baseCake).withSuffix("_side"))
-                .texture("top", blockTexture(baseCake).withSuffix("_top"))
-                .texture("particle", blockTexture(baseCake).withSuffix("_side"));
+                .texture("candle", safeBlockTexture(candle, ""))
+                .texture("bottom", safeBlockTexture(baseCake, "_bottom"))
+                .texture("side", safeBlockTexture(baseCake, "_side"))
+                .texture("top", safeBlockTexture(baseCake, "_top"))
+                .texture("particle", safeBlockTexture(baseCake, "_side"));
 
         ModelFile lit = models().withExistingParent(name(candleCake) + "_lit", mcLoc("template_cake_with_candle"))
-                .texture("candle", blockTexture(candle).withSuffix("_lit"))
-                .texture("bottom", blockTexture(baseCake).withSuffix("_bottom"))
-                .texture("side", blockTexture(baseCake).withSuffix("_side"))
-                .texture("top", blockTexture(baseCake).withSuffix("_top"))
-                .texture("particle", blockTexture(baseCake).withSuffix("_side"));
+                .texture("candle", safeBlockTexture(candle, "_lit"))
+                .texture("bottom", safeBlockTexture(baseCake, "_bottom"))
+                .texture("side", safeBlockTexture(baseCake, "_side"))
+                .texture("top", safeBlockTexture(baseCake, "_top"))
+                .texture("particle", safeBlockTexture(baseCake, "_side"));
 
         this.getVariantBuilder(candleCake).forAllStates(state ->
                 ConfiguredModel.builder()
@@ -106,5 +112,12 @@ public class BABlockStateProvider extends BlockStateProvider {
 
             return ConfiguredModel.builder().modelFile(model).rotationY(yRot).build();
         });
+    }
+    private ResourceLocation safeBlockTexture(Block block, String suffix) {
+        ResourceLocation texture = blockTexture(block).withSuffix(suffix);
+        if (exFileHelper.exists(texture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
+            return texture;
+        }
+        return ModUtil.BA.asResource("block/placeholder");
     }
 }

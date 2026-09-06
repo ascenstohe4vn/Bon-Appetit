@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "bonappetit:lime_slice"
+    },
+    "I": {
+      "item": "minecraft:ice"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " FF",
+    "SFF",
+    "SI "
+  ],
+  "result": {
+    "count": 2,
+    "id": "bonappetit:lime_popsicle"
+  }
+}

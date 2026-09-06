@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "bonappetit:block/lime_cake_candle_cake"
+    },
+    "lit=true": {
+      "model": "bonappetit:block/lime_cake_candle_cake_lit"
+    }
+  }
+}

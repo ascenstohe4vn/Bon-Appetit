@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:lime_slice"
+    },
+    {
+      "item": "bonappetit:lime_slice"
+    },
+    {
+      "item": "bonappetit:lime_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "bonappetit:pie_crust"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "bonappetit:lime_pie"
+  }
+}

@@ -3,22 +3,22 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "bonappetit:cherries"
+      "tag": "c:foods/cherry"
     },
     {
-      "item": "bonappetit:cherries"
+      "tag": "c:foods/cherry"
     },
     {
-      "item": "bonappetit:cherries"
+      "tag": "c:foods/cherry"
     },
     {
       "item": "minecraft:sugar"
     },
     {
-      "tag": "c:eggs"
+      "item": "bonappetit:pie_crust"
     },
     {
-      "item": "bonappetit:pie_crust"
+      "tag": "c:eggs"
     }
   ],
   "result": {

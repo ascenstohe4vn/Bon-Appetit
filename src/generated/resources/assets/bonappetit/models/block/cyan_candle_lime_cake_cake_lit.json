@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/template_cake_with_candle",
+  "textures": {
+    "bottom": "bonappetit:block/lime_cake_bottom",
+    "candle": "bonappetit:block/placeholder",
+    "particle": "bonappetit:block/lime_cake_side",
+    "side": "bonappetit:block/lime_cake_side",
+    "top": "bonappetit:block/lime_cake_top"
+  }
+}

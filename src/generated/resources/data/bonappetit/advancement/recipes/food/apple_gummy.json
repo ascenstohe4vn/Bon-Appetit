@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_apple_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:apple_gummy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_apple_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:apple_gummy"
+    ]
+  }
+}

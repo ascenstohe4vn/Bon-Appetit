@@ -1,13 +1,13 @@
 package net.ashstarcrash.bonappetit;
 
 import com.mojang.logging.LogUtils;
-import net.ashstarcrash.bonappetit.core.common.event.*;
 import net.ashstarcrash.bonappetit.core.common.data.recipe.RecipeCategories;
+import net.ashstarcrash.bonappetit.core.common.event.*;
 import net.ashstarcrash.bonappetit.core.content.blockentity.CopperTankEntity;
 import net.ashstarcrash.bonappetit.core.registry.*;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -16,28 +16,19 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.fml.util.thread.SidedThreadGroups;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import org.slf4j.Logger;
-
-import java.util.AbstractMap;
-import java.util.Collection;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Mod(BonAppetit.ID)
 public class BonAppetit {
     public static final String ID = "bonappetit";
     public static final Logger LOGGER = LogUtils.getLogger();
-    private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
 
-    public static ResourceLocation asResource(String path) {return ResourceLocation.fromNamespaceAndPath(ID, path);}
-    public static void queueServerWork(int tick, Runnable action) {if (Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER) {workQueue.add(new AbstractMap.SimpleEntry(action, tick));}}
     public BonAppetit(IEventBus modEventBus, ModContainer modContainer) {
         if (FMLEnvironment.dist.isClient()) {
             modEventBus.addListener(RecipeCategories::init);
@@ -76,25 +67,10 @@ public class BonAppetit {
     }
 
     @SubscribeEvent
-    public static void onServerTick(ServerTickEvent.Post event) {
-        var iterator = workQueue.iterator();
-        while (iterator.hasNext()) {
-            var entry = iterator.next();
-            int remainingTicks = entry.getValue();
-            if (remainingTicks <= 1) {
-                entry.getKey().run();
-                iterator.remove();
-            } else {
-                entry.setValue(remainingTicks - 1);
-            }
-        }
-    }
-
-    @SubscribeEvent
     public void modifyComponents(ModifyDefaultComponentsEvent event) {
         event.modify(Items.COOKIE, builder -> builder.set(DataComponents.FOOD, new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f).fast().build()));
         event.modify(Items.CAKE, builder -> builder.set(DataComponents.MAX_STACK_SIZE, 16));
-        event.modifyMatching(item -> item.hasCraftingRemainingItem(), builder -> builder.remove(DataComponents.BUCKET_ENTITY_DATA));
+        event.modifyMatching(Item::hasCraftingRemainingItem, builder -> builder.remove(DataComponents.BUCKET_ENTITY_DATA));
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

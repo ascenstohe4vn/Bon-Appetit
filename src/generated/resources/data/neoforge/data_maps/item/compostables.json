@@ -1,5 +1,8 @@
 {
   "values": {
+    "bonappetit:apple_cake": {
+      "chance": 1.0
+    },
     "bonappetit:apple_cake_slice": {
       "chance": 0.2
     },
@@ -18,6 +21,9 @@
     "bonappetit:banana": {
       "chance": 0.65
     },
+    "bonappetit:banana_cake": {
+      "chance": 1.0
+    },
     "bonappetit:banana_cake_slice": {
       "chance": 0.2
     },
@@ -30,11 +36,14 @@
     "bonappetit:blueberries": {
       "chance": 0.3
     },
-    "bonappetit:cake_slice": {
-      "chance": 0.2
-    },
     "bonappetit:cherries": {
       "chance": 0.65
+    },
+    "bonappetit:cherry_cake": {
+      "chance": 1.0
+    },
+    "bonappetit:cherry_cake_slice": {
+      "chance": 0.2
     },
     "bonappetit:cherry_pie": {
       "chance": 1.0
@@ -108,14 +117,14 @@
     "bonappetit:lemon_cake_slice": {
       "chance": 0.2
     },
-    "bonappetit:lemon_slice": {
-      "chance": 0.5
-    },
-    "bonappetit:lemon_tart": {
+    "bonappetit:lemon_pie": {
       "chance": 1.0
     },
-    "bonappetit:lemon_tart_slice": {
+    "bonappetit:lemon_pie_slice": {
       "chance": 0.25
+    },
+    "bonappetit:lemon_slice": {
+      "chance": 0.5
     },
     "bonappetit:lime": {
       "chance": 0.65
@@ -125,6 +134,12 @@
     },
     "bonappetit:lime_cake_slice": {
       "chance": 0.2
+    },
+    "bonappetit:lime_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:lime_pie_slice": {
+      "chance": 0.25
     },
     "bonappetit:lime_slice": {
       "chance": 0.5
@@ -149,6 +164,9 @@
     },
     "bonappetit:orange": {
       "chance": 0.65
+    },
+    "bonappetit:orange_cake": {
+      "chance": 1.0
     },
     "bonappetit:orange_cake_slice": {
       "chance": 0.2
@@ -180,17 +198,26 @@
     "bonappetit:pineapple": {
       "chance": 0.65
     },
+    "bonappetit:pineapple_cake": {
+      "chance": 1.0
+    },
+    "bonappetit:pineapple_cake_slice": {
+      "chance": 0.2
+    },
     "bonappetit:pomegranate": {
       "chance": 0.65
+    },
+    "bonappetit:pomegranate_pie": {
+      "chance": 1.0
+    },
+    "bonappetit:pomegranate_pie_slice": {
+      "chance": 0.25
     },
     "bonappetit:pomegranate_seeds": {
       "chance": 0.3
     },
     "bonappetit:pomegranate_slice": {
       "chance": 0.5
-    },
-    "bonappetit:pumpkin_pie_slice": {
-      "chance": 0.2
     },
     "bonappetit:pumpkin_slice": {
       "chance": 0.5

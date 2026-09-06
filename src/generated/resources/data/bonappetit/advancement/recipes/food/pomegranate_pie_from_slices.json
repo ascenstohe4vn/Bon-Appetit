@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pomegranate_pie_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bonappetit:pomegranate_pie_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:pomegranate_pie_from_slices"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pomegranate_pie_slice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:pomegranate_pie_from_slices"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_blood_orange_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/blood_orange"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:blood_orange_gummy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_blood_orange_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:blood_orange_gummy"
+    ]
+  }
+}

@@ -57,6 +57,7 @@ public class ClientEvents {
 
             for (FoodProperties.PossibleEffect possibleEffect : foodProperties.effects()) {
                 MobEffectInstance effectInstance = possibleEffect.effectSupplier().get();
+                if (effectInstance == null || effectInstance.getEffect() == null) continue;
                 if (effectInstance.getDuration() <= 0) continue;
 
                 if (effectInstance instanceof RandomMobEffectInstance randomEffect) {

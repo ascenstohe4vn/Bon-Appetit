@@ -1,9 +1,9 @@
 {
   "values": [
-    "bonappetit:plain_cookie",
-    "bonappetit:sugar_cookie",
     "bonappetit:lemon_cookie",
     "bonappetit:lime_cookie",
+    "bonappetit:plain_cookie",
+    "bonappetit:sugar_cookie",
     "bonappetit:snickerdoodle",
     "bonappetit:eclipse_cookie",
     "bonappetit:golden_cookie",

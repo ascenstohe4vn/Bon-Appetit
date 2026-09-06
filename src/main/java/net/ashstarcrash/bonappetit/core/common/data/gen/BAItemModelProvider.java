@@ -1,8 +1,14 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.Item;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -35,12 +41,32 @@ public class BAItemModelProvider extends ItemModelProvider {
 
             if (BLACKLIST.contains(path)) return;
             if (HANDHELD.contains(path)) {
-                handheldItem(item.get());
+                safeHandheldItem(item.get());
             } else if (BLOCK_ITEMS.contains(path)) {
                 withExistingParent(path, modLoc("block/" + path));
             } else {
-                basicItem(item.get());
+                safeBasicItem(item.get());
             }
         });
+    }
+
+    private ItemModelBuilder safeBasicItem(Item item) {
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
+        ResourceLocation texture = getItemTexture(id);
+        return withExistingParent(id.getPath(), "item/generated").texture("layer0", texture);
+    }
+
+    private ItemModelBuilder safeHandheldItem(Item item) {
+        ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
+        ResourceLocation texture = getItemTexture(id);
+        return withExistingParent(id.getPath(), "item/handheld").texture("layer0", texture);
+    }
+
+    private ResourceLocation getItemTexture(ResourceLocation itemId) {
+        ResourceLocation texture = modLoc("item/" + itemId.getPath());
+        if (existingFileHelper.exists(texture, PackType.CLIENT_RESOURCES, ".png", "textures")) {
+            return texture;
+        }
+        return ModUtil.BA.asResource("item/placeholder");
     }
 }

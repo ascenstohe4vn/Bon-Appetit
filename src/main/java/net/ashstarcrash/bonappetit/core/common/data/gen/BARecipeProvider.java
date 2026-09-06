@@ -51,7 +51,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CAKE, 1).requires(CAKE_SLICE).requires(CAKE_SLICE).requires(CAKE_SLICE).requires(CAKE_SLICE).requires(CAKE_SLICE).requires(CAKE_SLICE).requires(CAKE_SLICE)
                 .unlockedBy("has_cake", has(CAKE)).save(recipeOutput, "bonappetit:cake_from_cake_slices");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CHERRY_PIE, 2).requires(CHERRIES).requires(CHERRIES).requires(CHERRIES).requires(SUGAR).requires(Tags.Items.EGGS).requires(PIE_CRUST)
+        /*ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CHERRY_PIE, 2).requires(CHERRIES).requires(CHERRIES).requires(CHERRIES).requires(SUGAR).requires(Tags.Items.EGGS).requires(PIE_CRUST)
                 .unlockedBy("has_cherries", has(CHERRIES)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CHERRY_PIE_SLICE.get(), 4).requires(CHERRY_PIE)
                 .unlockedBy("has_cherry_pie", has(CHERRY_PIE)).save(recipeOutput);
@@ -91,7 +91,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MANGO_PIE_SLICE.get(), 4).requires(MANGO_PIE)
                 .unlockedBy("has_mango_pie", has(MANGO_PIE)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MANGO_PIE, 1).requires(MANGO_PIE_SLICE).requires(MANGO_PIE_SLICE).requires(MANGO_PIE_SLICE).requires(MANGO_PIE_SLICE)
-                .unlockedBy("has_mango_pie_slice", has(MANGO_PIE_SLICE)).save(recipeOutput, "bonappetit:mango_pie_from_mango_pie_slices");
+                .unlockedBy("has_mango_pie_slice", has(MANGO_PIE_SLICE)).save(recipeOutput, "bonappetit:mango_pie_from_mango_pie_slices");*/
         
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PUMPKIN_SLICE.get(), 9).requires(PUMPKIN)
                 .unlockedBy("has_pumpkin", has(PUMPKIN)).save(recipeOutput);
@@ -104,7 +104,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
         
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMON_SLICE.get(), 2).requires(LEMON)
                 .unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMON_TART, 2).requires(LEMON).requires(LEMON).requires(LEMON).requires(SUGAR).requires(Tags.Items.EGGS).requires(PIE_CRUST)
+        /*ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMON_TART, 2).requires(LEMON).requires(LEMON).requires(LEMON).requires(SUGAR).requires(Tags.Items.EGGS).requires(PIE_CRUST)
                 .unlockedBy("has_lemon", has(LEMON)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMON_TART_SLICE.get(), 4).requires(LEMON_TART)
                 .unlockedBy("has_lemon_tart", has(LEMON_TART)).save(recipeOutput);
@@ -113,7 +113,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMON_CAKE_SLICE.get(), 7).requires(LEMON_CAKE)
                 .unlockedBy("has_lemon_cake", has(LEMON_CAKE)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LEMON_CAKE, 1).requires(LEMON_CAKE_SLICE).requires(LEMON_CAKE_SLICE).requires(LEMON_CAKE_SLICE).requires(LEMON_CAKE_SLICE).requires(LEMON_CAKE_SLICE).requires(LEMON_CAKE_SLICE).requires(LEMON_CAKE_SLICE)
-                .unlockedBy("has_lemon_cake", has(LEMON_CAKE)).save(recipeOutput, "bonappetit:lemon_cake_from_lemon_cake_slices");
+                .unlockedBy("has_lemon_cake", has(LEMON_CAKE)).save(recipeOutput, "bonappetit:lemon_cake_from_lemon_cake_slices");*/
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_SLICE.get(), 2).requires(LIME)
                 .unlockedBy("has_lime", has(LIME)).save(recipeOutput);
@@ -123,10 +123,10 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .setRecipeBookTab(CookingPotRecipeBookTab.SWEETS)
                 .unlockedBy("has_lime_slice", has(LIME_SLICE))
                 .build(recipeOutput, "bonappetit:candied_lime_slices_from_cooking");
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_CAKE_SLICE.get(), 7).requires(LIME_CAKE)
-                .unlockedBy("has_lime_cake", has(LIME_CAKE)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_CAKE, 1).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE)
-                .unlockedBy("has_lime_cake", has(LIME_CAKE)).save(recipeOutput, "bonappetit:lime_cake_from_lime_cake_slices");
+        //ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_CAKE_SLICE.get(), 7).requires(LIME_CAKE)
+        //        .unlockedBy("has_lime_cake", has(LIME_CAKE)).save(recipeOutput);
+        //ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, LIME_CAKE, 1).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE).requires(LIME_CAKE_SLICE)
+        //        .unlockedBy("has_lime_cake", has(LIME_CAKE)).save(recipeOutput, "bonappetit:lime_cake_from_lime_cake_slices");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MELON_SLICE, 9).requires(MELON)
                 .unlockedBy("has_melon", has(MELON)).save(recipeOutput);
@@ -138,12 +138,12 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_SLICE.get(), 2).requires(DRAGON_FRUIT)
                 .unlockedBy("has_dragon_fruit", has(DRAGON_FRUIT)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_PIE, 2).requires(DRAGON_FRUIT).requires(DRAGON_FRUIT).requires(DRAGON_FRUIT).requires(SUGAR).requires(Tags.Items.EGGS).requires(PIE_CRUST)
+        /*ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_PIE, 2).requires(DRAGON_FRUIT).requires(DRAGON_FRUIT).requires(DRAGON_FRUIT).requires(SUGAR).requires(Tags.Items.EGGS).requires(PIE_CRUST)
                 .unlockedBy("has_dragon_fruit", has(DRAGON_FRUIT)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_PIE_SLICE.get(), 4).requires(DRAGON_FRUIT_PIE)
                 .unlockedBy("has_dragon_fruit_pie", has(DRAGON_FRUIT_PIE)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, DRAGON_FRUIT_PIE, 1).requires(DRAGON_FRUIT_PIE_SLICE).requires(DRAGON_FRUIT_PIE_SLICE).requires(DRAGON_FRUIT_PIE_SLICE).requires(DRAGON_FRUIT_PIE_SLICE)
-                .unlockedBy("has_dragon_fruit_pie_slice", has(DRAGON_FRUIT_PIE_SLICE)).save(recipeOutput, "bonappetit:dragon_fruit_pie_from_dragon_fruit_pie_slices");
+                .unlockedBy("has_dragon_fruit_pie_slice", has(DRAGON_FRUIT_PIE_SLICE)).save(recipeOutput, "bonappetit:dragon_fruit_pie_from_dragon_fruit_pie_slices");*/
         
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, COCONUT_SLICE.get(), 2).requires(COCONUT)
                 .unlockedBy("has_coconut", has(COCONUT)).save(recipeOutput);
@@ -267,5 +267,7 @@ public class BARecipeProvider extends RecipeProvider implements IConditionBuilde
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .unlockedBy("has_rabbit", has(RABBIT))
                 .build(recipeOutput, "bonappetit:rabbit_stew_from_cooking");
+
+        FlavoredRecipeProvider.buildRecipes(recipeOutput);
     }
 }

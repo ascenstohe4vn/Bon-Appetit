@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_orange": {
+    "has_orange_pie": {
       "conditions": {
         "items": [
           {
-            "items": "bonappetit:orange"
+            "items": "#c:foods/orange"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_orange"
+      "has_orange_pie"
     ]
   ],
   "rewards": {

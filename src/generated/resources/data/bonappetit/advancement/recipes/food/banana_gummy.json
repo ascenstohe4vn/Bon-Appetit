@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_banana_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/banana"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:banana_gummy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_banana_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:banana_gummy"
+    ]
+  }
+}

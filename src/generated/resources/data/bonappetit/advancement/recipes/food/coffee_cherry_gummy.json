@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_coffee_cherry_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:crops/coffee"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:coffee_cherry_gummy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_coffee_cherry_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:coffee_cherry_gummy"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lemon_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/lemon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:lemon_gummy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lemon_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:lemon_gummy"
+    ]
+  }
+}

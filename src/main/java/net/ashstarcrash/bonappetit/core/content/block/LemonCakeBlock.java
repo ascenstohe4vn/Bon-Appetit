@@ -27,7 +27,7 @@ public class LemonCakeBlock extends CakeBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         int bites = state.getValue(BITES);
-        if (stack.is(BAItems.LEMON_CAKE_SLICE.get()) && bites > 0) {
+        if (stack.is(BAItems.CAKE_SLICE.get()) && bites > 0) {
             if (!level.isClientSide) {
                 level.setBlock(pos, state.setValue(BITES, bites - 1), 3);
                 level.playSound(null, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);

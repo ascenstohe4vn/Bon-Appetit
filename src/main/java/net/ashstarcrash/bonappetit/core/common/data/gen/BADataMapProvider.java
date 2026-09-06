@@ -1,5 +1,6 @@
 package net.ashstarcrash.bonappetit.core.common.data.gen;
 
+import net.ashstarcrash.bonappetit.core.registry.FlavoredItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;
@@ -76,28 +77,22 @@ public class BADataMapProvider extends DataMapProvider {
         compostables.add(STOLLEN.getId(), new Compostable(1.0F), false);
         compostables.add(STOLLEN_SLICE.getId(), new Compostable(1.0F), false);
 
-        compostables.add(CHERRY_PIE.getId(), new Compostable(1.0F), false);
-        compostables.add(CHERRY_PIE_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(APPLE_PIE.getId(), new Compostable(1.0F), false);
-        compostables.add(APPLE_PIE_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(GRAPEFRUIT_PIE.getId(), new Compostable(1.0F), false);
-        compostables.add(GRAPEFRUIT_PIE_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(ORANGE_PIE.getId(), new Compostable(1.0F), false);
-        compostables.add(ORANGE_PIE_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(MANGO_PIE.getId(), new Compostable(1.0F), false);
-        compostables.add(MANGO_PIE_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(LEMON_TART.getId(), new Compostable(1.0F), false);
-        compostables.add(LEMON_TART_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(DRAGON_FRUIT_PIE.getId(), new Compostable(1.0F), false);
-        compostables.add(DRAGON_FRUIT_PIE_SLICE.getId(), new Compostable(0.25F), false);
-        compostables.add(CAKE_SLICE.getId(), new Compostable(0.2F), false);
-        compostables.add(APPLE_CAKE_SLICE.getId(), new Compostable(0.2F), false);
-        compostables.add(ORANGE_CAKE_SLICE.getId(), new Compostable(0.2F), false);
-        compostables.add(BANANA_CAKE_SLICE.getId(), new Compostable(0.2F), false);
-        compostables.add(LEMON_CAKE.getId(), new Compostable(1.0F), false);
-        compostables.add(LEMON_CAKE_SLICE.getId(), new Compostable(0.2F), false);
-        compostables.add(LIME_CAKE.getId(), new Compostable(1.0F), false);
-        compostables.add(LIME_CAKE_SLICE.getId(), new Compostable(0.2F), false);
-        compostables.add(PUMPKIN_PIE_SLICE.getId(), new Compostable(0.2F), false);
+        for (FlavoredItems.Flavor flavor : FlavoredItems.Flavor.values()) {
+            if (!FlavoredItems.isAvailable(flavor, FlavoredItems.ItemType.PIE)) continue;
+
+            var pieItem = FlavoredItems.ITEMS_BY_ID.get(flavor.id + FlavoredItems.ItemType.PIE.suffix);
+            if (pieItem != null) compostables.add(pieItem.getId(), new Compostable(1.0F), false);
+
+            var sliceItem = FlavoredItems.ITEMS_BY_ID.get(flavor.id + FlavoredItems.ItemType.PIE.slice.suffix());
+            if (sliceItem != null) compostables.add(sliceItem.getId(), new Compostable(0.25F), false);
+        }
+        for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) {
+            String cakeId = entry.getKey();
+            compostables.add(entry.getValue().get().asItem().builtInRegistryHolder().key().location(), new Compostable(1.0F), false);
+
+            String sliceId = cakeId.replace(FlavoredItems.ItemType.CAKE.suffix, FlavoredItems.ItemType.CAKE.slice.suffix());
+            var sliceItem = FlavoredItems.ITEMS_BY_ID.get(sliceId);
+            if (sliceItem != null) compostables.add(sliceItem.getId(), new Compostable(0.2F), false);
+        }
     }
 }

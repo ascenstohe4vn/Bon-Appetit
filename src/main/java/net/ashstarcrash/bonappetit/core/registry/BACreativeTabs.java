@@ -172,10 +172,10 @@ public class BACreativeTabs {
                 output.accept(STOLLEN_SLICE);
 
                 //sweets
+                FlavoredItems.addGummies(output);
                 output.accept(PLAIN_COOKIE);
                 output.accept(SUGAR_COOKIE);
-                output.accept(LEMON_COOKIE);
-                output.accept(LIME_COOKIE);
+                FlavoredItems.addCookies(output);
                 output.accept(SNICKERDOODLE);
                 output.accept(ECLIPSE_COOKIE);
                 output.accept(GOLDEN_COOKIE);
@@ -183,36 +183,16 @@ public class BACreativeTabs {
 
                 output.accept(ORANGE_JAWBREAKER);
 
-                output.accept(LIME_POPSICLE);
-                output.accept(DOUBLE_LIME_POPSICLE);
+                FlavoredItems.addPopsicles(output);
 
                 output.accept(SPONGECAKE);
                 if (ModUtil.AT.isLoaded()) output.accept(COCHINEAL_SPONGECAKE);
 
                 //pies and cake
-                output.accept(CAKE_SLICE);
-                output.accept(CHERRY_PIE);
-                output.accept(CHERRY_PIE_SLICE);
-                output.accept(APPLE_PIE);
-                output.accept(APPLE_PIE_SLICE);
-                output.accept(APPLE_CAKE_SLICE);
-                output.accept(GRAPEFRUIT_PIE);
-                output.accept(GRAPEFRUIT_PIE_SLICE);
-                output.accept(ORANGE_PIE);
-                output.accept(ORANGE_PIE_SLICE);
-                output.accept(ORANGE_CAKE_SLICE);
-                output.accept(MANGO_PIE);
-                output.accept(MANGO_PIE_SLICE);
-                output.accept(BANANA_CAKE_SLICE);
-                output.accept(LEMON_TART);
-                output.accept(LEMON_TART_SLICE);
-                output.accept(LEMON_CAKE);
-                output.accept(LEMON_CAKE_SLICE);
-                output.accept(LIME_CAKE);
-                output.accept(LIME_CAKE_SLICE);
-                output.accept(DRAGON_FRUIT_PIE);
-                output.accept(DRAGON_FRUIT_PIE_SLICE);
+                FlavoredItems.addPies(output);
                 output.accept(PUMPKIN_PIE_SLICE);
+                output.accept(CAKE_SLICE);
+                FlavoredItems.addCakes(output);
 
                 //drinks
                 output.accept(WATER_MUG);

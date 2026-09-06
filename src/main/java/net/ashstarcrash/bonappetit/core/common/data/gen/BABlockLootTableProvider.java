@@ -3,6 +3,7 @@ package net.ashstarcrash.bonappetit.core.common.data.gen;
 import net.ashstarcrash.bonappetit.core.registry.BABlocks;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
 import net.ashstarcrash.bonappetit.core.common.template.BAFlavorCandleCakeBlock;
+import net.ashstarcrash.bonappetit.core.registry.FlavoredItems;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
@@ -36,8 +37,14 @@ public class BABlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(BABlocks.COPPER_TANK.get());
         dropSelf(BABlocks.COCHINEAL_SPONGECAKE.get());
         dropCake(Blocks.CAKE, BAItems.CAKE_SLICE.get());
-        dropCake(BABlocks.LEMON_CAKE.get(), BAItems.LEMON_CAKE_SLICE.get());
-        dropCake(BABlocks.LIME_CAKE.get(), BAItems.LIME_CAKE_SLICE.get());
+        for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) {
+            String cakeId = entry.getKey();
+            String sliceId = cakeId.replace(FlavoredItems.ItemType.CAKE.suffix, FlavoredItems.ItemType.CAKE.slice.suffix());
+            var sliceItem = FlavoredItems.ITEMS_BY_ID.get(sliceId);
+            if (sliceItem == null) continue;
+
+            dropCake(entry.getValue().get(), sliceItem.get());
+        }
     }
 
     protected void dropCake(Block cakeBlock, ItemLike sliceItem) {

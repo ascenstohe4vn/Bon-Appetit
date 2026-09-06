@@ -3,6 +3,7 @@ package net.ashstarcrash.bonappetit.core.common.data.gen;
 import net.ashstarcrash.bonappetit.BonAppetit;
 import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.registry.BAItems;
+import net.ashstarcrash.bonappetit.core.registry.FlavoredItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -54,6 +55,17 @@ public class BATagProvider {
                     .add(LEMON.get());
             this.tag(FOODS_LIME)
                     .add(LIME.get());
+            this.tag(FOODS_GRAPE)
+                    .add(GRAPES.get());
+            this.tag(FOODS_PEACH)
+                    .add(PEACH.get());
+            this.tag(FOODS_DRAGON_FRUIT)
+                    .add(DRAGON_FRUIT.get());
+            this.tag(FOODS_POMEGRANATE)
+                    .add(POMEGRANATE.get());
+            this.tag(FOODS_COCONUT)
+                    .add(COCONUT.get())
+                    .add(COCONUT_SLICE.get());
 
             this.tag(FOODS_CITRUS)
                     .addOptionalTag(FOODS_GRAPEFRUIT)
@@ -169,37 +181,19 @@ public class BATagProvider {
                     .add(STOLLEN_SLICE.get())
                     .add(PLAIN_COOKIE.get())
                     .add(SUGAR_COOKIE.get())
-                    .add(LEMON_COOKIE.get())
-                    .add(LIME_COOKIE.get())
                     .add(SNICKERDOODLE.get())
                     .add(ECLIPSE_COOKIE.get())
                     .add(GOLDEN_COOKIE.get())
                     .add(MACARON.get())
-                    .add(LIME_POPSICLE.get())
-                    .add(DOUBLE_LIME_POPSICLE.get())
                     .add(CAKE_SLICE.get())
-                    .add(CHERRY_PIE.get())
-                    .add(CHERRY_PIE_SLICE.get())
-                    .add(APPLE_PIE.get())
-                    .add(APPLE_PIE_SLICE.get())
-                    .add(APPLE_CAKE_SLICE.get())
-                    .add(GRAPEFRUIT_PIE.get())
-                    .add(GRAPEFRUIT_PIE_SLICE.get())
-                    .add(ORANGE_PIE.get())
-                    .add(ORANGE_PIE_SLICE.get())
-                    .add(ORANGE_CAKE_SLICE.get())
-                    .add(MANGO_PIE.get())
-                    .add(MANGO_PIE_SLICE.get())
-                    .add(BANANA_CAKE_SLICE.get())
-                    .add(LEMON_TART.get())
-                    .add(LEMON_TART_SLICE.get())
-                    .add(BAItems.LEMON_CAKE.get())
-                    .add(LEMON_CAKE_SLICE.get())
-                    .add(BAItems.LIME_CAKE.get())
-                    .add(LIME_CAKE_SLICE.get())
-                    .add(DRAGON_FRUIT_PIE.get())
-                    .add(DRAGON_FRUIT_PIE_SLICE.get())
                     .add(PUMPKIN_PIE_SLICE.get());
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, item) -> this.tag(FOODS).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.POPSICLE, (flavor, item) -> this.tag(FOODS).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.GUMMY, (flavor, item) -> this.tag(FOODS).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE, (flavor, item) -> this.tag(FOODS).add(item.get()));
+            for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) this.tag(FOODS).add(entry.getValue().get().asItem());
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.CAKE, (flavor, item) -> this.tag(FOODS).add(item.get()));
+
 
             this.tag(FOODS_FRUIT)
                     .add(CHERRIES.get())
@@ -272,32 +266,14 @@ public class BATagProvider {
             this.tag(FOODS_SOUP)
                     .add(AMBROSIA_SALAD.get());
 
-            this.tag(FOODS_CANDY)
-                    .add(LIME_POPSICLE.get())
-                    .add(DOUBLE_LIME_POPSICLE.get());
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.POPSICLE, (flavor, item) -> this.tag(FOODS_CANDY).add(item.get()));
 
-            this.tag(FOODS_PIE)
-                    .add(CHERRY_PIE.get())
-                    .add(CHERRY_PIE_SLICE.get())
-                    .add(APPLE_PIE.get())
-                    .add(APPLE_PIE_SLICE.get())
-                    .add(GRAPEFRUIT_PIE.get())
-                    .add(GRAPEFRUIT_PIE_SLICE.get())
-                    .add(ORANGE_PIE.get())
-                    .add(ORANGE_PIE_SLICE.get())
-                    .add(MANGO_PIE.get())
-                    .add(MANGO_PIE_SLICE.get())
-                    .add(LEMON_TART.get())
-                    .add(LEMON_TART_SLICE.get())
-                    .add(DRAGON_FRUIT_PIE.get())
-                    .add(DRAGON_FRUIT_PIE_SLICE.get())
-                    .add(PUMPKIN_PIE_SLICE.get());
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE, (flavor, item) -> this.tag(FOODS_PIE).add(item.get()));
 
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, item) -> this.tag(FOODS_COOKIE).add(item.get()));
             this.tag(FOODS_COOKIE)
                     .add(PLAIN_COOKIE.get())
                     .add(SUGAR_COOKIE.get())
-                    .add(LEMON_COOKIE.get())
-                    .add(LIME_COOKIE.get())
                     .add(SNICKERDOODLE.get())
                     .add(ECLIPSE_COOKIE.get())
                     .add(GOLDEN_COOKIE.get())
@@ -312,9 +288,8 @@ public class BATagProvider {
 
             this.tag(FOODS_EDIBLE_WHEN_PLACED)
                     .add(BAItems.PANETTONE.get())
-                    .add(BAItems.STOLLEN.get())
-                    .add(BAItems.LEMON_CAKE.get())
-                    .add(BAItems.LIME_CAKE.get());
+                    .add(BAItems.STOLLEN.get());
+            for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) this.tag(FOODS_EDIBLE_WHEN_PLACED).add(entry.getValue().get().asItem());
 
             this.tag(DRINKS)
                     .add(WATER_MUG.get())

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "bonappetit:block/magenta_candle_apple_cake_cake"
+    },
+    "lit=true": {
+      "model": "bonappetit:block/magenta_candle_apple_cake_cake_lit"
+    }
+  }
+}

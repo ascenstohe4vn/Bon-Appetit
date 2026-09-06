@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cherries": {
+    "has_cherry_pie": {
       "conditions": {
         "items": [
           {
-            "items": "bonappetit:cherries"
+            "items": "#c:foods/cherry"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cherries"
+      "has_cherry_pie"
     ]
   ],
   "rewards": {

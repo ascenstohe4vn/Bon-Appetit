@@ -1,17 +1,19 @@
 package net.ashstarcrash.bonappetit.core.registry;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.template.BAFlavorCakeBlock;
 import net.ashstarcrash.bonappetit.core.common.template.BAFlavorCandleCakeBlock;
 import net.ashstarcrash.bonappetit.core.content.block.*;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -44,33 +46,26 @@ public class BABlocks {
     public static final DeferredBlock<Block> COCHINEAL_SPONGECAKE = registerBlockNoItem("cochineal_spongecake",
             () -> new SpongecakeBlock(BAFoodProperties.Compat.COCHINEAL_SPONGECAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
 
-    public static final DeferredBlock<BAFlavorCakeBlock> LEMON_CAKE = BLOCKS.register("lemon_cake",
-            () -> new BAFlavorCakeBlock(BAFoodProperties.LEMON_CAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
-    public static final DeferredBlock<BAFlavorCakeBlock> LIME_CAKE = BLOCKS.register("lime_cake",
-            () -> new BAFlavorCakeBlock(BAFoodProperties.LIME_CAKE, BlockBehaviour.Properties.ofFullCopy(CAKE)));
-
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int level) {
         return (state) -> state.getValue(BlockStateProperties.LIT) ? level : 0;
     }
-    private static BlockBehaviour.Properties cake(MapColor color, boolean candle) {
-        return BlockBehaviour.Properties.of().mapColor(color).strength(0.5F).sound(SoundType.WOOL).pushReaction(PushReaction.DESTROY).lightLevel(candle ? litBlockEmission(3) : s -> 0);
-    }
     private static void registerCandleCakes(String name, DeferredBlock<BAFlavorCakeBlock> baseCake) {
         BLOCKS.register(name + "_candle_cake",
                 () -> new BAFlavorCandleCakeBlock(baseCake, CANDLE, BlockBehaviour.Properties.ofFullCopy(CANDLE_CAKE)));
-        for (net.minecraft.world.item.DyeColor color : net.minecraft.world.item.DyeColor.values()) {
+        for (DyeColor color : DyeColor.values()) {
             String colorName = color.getName();
-            Block vanillaCandle = net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(
-                    net.minecraft.resources.ResourceLocation.withDefaultNamespace(colorName + "_candle"));
+            Block vanillaCandle = BuiltInRegistries.BLOCK.get(ModUtil.BA.asResource(colorName + "_candle"));
             BLOCKS.register(colorName + "_candle_" + name + "_cake",
                     () -> new BAFlavorCandleCakeBlock(baseCake, vanillaCandle, BlockBehaviour.Properties.ofFullCopy(CANDLE_CAKE)));
         }
     }
-    static {
-        registerCandleCakes("lemon", LEMON_CAKE);
-        registerCandleCakes("lime", LIME_CAKE);
+    public static DeferredBlock<BAFlavorCakeBlock> registerFlavorCakes(String name, FoodProperties food) {
+        DeferredBlock<BAFlavorCakeBlock> cake = BLOCKS.register(name, () -> new BAFlavorCakeBlock(food, BlockBehaviour.Properties.ofFullCopy(CAKE)));
+        registerBlockItem(name, cake);
+        registerCandleCakes(name, cake);
+        return cake;
     }
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {DeferredBlock<T> toReturn = BLOCKS.register(name, block); registerBlockItem(name, toReturn); return toReturn;}
     private static <T extends Block> DeferredBlock<T> registerBlockNoItem(String name, Supplier<T> block) {return BLOCKS.register(name, block);}

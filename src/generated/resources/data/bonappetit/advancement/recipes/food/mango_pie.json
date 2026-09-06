@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mango": {
+    "has_mango_pie": {
       "conditions": {
         "items": [
           {
-            "items": "bonappetit:mango"
+            "items": "#c:foods/mango"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mango"
+      "has_mango_pie"
     ]
   ],
   "rewards": {

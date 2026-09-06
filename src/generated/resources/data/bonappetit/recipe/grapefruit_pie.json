@@ -3,22 +3,22 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "bonappetit:grapefruit"
+      "item": "bonappetit:grapefruit_slice"
     },
     {
-      "item": "bonappetit:grapefruit"
+      "item": "bonappetit:grapefruit_slice"
     },
     {
-      "item": "bonappetit:grapefruit"
+      "item": "bonappetit:grapefruit_slice"
     },
     {
       "item": "minecraft:sugar"
     },
     {
-      "tag": "c:eggs"
+      "item": "bonappetit:pie_crust"
     },
     {
-      "item": "bonappetit:pie_crust"
+      "tag": "c:eggs"
     }
   ],
   "result": {

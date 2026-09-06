@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:lemon_slice"
+    },
+    {
+      "item": "bonappetit:lemon_slice"
+    },
+    {
+      "item": "bonappetit:lemon_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "bonappetit:pie_crust"
+    },
+    {
+      "tag": "c:eggs"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "bonappetit:lemon_pie"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lime_gummy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/lime"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:lime_gummy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lime_gummy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:lime_gummy"
+    ]
+  }
+}

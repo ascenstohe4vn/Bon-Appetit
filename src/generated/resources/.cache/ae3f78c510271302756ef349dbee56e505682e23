@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-22T00:23:14.710361174	Tags for minecraft:item mod id bonappetit
+// 1.21.1	2026-09-06T00:27:51.468143406	Tags for minecraft:item mod id bonappetit
 3191392dc02101146543ed3cbc6a5d72d0f6bf97 data/c/tags/item/crops/coffee.json
 d9fba8d9c2080d648c89a569f770f363daab1c13 data/c/tags/item/drinks.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/honey.json
@@ -6,28 +6,33 @@ d9fba8d9c2080d648c89a569f770f363daab1c13 data/c/tags/item/drinks.json
 28f2fb9f0b8b881416b72010b791879d6c326e21 data/c/tags/item/drinks/milk.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/drinks/water.json
 eb07169cc5e5da75391210dd101b5c9e55930628 data/c/tags/item/drinks/watery.json
-0ca78213cb5ae24a78ce607c0e7b3542250b8d74 data/c/tags/item/foods.json
+8cee3c5d025dd98fd20c4a451c4ee00d4d549370 data/c/tags/item/foods.json
 d619cd710e3908ecd9075a092986963e02d1c048 data/c/tags/item/foods/apple.json
 76c2e23b5a049680d4dafd614cabdcd56d30f0fb data/c/tags/item/foods/banana.json
 815ac4a2f0fc0ae97ee3933d8ff309c1aca422ef data/c/tags/item/foods/berry.json
 1d44833608b10b814b0a3b85a30b11cb7c10bffb data/c/tags/item/foods/blood_orange.json
 4952f57b828eeebe4ea328ac82964bf7447f5492 data/c/tags/item/foods/bread.json
-d8db899cecfd666ec8f2ede3d593170c5d4edb9a data/c/tags/item/foods/candy.json
+43dae520d3110288063049b8d4264ca7327f5b61 data/c/tags/item/foods/candy.json
 a16bbb328475066556f410d9e3790cbf398ee356 data/c/tags/item/foods/cherry.json
 7e0d7eeebb200f16c00286917b551f69e2377f83 data/c/tags/item/foods/citrus.json
+cde062a727310bd3e79ea1b1cad07353632615a6 data/c/tags/item/foods/coconut.json
 3dec887a44b24f6cf85da4a732a90d71f717dd74 data/c/tags/item/foods/coffee_beans.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/cooked_fish.json
 3784f541c4da2a0a6fb01b6b9a5cc33eedabd8a8 data/c/tags/item/foods/cooked_meat.json
-11e54ac0f0576149164e3032f4bdcec84a593719 data/c/tags/item/foods/cookie.json
-4c1852277c31b79b2ef5ead5f4c9f0d13f109198 data/c/tags/item/foods/edible_when_placed.json
+27f4d7b3e1046ccdb2b0765a54462e4ec3025b58 data/c/tags/item/foods/cookie.json
+0950bc5fea4eb1b3e96e9c4093348ab4b50cb9a7 data/c/tags/item/foods/dragon_fruit.json
+5054602b7e7ec6f7cc58ffcc5492a29890d9394a data/c/tags/item/foods/edible_when_placed.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/food_poisoning.json
 9b244a765a00ee4648b29c21080d99db6fe8af20 data/c/tags/item/foods/fruit.json
 6b0f13332a3de8deefc99586abc73a38309a7f93 data/c/tags/item/foods/golden.json
+1994a9629adb6fbad511af315be5a191bebd14af data/c/tags/item/foods/grape.json
 92b9a19442594a77b70f83d5f97fe0f91cfc9724 data/c/tags/item/foods/grapefruit.json
 92485960f2c719a934369ab127821c34b02ac1b6 data/c/tags/item/foods/lemon.json
 458f8c6b7f4086e2f9288900de8e1be4cd52767b data/c/tags/item/foods/lime.json
 dcf838b35c7ca7c6d5a8cc606bc49e04e8ecb435 data/c/tags/item/foods/orange.json
-f3fac98b277c57241df3af563d4fa994cee93203 data/c/tags/item/foods/pie.json
+35b247d7c705654abaa77eeb1693b8c02ac392c5 data/c/tags/item/foods/peach.json
+0f32a2362d5445dd0313b6fadfffaf3604a05a88 data/c/tags/item/foods/pie.json
+e028241a2116c5e31090e7d5597cc9ccdd0db7d3 data/c/tags/item/foods/pomegranate.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/raw_fish.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/c/tags/item/foods/raw_meat.json
 0042f2123b983d6dc6d893fa7fd84012fc6cc4a8 data/c/tags/item/foods/soup.json

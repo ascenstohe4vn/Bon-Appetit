@@ -1,12 +1,15 @@
 package net.ashstarcrash.bonappetit.compat;
 
 import net.ashstarcrash.bonappetit.BonAppetit;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -64,6 +67,27 @@ public enum ModUtil {
 
     public Block getBlock(String path) {
         return BuiltInRegistries.BLOCK.get(this.asResource(path));
+    }
+
+    @Nullable
+    public <T> T getEffect(String path, @Nullable T templateOrFallback) {
+        if (!this.isLoaded()) return templateOrFallback;
+
+        if (templateOrFallback instanceof Holder<?> fallbackHolder) {
+            return (T) BuiltInRegistries.MOB_EFFECT.getHolder(this.asResource(path))
+                    .map(h -> (Holder<MobEffect>) (Holder<?>) h)
+                    .orElse((Holder<MobEffect>) fallbackHolder);
+        }
+
+        if (templateOrFallback instanceof MobEffectInstance fallbackInstance) {
+            return (T) BuiltInRegistries.MOB_EFFECT.getHolder(this.asResource(path))
+                    .map(holder -> new MobEffectInstance(holder, fallbackInstance.getDuration(), fallbackInstance.getAmplifier()))
+                    .orElse(fallbackInstance);
+        }
+
+        return (T) BuiltInRegistries.MOB_EFFECT.getHolder(this.asResource(path))
+                .map(h -> (Holder<MobEffect>) (Holder<?>) h)
+                .orElse(null);
     }
 
     public <T> TagKey<T> tag(ResourceKey<? extends Registry<T>> registryKey, String tag) {
