@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cherry_cake": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:foods/cherry"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:cherry_cake"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cherry_cake"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:cherry_cake"
+    ]
+  }
+}

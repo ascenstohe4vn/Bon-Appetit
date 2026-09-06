@@ -191,12 +191,11 @@ public class BATagProvider {
                     .add(SUNRISE_DANGO.get())
                     .add(CAKE_SLICE.get())
                     .add(PUMPKIN_PIE_SLICE.get());
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, item) -> this.tag(FOODS).add(item.get()));
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.POPSICLE, (flavor, item) -> this.tag(FOODS).add(item.get()));
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.GUMMY, (flavor, item) -> this.tag(FOODS).add(item.get()));
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE, (flavor, item) -> this.tag(FOODS).add(item.get()));
-            for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) this.tag(FOODS).add(entry.getValue().get().asItem());
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.CAKE, (flavor, item) -> this.tag(FOODS).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.GUMMY, (flavor, food) -> this.tag(FOODS).add(food.asItemLike().asItem()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, food) -> this.tag(FOODS).add(food.asItemLike().asItem()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.POPSICLE, (flavor, food) -> this.tag(FOODS).add(food.asItemLike().asItem()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE, (flavor, food) -> this.tag(FOODS).add(food.asItemLike().asItem()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.CAKE, (flavor, food) -> this.tag(FOODS).add(food.asItemLike().asItem()));
 
 
             this.tag(FOODS_FRUIT)
@@ -270,11 +269,11 @@ public class BATagProvider {
             this.tag(FOODS_SOUP)
                     .add(AMBROSIA_SALAD.get());
 
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.POPSICLE, (flavor, item) -> this.tag(FOODS_CANDY).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.POPSICLE, (flavor, food) -> this.tag(FOODS_CANDY).add(food.asItemLike().asItem()));
 
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE, (flavor, item) -> this.tag(FOODS_PIE).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE, (flavor, food) -> this.tag(FOODS_PIE).add(food.asItemLike().asItem()));
 
-            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, item) -> this.tag(FOODS_COOKIE).add(item.get()));
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.COOKIE, (flavor, food) -> this.tag(FOODS_COOKIE).add(food.asItemLike().asItem()));
             this.tag(FOODS_COOKIE)
                     .add(PLAIN_COOKIE.get())
                     .add(SUGAR_COOKIE.get())
@@ -293,7 +292,7 @@ public class BATagProvider {
             this.tag(FOODS_EDIBLE_WHEN_PLACED)
                     .add(BAItems.PANETTONE.get())
                     .add(BAItems.STOLLEN.get());
-            for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) this.tag(FOODS_EDIBLE_WHEN_PLACED).add(entry.getValue().get().asItem());
+            FlavoredItems.forEachRegistered(FlavoredItems.ItemType.CAKE, (flavor, food) -> this.tag(FOODS_EDIBLE_WHEN_PLACED).add(food.asItemLike().asItem()), (flavor, food) -> {});
 
             this.tag(DRINKS)
                     .add(WATER_MUG.get())

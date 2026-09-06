@@ -39,7 +39,7 @@ public class BABlockStateProvider extends BlockStateProvider {
         simpleBlock(PANETTONE.get());
         simpleBlock(STOLLEN.get());
         horizontalBlock(COCHINEAL_SPONGECAKE.get(), models().getExistingFile(modLoc("block/cochineal_spongecake")));
-        for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) cakeBlock(entry.getValue().get());
+        FlavoredItems.forEachRegistered(FlavoredItems.ItemType.CAKE, (flavor, food) -> cakeBlock((Block)food.asItemLike()), (flavor, food) -> {});
     }
 
     private String name(Block block) {

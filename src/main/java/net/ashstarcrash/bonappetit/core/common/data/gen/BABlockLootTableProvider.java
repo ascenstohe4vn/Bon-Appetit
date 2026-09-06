@@ -37,13 +37,17 @@ public class BABlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(BABlocks.COPPER_TANK.get());
         dropSelf(BABlocks.COCHINEAL_SPONGECAKE.get());
         dropCake(Blocks.CAKE, BAItems.CAKE_SLICE.get());
-        for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) {
-            String cakeId = entry.getKey();
-            String sliceId = cakeId.replace(FlavoredItems.ItemType.CAKE.suffix, FlavoredItems.ItemType.CAKE.slice.suffix());
-            var sliceItem = FlavoredItems.ITEMS_BY_ID.get(sliceId);
-            if (sliceItem == null) continue;
+        for (FlavoredItems.Flavor flavor : FlavoredItems.Flavor.values()) {
+            if (!FlavoredItems.isAvailable(flavor, FlavoredItems.ItemType.CAKE)) continue;
 
-            dropCake(entry.getValue().get(), sliceItem.get());
+            FlavoredItems.Variant v = flavor.variants.get(FlavoredItems.ItemType.CAKE);
+            if (v.baseDisabled || v.sliceDisabled) continue;
+
+            FlavoredItems.RegisteredFood cake = FlavoredItems.REGISTRY.get(flavor.id + FlavoredItems.ItemType.CAKE.suffix);
+            FlavoredItems.RegisteredFood slice = FlavoredItems.REGISTRY.get(flavor.id + FlavoredItems.ItemType.CAKE.slice.suffix());
+            if (cake == null || slice == null) continue;
+
+            dropCake((Block) cake.asItemLike(), slice.asItemLike());
         }
     }
 

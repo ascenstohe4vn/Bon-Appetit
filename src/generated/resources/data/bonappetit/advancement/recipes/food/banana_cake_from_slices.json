@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_banana_cake_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bonappetit:banana_cake_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:banana_cake_from_slices"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_banana_cake_slice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:banana_cake_from_slices"
+    ]
+  }
+}

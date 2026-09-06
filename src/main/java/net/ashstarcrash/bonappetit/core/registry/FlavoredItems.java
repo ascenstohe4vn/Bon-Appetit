@@ -4,6 +4,7 @@ import net.ashstarcrash.bonappetit.compat.ModUtil;
 import net.ashstarcrash.bonappetit.core.common.template.BAFlavorCakeBlock;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -74,6 +75,21 @@ public class FlavoredItems {
 
     public record SliceForm(String suffix, int nutrition, float saturation, boolean fast) {}
 
+    public sealed interface RegisteredFood {
+        ItemLike asItemLike();
+        ResourceLocation getId();
+
+        record ItemBacked(DeferredItem<Item> item) implements RegisteredFood {
+            @Override public ItemLike asItemLike() { return item.get(); }
+            @Override public ResourceLocation getId() { return item.getId(); }
+        }
+
+        record BlockBacked(DeferredBlock<? extends net.minecraft.world.level.block.Block> block) implements RegisteredFood {
+            @Override public ItemLike asItemLike() { return block.get(); }
+            @Override public ResourceLocation getId() { return block.getId(); }
+        }
+    }
+
     public enum ItemType {
         GUMMY(2, 0.2F, true, "_gummy", null),
         COOKIE(2, 0.125F, true, "_cookie", null),
@@ -107,8 +123,8 @@ public class FlavoredItems {
         @Nullable private Float saturation;
         @Nullable private Integer sliceNutrition;
         @Nullable private Float sliceSaturation;
-        private boolean baseDisabled;
-        private boolean sliceDisabled;
+        public boolean baseDisabled;
+        public boolean sliceDisabled;
         @Nullable private ModUtil requiredMod;
 
         private Variant() {}
@@ -296,8 +312,7 @@ public class FlavoredItems {
         }
     }
 
-    public static final Map<String, DeferredItem<Item>> ITEMS_BY_ID = new LinkedHashMap<>();
-    public static final Map<String, DeferredBlock<BAFlavorCakeBlock>> CAKE_BLOCKS_BY_ID = new LinkedHashMap<>();
+    public static final Map<String, RegisteredFood> REGISTRY = new LinkedHashMap<>();
     public static final Map<String, Boolean> IS_SLICE = new LinkedHashMap<>();
 
     static {
@@ -356,9 +371,10 @@ public class FlavoredItems {
             return new Item(props.food(food.build()));
         });
 
-        ITEMS_BY_ID.put(id, item);
+        REGISTRY.put(id, new RegisteredFood.ItemBacked(item));
         IS_SLICE.put(id, isSlice);
     }
+
     private static void registerCake(String id, int nutrition, float saturation, @Nullable Effect effect) {
         FoodProperties.Builder food = new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation);
         if (effect != null) {
@@ -368,56 +384,41 @@ public class FlavoredItems {
             }, effect.chance());
         }
         DeferredBlock<BAFlavorCakeBlock> block = BABlocks.registerFlavorCakes(id, food.build());
-        CAKE_BLOCKS_BY_ID.put(id, block);
+        REGISTRY.put(id, new RegisteredFood.BlockBacked(block));
+        IS_SLICE.put(id, false);
     }
 
     public static boolean isAvailable(Flavor flavor, ItemType type) {
         return flavor.variants.containsKey(type) && flavor.isAvailable();
     }
 
-    public static void forEachRegistered(ItemType type, BiConsumer<Flavor, DeferredItem<Item>> baseConsumer, BiConsumer<Flavor, DeferredItem<Item>> sliceConsumer) {
+    public static void forEachRegistered(ItemType type, BiConsumer<Flavor, RegisteredFood> baseConsumer, BiConsumer<Flavor, RegisteredFood> sliceConsumer) {
         for (Flavor flavor : Flavor.values()) {
             if (!isAvailable(flavor, type)) continue;
-
             Variant v = flavor.variants.get(type);
 
             if (!v.baseDisabled) {
-                DeferredItem<Item> base = ITEMS_BY_ID.get(flavor.id + type.suffix);
+                RegisteredFood base = REGISTRY.get(flavor.id + type.suffix);
                 if (base != null) baseConsumer.accept(flavor, base);
             }
-
             if (type.hasSlice() && !v.sliceDisabled) {
-                DeferredItem<Item> slice = ITEMS_BY_ID.get(flavor.id + type.slice.suffix());
+                RegisteredFood slice = REGISTRY.get(flavor.id + type.slice.suffix());
                 if (slice != null) sliceConsumer.accept(flavor, slice);
             }
         }
     }
 
-    public static void forEachRegistered(ItemType type, BiConsumer<Flavor, DeferredItem<Item>> consumer) {
+    public static void forEachRegistered(ItemType type, BiConsumer<Flavor, RegisteredFood> consumer) {
         forEachRegistered(type, consumer, consumer);
     }
 
     public static void addAllOfType(CreativeModeTab.Output output, ItemType type) {
-        forEachRegistered(type, (flavor, item) -> output.accept(item.get()));
+        forEachRegistered(type, (flavor, food) -> output.accept(food.asItemLike()));
     }
 
     public static void addGummies(CreativeModeTab.Output output) { addAllOfType(output, ItemType.GUMMY); }
     public static void addCookies(CreativeModeTab.Output output) { addAllOfType(output, ItemType.COOKIE); }
     public static void addPopsicles(CreativeModeTab.Output output) { addAllOfType(output, ItemType.POPSICLE); }
     public static void addPies(CreativeModeTab.Output output) { addAllOfType(output, ItemType.PIE); }
-    public static void addCakes(CreativeModeTab.Output output) {
-        for (Flavor flavor : Flavor.values()) {
-            if (!isAvailable(flavor, ItemType.CAKE)) continue;
-
-            Variant v = flavor.variants.get(ItemType.CAKE);
-            if (!v.baseDisabled) {
-                DeferredBlock<BAFlavorCakeBlock> cake = CAKE_BLOCKS_BY_ID.get(flavor.id + ItemType.CAKE.suffix);
-                if (cake != null) output.accept(cake.get());
-            }
-            if (ItemType.CAKE.hasSlice() && !v.sliceDisabled) {
-                DeferredItem<Item> slice = ITEMS_BY_ID.get(flavor.id + ItemType.CAKE.slice.suffix());
-                if (slice != null) output.accept(slice.get());
-            }
-        }
-    }
+    public static void addCakes(CreativeModeTab.Output output) { addAllOfType(output, ItemType.CAKE); }
 }

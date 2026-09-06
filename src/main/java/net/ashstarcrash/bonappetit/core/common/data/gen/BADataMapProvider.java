@@ -77,22 +77,12 @@ public class BADataMapProvider extends DataMapProvider {
         compostables.add(STOLLEN.getId(), new Compostable(1.0F), false);
         compostables.add(STOLLEN_SLICE.getId(), new Compostable(1.0F), false);
 
-        for (FlavoredItems.Flavor flavor : FlavoredItems.Flavor.values()) {
-            if (!FlavoredItems.isAvailable(flavor, FlavoredItems.ItemType.PIE)) continue;
+        FlavoredItems.forEachRegistered(FlavoredItems.ItemType.PIE,
+                (flavor, food) -> compostables.add(food.getId(), new Compostable(1.0F), false),
+                (flavor, food) -> compostables.add(food.getId(), new Compostable(0.25F), false));
 
-            var pieItem = FlavoredItems.ITEMS_BY_ID.get(flavor.id + FlavoredItems.ItemType.PIE.suffix);
-            if (pieItem != null) compostables.add(pieItem.getId(), new Compostable(1.0F), false);
-
-            var sliceItem = FlavoredItems.ITEMS_BY_ID.get(flavor.id + FlavoredItems.ItemType.PIE.slice.suffix());
-            if (sliceItem != null) compostables.add(sliceItem.getId(), new Compostable(0.25F), false);
-        }
-        for (var entry : FlavoredItems.CAKE_BLOCKS_BY_ID.entrySet()) {
-            String cakeId = entry.getKey();
-            compostables.add(entry.getValue().get().asItem().builtInRegistryHolder().key().location(), new Compostable(1.0F), false);
-
-            String sliceId = cakeId.replace(FlavoredItems.ItemType.CAKE.suffix, FlavoredItems.ItemType.CAKE.slice.suffix());
-            var sliceItem = FlavoredItems.ITEMS_BY_ID.get(sliceId);
-            if (sliceItem != null) compostables.add(sliceItem.getId(), new Compostable(0.2F), false);
-        }
+        FlavoredItems.forEachRegistered(FlavoredItems.ItemType.CAKE,
+                (flavor, food) -> compostables.add(food.getId(), new Compostable(1.0F), false),
+                (flavor, food) -> compostables.add(food.getId(), new Compostable(0.2F), false));
     }
 }

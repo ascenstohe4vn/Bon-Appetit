@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": {
+      "tag": "c:eggs"
+    },
+    "F": {
+      "tag": "c:foods/cherry"
+    },
+    "M": {
+      "tag": "c:drinks/milk"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "MFM",
+    "SES",
+    "WFW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:cherry_cake"
+  }
+}

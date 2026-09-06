@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bonappetit:banana_cake_slice"
+    },
+    {
+      "item": "bonappetit:banana_cake_slice"
+    },
+    {
+      "item": "bonappetit:banana_cake_slice"
+    },
+    {
+      "item": "bonappetit:banana_cake_slice"
+    },
+    {
+      "item": "bonappetit:banana_cake_slice"
+    },
+    {
+      "item": "bonappetit:banana_cake_slice"
+    },
+    {
+      "item": "bonappetit:banana_cake_slice"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bonappetit:banana_cake"
+  }
+}

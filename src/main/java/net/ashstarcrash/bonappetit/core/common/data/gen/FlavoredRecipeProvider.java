@@ -10,18 +10,16 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.Map;
 
 public class FlavoredRecipeProvider {
     @FunctionalInterface
     public interface RecipeGenerator {
-        void generate(RecipeOutput output, FlavoredItems.Flavor flavor, FlavoredItems.FlavorIngredient ingredient, DeferredItem<Item> resultItem, String resultId);
+        void generate(RecipeOutput output, FlavoredItems.Flavor flavor, FlavoredItems.FlavorIngredient ingredient, FlavoredItems.RegisteredFood resultFood, String resultId);
     }
 
     private static Criterion<?> hasIngredient(FlavoredItems.TagOrItem ingredient) {
@@ -32,8 +30,8 @@ public class FlavoredRecipeProvider {
         return InventoryChangeTrigger.TriggerInstance.hasItems(predicate);
     }
 
-    private static final RecipeGenerator GUMMY_RECIPE = (output, flavor, ingredient, resultItem, resultId) ->
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, resultItem.get(), 1)
+    private static final RecipeGenerator GUMMY_RECIPE = (output, flavor, ingredient, resultFood, resultId) ->
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, resultFood.asItemLike(), 1)
                     .requires(ingredient.full().toIngredient())
                     .requires(Items.KELP)
                     .requires(Items.HONEY_BOTTLE)
@@ -41,17 +39,17 @@ public class FlavoredRecipeProvider {
                     .unlockedBy("has_" + resultId, hasIngredient(ingredient.full()))
                     .save(output, ModUtil.BA.asResource(resultId));
 
-    private static final RecipeGenerator COOKIE_RECIPE = (output, flavor, ingredient, resultItem, resultId) ->
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, resultItem.get(), 8)
+    private static final RecipeGenerator COOKIE_RECIPE = (output, flavor, ingredient, resultFood, resultId) ->
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, resultFood.asItemLike(), 8)
                     .requires(ingredient.full().toIngredient()).requires(Items.WHEAT).requires(Items.WHEAT)
                     .unlockedBy("has_" + resultId, hasIngredient(ingredient.full()))
                     .save(output, ModUtil.BA.asResource(resultId));
 
-    private static final RecipeGenerator POPSICLE_RECIPE = (output, flavor, ingredient, resultItem, resultId) -> {
+    private static final RecipeGenerator POPSICLE_RECIPE = (output, flavor, ingredient, resultFood, resultId) -> {
         FlavoredItems.TagOrItem fruitSlot = ingredient.preferSlice();
         Ingredient fruitIngredient = fruitSlot.toIngredient();
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, resultItem.get(), 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, resultFood.asItemLike(), 2)
                 .pattern(" FF")
                 .pattern("SFF")
                 .pattern("SI ")
@@ -62,30 +60,29 @@ public class FlavoredRecipeProvider {
                 .save(output, ModUtil.BA.asResource(resultId));
     };
 
-    private static final RecipeGenerator PIE_RECIPE = (output, flavor, ingredient, resultItem, resultId) -> {
+    private static final RecipeGenerator PIE_RECIPE = (output, flavor, ingredient, resultFood, resultId) -> {
         FlavoredItems.TagOrItem fruitSlot = ingredient.preferSlice();
         Ingredient fruitIngredient = fruitSlot.toIngredient();
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, resultItem.get(), 2)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, resultFood.asItemLike(), 2)
                 .requires(fruitIngredient).requires(fruitIngredient).requires(fruitIngredient)
                 .requires(Items.SUGAR).requires(BAItems.PIE_CRUST).requires(Tags.Items.EGGS)
                 .unlockedBy("has_" + resultId, hasIngredient(ingredient.full()))
                 .save(output, ModUtil.BA.asResource(resultId));
     };
 
-    private static final RecipeGenerator CAKE_RECIPE = (output, flavor, ingredient, resultItem, resultId) -> {
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, resultItem.get(), 1)
-                .pattern("MFM")
-                .pattern("SES")
-                .pattern("WFW")
-                .define('F', ingredient.full().toIngredient())
-                .define('M', Tags.Items.DRINKS_MILK)
-                .define('S', Items.SUGAR)
-                .define('W', Items.WHEAT)
-                .define('E', Tags.Items.EGGS)
-                .unlockedBy("has_" + resultId, hasIngredient(ingredient.full()))
-                .save(output, ModUtil.BA.asResource(resultId));
-    };
+    private static final RecipeGenerator CAKE_RECIPE = (output, flavor, ingredient, resultFood, resultId) ->
+            ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, resultFood.asItemLike(), 1)
+                    .pattern("MFM")
+                    .pattern("SES")
+                    .pattern("WFW")
+                    .define('F', ingredient.full().toIngredient())
+                    .define('M', Tags.Items.DRINKS_MILK)
+                    .define('S', Items.SUGAR)
+                    .define('W', Items.WHEAT)
+                    .define('E', Tags.Items.EGGS)
+                    .unlockedBy("has_" + resultId, hasIngredient(ingredient.full()))
+                    .save(output, ModUtil.BA.asResource(resultId));
 
     private static final Map<FlavoredItems.ItemType, RecipeGenerator> GENERATORS = Map.of(
             FlavoredItems.ItemType.GUMMY, GUMMY_RECIPE,
@@ -99,19 +96,19 @@ public class FlavoredRecipeProvider {
         String fullId = flavor.id + type.suffix;
         String sliceId = flavor.id + type.slice.suffix();
 
-        DeferredItem<Item> fullItem = FlavoredItems.ITEMS_BY_ID.get(fullId);
-        DeferredItem<Item> sliceItem = FlavoredItems.ITEMS_BY_ID.get(sliceId);
-
-        if (fullItem == null || sliceItem == null) return;
+        FlavoredItems.RegisteredFood fullFood = FlavoredItems.REGISTRY.get(fullId);
+        FlavoredItems.RegisteredFood sliceFood = FlavoredItems.REGISTRY.get(sliceId);
+        if (fullFood == null || sliceFood == null) return;
         int sliceCount = (type == FlavoredItems.ItemType.CAKE ? 7 : 4);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sliceItem.get(), sliceCount)
-                .requires(fullItem.get())
-                .unlockedBy("has_" + fullId, InventoryChangeTrigger.TriggerInstance.hasItems(fullItem.get()))
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sliceFood.asItemLike(), sliceCount)
+                .requires(fullFood.asItemLike())
+                .unlockedBy("has_" + fullId, InventoryChangeTrigger.TriggerInstance.hasItems(fullFood.asItemLike()))
                 .save(output, ModUtil.BA.asResource(sliceId));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, fullItem.get(), 1)
-                .requires(sliceItem.get(), sliceCount)
-                .unlockedBy("has_" + sliceId, InventoryChangeTrigger.TriggerInstance.hasItems(sliceItem.get()))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, fullFood.asItemLike(), 1)
+                .requires(sliceFood.asItemLike(), sliceCount)
+                .unlockedBy("has_" + sliceId, InventoryChangeTrigger.TriggerInstance.hasItems(sliceFood.asItemLike()))
                 .save(output, ModUtil.BA.asResource(fullId + "_from_slices"));
     }
 
@@ -121,18 +118,18 @@ public class FlavoredRecipeProvider {
                 FlavoredItems.ItemType type = entry.getKey();
                 FlavoredItems.Variant variant = entry.getValue();
 
-                if (!variant.isAvailable()) continue;
+                if (!variant.isAvailable() || variant.baseDisabled) continue;
 
                 RecipeGenerator generator = GENERATORS.get(type);
                 if (generator != null) {
                     String resultId = flavor.id + type.suffix;
-                    DeferredItem<Item> resultItem = FlavoredItems.ITEMS_BY_ID.get(resultId);
-                    if (resultItem != null) {
-                        generator.generate(output, flavor, flavor.ingredient, resultItem, resultId);
+                    FlavoredItems.RegisteredFood resultFood = FlavoredItems.REGISTRY.get(resultId);
+                    if (resultFood != null) {
+                        generator.generate(output, flavor, flavor.ingredient, resultFood, resultId);
                     }
                 }
 
-                if (type.hasSlice()) generateSliceRecipes(output, flavor, type);
+                if (type.hasSlice() && !variant.sliceDisabled) generateSliceRecipes(output, flavor, type);
             }
         }
     }

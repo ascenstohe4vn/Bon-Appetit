@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pineapple_cake_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bonappetit:pineapple_cake_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bonappetit:pineapple_cake_from_slices"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_pineapple_cake_slice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bonappetit:pineapple_cake_from_slices"
+    ]
+  }
+}
